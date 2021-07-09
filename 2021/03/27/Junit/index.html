@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yt32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yt16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Junit 单元测试： 测试分类：  1.黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。 2.白盒测试：需要写代码的。关注程序具体的执行流程。   Junit使用：白盒测试  步骤： 1.定义一个测试类(测试用例) 建议： 测试类名：被测试的类名Test    CalculatorTest      2.定义测试方法：可以独立运行 建议： 方法名：test测试的方法名   test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Junit">
+<meta property="og:url" content="http://yoursite.com/2021/03/27/Junit/index.html">
+<meta property="og:site_name" content="ZWZ的博客嘻嘻">
+<meta property="og:description" content="Junit 单元测试： 测试分类：  1.黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。 2.白盒测试：需要写代码的。关注程序具体的执行流程。   Junit使用：白盒测试  步骤： 1.定义一个测试类(测试用例) 建议： 测试类名：被测试的类名Test    CalculatorTest      2.定义测试方法：可以独立运行 建议： 方法名：test测试的方法名   test">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-27T04:30:14.420Z">
+<meta property="article:modified_time" content="2020-09-25T09:14:04.000Z">
+<meta property="article:author" content="ZWZ">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2021/03/27/Junit/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Junit | ZWZ的博客嘻嘻</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZWZ的博客嘻嘻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Junit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Junit
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-25 17:14:04" itemprop="dateModified" datetime="2020-09-25T17:14:04+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Junit-单元测试："><a href="#Junit-单元测试：" class="headerlink" title="Junit 单元测试："></a>Junit 单元测试：</h1><ul>
+<li><p>测试分类：</p>
+<ul>
+<li>1.黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。</li>
+<li>2.白盒测试：需要写代码的。关注程序具体的执行流程。</li>
+</ul>
+</li>
+<li><p>Junit使用：白盒测试</p>
+<ul>
+<li>步骤：<ul>
+<li>1.定义一个测试类(测试用例)<ul>
+<li>建议：<ul>
+<li>测试类名：被测试的类名Test    CalculatorTest </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.定义测试方法：可以独立运行<ul>
+<li>建议：<ul>
+<li>方法名：test测试的方法名   testAdd()</li>
+<li>返回值：void</li>
+<li>参数列表：空参</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3.给方法加@Test</li>
+<li>4.导入junit依赖环境</li>
+</ul>
+</li>
+<li>判定结果：<ul>
+<li>红色：失败</li>
+<li>绿色：成功</li>
+<li>一般我们会使用断言操作来处理结果Assert.assertEquals(期望的结果,运行的结果);</li>
+</ul>
+</li>
+<li>补充：<ul>
+<li>@Before:修饰的方法会在测试方法之前被自动执行</li>
+<li>@After:修饰的方法会在测试方法执行之后被自动执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="反射：框架设计的灵魂"><a href="#反射：框架设计的灵魂" class="headerlink" title="反射：框架设计的灵魂"></a>反射：框架设计的灵魂</h2><pre><code>- 框架：半成品软件。可以在框架的基础上进行软件开发，简化编码</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/27/Java/" rel="prev" title="Java">
+      <i class="fa fa-chevron-left"></i> Java
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/27/Linux/" rel="next" title="Linux">
+      Linux <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Junit-单元测试："><span class="nav-number">1.</span> <span class="nav-text">Junit 单元测试：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反射：框架设计的灵魂"><span class="nav-number">1.1.</span> <span class="nav-text">反射：框架设计的灵魂</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZWZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZWZ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

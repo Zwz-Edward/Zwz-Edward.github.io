@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yt32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yt16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="刚开始学JavaScript 定义： “是一种脚本语言，主要用于Web。它用于增强HTML页面，通常可以嵌入HTML代码中。JavaScript是一种解释型语言。因此，它不需要编译。”   简单来说:&quot;根据用户做的一些操作，来修改页面的样式，属性等，叫做js。&quot;(个人理解  基础知识 ECMAScript 解释器是JS的核心 DOM:Document Object Model（文档对象模型） 操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学JS">
+<meta property="og:url" content="http://yoursite.com/2021/03/27/%E5%88%9D%E5%AD%A6JS/index.html">
+<meta property="og:site_name" content="ZWZ的博客嘻嘻">
+<meta property="og:description" content="刚开始学JavaScript 定义： “是一种脚本语言，主要用于Web。它用于增强HTML页面，通常可以嵌入HTML代码中。JavaScript是一种解释型语言。因此，它不需要编译。”   简单来说:&quot;根据用户做的一些操作，来修改页面的样式，属性等，叫做js。&quot;(个人理解  基础知识 ECMAScript 解释器是JS的核心 DOM:Document Object Model（文档对象模型） 操作">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-27T04:30:14.960Z">
+<meta property="article:modified_time" content="2020-03-22T03:46:42.000Z">
+<meta property="article:author" content="ZWZ">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2021/03/27/%E5%88%9D%E5%AD%A6JS/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>初学JS | ZWZ的博客嘻嘻</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZWZ的博客嘻嘻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E5%88%9D%E5%AD%A6JS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初学JS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-22 11:46:42" itemprop="dateModified" datetime="2020-03-22T11:46:42+08:00">2020-03-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="刚开始学JavaScript"><a href="#刚开始学JavaScript" class="headerlink" title="刚开始学JavaScript"></a>刚开始学JavaScript</h1><hr>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><blockquote>
+<p>“是一种脚本语言，主要用于Web。它用于增强HTML页面，通常可以嵌入HTML代码中。JavaScript是一种解释型语言。因此，它不需要编译。”</p>
+</blockquote>
+<br/>
+简单来说:"根据用户做的一些操作，来修改页面的样式，属性等，叫做js。"(个人理解
+
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
+<li>ECMAScript 解释器是JS的核心</li>
+<li>DOM:Document Object Model（文档对象模型） 操作HTML文档 在JS里面就是document这个用处</li>
+<li>BOM：Browser Object Model (浏览器对象模型)</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>类型：typeof运算符</br><br>常见的变量类型有：number,string,boolean,undefined,object,funtion</br><br>类型转换:</br><br>parseInt()、paarseFloat()</br><br><code>==</code>：先转换类型后比较</br><br><code>===</code>:不转换类型直接比较</br><br>NaN：不是一个数字</p>
+<h4 id="运算符-基本语句……"><a href="#运算符-基本语句……" class="headerlink" title="运算符 基本语句……"></a>运算符 基本语句……</h4><p>语句大致跟C语言的一样的，可以参照C语言的语句</p>
+<h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><p>一个十分类似python的字典的东西 例如python里面用到的<code>for i in ..</code>语句在JS里面也可以运用，所以JS和python基本语法也是很类似的。</p>
+<blockquote>
+<p>json其实与python字典用法差不多<br>在json里面<code>var a={time:&#39;4am&#39;,person:&#39;zwz&#39;}</code> python里面<code>a={&#39;color&#39;:&#39;green&#39;,&#39;point&#39;:5}</code>就是键值对</p>
+</blockquote>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>学完很惊讶的发现，数组的应用与python的列表神似呀!</br></p>
+<p>添加/删除元素的方法</br><br>添加:1.push(元素)，从尾部添加           2.unshift(元素)从头部添加</br><br>删除:1.pop()，从尾部弹出 2.shift()，从为头部弹出</p>
+<p>拼接</br><br>concat(数组2) 例如:concat</p>
+<pre><code>`var a=[1,2,3]`
+`var b=[4,5,6]`
+`alert(a.concat(b))`</code></pre><p>会输出[1,2,3,4,5,6]</p>
+<p>再例如：join</p>
+<pre><code>`var a=[1,2,3,4];`
+`alert(arr.join(&apos;-&apos;));`</code></pre><p>会输出 1-2-3-4 join里面的东西是什么都行</p>
+<p>排序sort</p>
+<pre><code>`var arr[&apos;c&apos;,&apos;b&apos;,&apos;z&apos;,&apos;a&apos;]`
+`arr.sort()`
+`alert(arr)`</code></pre><p>会输出a,b,c,z</p>
+<p>在比较数字的时候例如</p>
+<pre><code>`var arr[111,333,442,5,6]`
+`arr.sort(function(n1, n2){
+    return n1 - n2; )}`</code></pre><p>需要这么做才可以排序数字数组</p>
+<blockquote>
+<p>sort只能识别字符串</p>
+</blockquote>
+<p>splice的用法</p>
+<pre><code>`arr=[1,2,3,4,5,6]`&lt;/br&gt;
+`arr.splice(2,3)`&lt;/br&gt;
+`alert(arr)`&lt;/br&gt;</code></pre><p>会出现1，2，6,从arr[2]→arr[5]都被删除了.可见用法删除：splice(起点，长度)</br></p>
+<pre><code>`arr=[1,2,3,4,5,6]`&lt;/br&gt;
+`arr.splice(2,0,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;)`&lt;/br&gt;
+`alert(arr)`&lt;/br&gt;</code></pre><p>会出现1，2，’a’’b’’c’，3，4，5，6，从arr[2]后面增加’a’,’b’,’c’三个元素.<br>用法插入：splice(起点，长度，元素…)</p>
+<hr>
+<p><code>document.getElementById()</code><br>可以在任何浏览器下使用，不会出现兼容性问题.</p>
+<h3 id="函数传参"><a href="#函数传参" class="headerlink" title="函数传参"></a>函数传参</h3><p>函数能传参，而且想传几个传几个。例如<code>function varName(a,b,c,..)</code></br><br>举多个栗子</br><br>script部分</p>
+<p><code>function setColor(color) {
+    var oDiv = document.getElementById(&#39;div1&#39;);</code></br><br>    <code>oDiv.style.background = color;
+        }</code></br><br>body部分</p>
+<pre><code>`&lt;input type=&quot;button&quot; value=&quot;变绿&quot; onclick=&quot;setColor(&apos;green&apos;)&quot;&gt;`
+`&lt;input type=&quot;button&quot; value=&quot;变黄&quot; onclick=&quot;setColor(&apos;yellow&apos;)&gt;`
+`&lt;input type=&quot;button&quot; value=&quot;变黑&quot; onclick=&quot;setColor(&apos;balck&apos;)&quot;&gt;`</code></pre><blockquote>
+<p>函数其实就是个占位符 在函数里有定不下来的东西就可以用函数传参</p>
+</blockquote>
+<p>第二种方法<br>    <code>function setStyle(name, value)</code><br>    <code>{ var oDiv = document.getElementById(&#39;div1&#39;);</code><br>    <code>oDiv.style[name]=value}</code></p>
+<p>body部分</p>
+<pre><code>`&lt;input type=&quot;button&quot; value=&quot;变宽&quot; onclick=&quot;setStyle(&apos;width&apos;,&apos;400px&apos;)&quot;`
+`&lt;input type=&quot;button&quot; value=&quot;变宽&quot; onclick=&quot;setStyle(&apos;height&apos;,&apos;400px&apos;)&quot;`
+`&lt;input type=&quot;button&quot; value=&quot;变宽&quot; onclick=&quot;setStyle(&apos;color&apos;,&apos;green&apos;)&quot;`</code></pre><blockquote>
+<p><code>.</code>能做的事<code>[]</code>都能做，反之而不一定。当要修改的属性不固定的时候常用例如这里的一会变颜色一会变宽高可以用这种方式传参</p>
+</blockquote>
+<p>PS.修改样式的时候比如运用<code>.style.</code>修改的是行间的样式但是<code>className</code>是直接添加class属性。由于行间样式优先级大于引用样式因此，在同一标签下先改.style的样式再改class的样式后者是显示不出来的。</p>
+<h3 id="提取行间事件"><a href="#提取行间事件" class="headerlink" title="提取行间事件"></a>提取行间事件</h3><p>1.为元素添加事件。以onclick事件为例子</p>
+<pre><code>`function 名字(){...;}`
+`oBtn.onclick=名字`</code></pre><p>或者</p>
+<pre><code>`oBtn.onclick=function(){...;}`</code></pre><blockquote>
+<p>这两段代码需要在body里且在input标签下方才能执行。若script放进head里面就会报错，原因是js是一行一行读的，在head里面则会给未知的oBtn加一个onclick从而报错。</p>
+</blockquote>
+<p>此时window.onload出现了</p>
+<pre><code>`window.onload = function(）{
+        var oBtn = document.getElementById(&apos;btn1&apos;)
+        oBtn.onclick = function() {
+            alert(&apos;a&apos;);
+        }
+    }</code></pre><blockquote>
+<p>window.onload的作用是加载完整个网页再进行js代码</p>
+</blockquote>
+<h3 id="获取一组元素"><a href="#获取一组元素" class="headerlink" title="获取一组元素"></a>获取一组元素</h3><pre><code>`getElementsByTagName`</code></pre><p>如过我们要给一堆且相同的标签添加样式的话，可以用循环实现比如说给div添加样式<br>可以用以下代码实现 </p>
+<pre><code>`for(var i=0&apos;i&lt;aDiv.length;i++)`</code></pre><p>运用 <strong>this</strong> 来表示当前发生的元素</p>
+<hr>
+
+<pre><code>`oDiv.innerHTML = oTxt.value;`</code></pre><p>oTxt.value的值赋予了oDiv.innerHTML中<br>把它嵌套在<code>oBtn.onclick = function() {}</code>里面就可以点击button把text里的值赋予div。</p>
+<blockquote>
+<p>由于里面有HTML所以可以在里面运用html代码，即可以输入<code>&lt;h2&gt;标题&lt;h2/&gt;</code>这类代码，并实现。</p>
+</blockquote>
+<p>在语句中’+ something +’,’++’可以实现字符串的拼接；</p>
+<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><ol>
+<li>可以使用<code>setInterval(var,time)</code>来进行无限次的且时隔time ms的间隔弹窗 使用clearInterval来关闭</li>
+<li>使用<code>setTimeout(var,time)</code>来进行一次时隔time ms的弹窗 使用clearTimeout来关闭</li>
+</ol>
+<blockquote>
+<p>可以进行无缝滚动或者移入移出弹框 很方便</p>
+</blockquote>
+<h3 id="DOM基础"><a href="#DOM基础" class="headerlink" title="DOM基础"></a>DOM基础</h3><p>childNodes 可以查询父节点下面的子节点有多少个 （其中包括文本节点和元素节点）<br></br><br>nodeType 可以显示节点的类型比如说：1.代表元素节点 2.代表属性节点 3.嗲表文本节点….</br><br>parentNode 可以获取父节点.<br>offsetParent 根据样式的不同会有不一样的显示<br>firstElementChild 获取第一个元素子节点</br><br>lastElementChild 获取最后一个元素子节点</br></p>
+<h4 id="DOM方式操作元素属性"><a href="#DOM方式操作元素属性" class="headerlink" title="DOM方式操作元素属性"></a>DOM方式操作元素属性</h4><ul>
+<li>获取：getAttribute (名称)</li>
+<li>设置: setAttribute (名称，值)</li>
+<li>删除：removeAttribute (名称)<blockquote>
+<p>很少用到DOM来操作元素</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="创建、插入和删除元素"><a href="#创建、插入和删除元素" class="headerlink" title="创建、插入和删除元素"></a>创建、插入和删除元素</h4><ul>
+<li>创建DOM元素<ul>
+<li>createElement(标签名) 创建一个节点<blockquote>
+<p>需要利用appendChild加入 ，基本格式为父级.appendChild(子节点) 例子：</br><code>var oLi=document.createElement(&#39;li&#39;)</code></br><br><code>oUl.appendChild(oLi)</code></p>
+</blockquote>
+</li>
+<li>appendChild(节点) 追加一个节点例子：为ul插入li.</li>
+</ul>
+</li>
+<li>插入元素<br>  -insertBefore(节点，原有节点) 在已有元素的前面插入<blockquote>
+<p>要把元素添加在前面则可以用这条语句，首先先把需要添加元素的父级中把子集全部选定出来，在使用该语句。例如：<br>  </br><code>var oLi = document.createElement(&#39;li&#39;);</code></br><br>   <code>var aLi = oUl.getElementsByTagName(&#39;li&#39;)</code><br>  <code>oUl.insertBefore(oLi, aLi[0])</code></p>
+</blockquote>
+</li>
+<li>删除DOM元素<ul>
+<li>removeChild(节点) 删除一个节点</li>
+</ul>
+</li>
+</ul>
+<h3 id="表格应用"><a href="#表格应用" class="headerlink" title="表格应用"></a>表格应用</h3><ul>
+<li><p>获取</p>
+<ul>
+<li><p>tBodies、tHead、tFoot、rows、cells 用法<br><code>oTab.getElementsByTagName(&#39;tbody&#39;)[0]</code><br><code>.getElementsByTagName(&#39;tr&#39;)[1]</code><br><code>.getElementsByTagName(&#39;td&#39;)[1].innerHTML</code></br></p>
+<p>  这个用法等同于</p>
+<p>  <code>oTab.tBodies[0].rows[1].cells[1].innerHTML</code></p>
+</li>
+</ul>
+</li>
+<li><p>隔行变色</p>
+<ul>
+<li><code>for (var i = 0; i &lt; oTab.tBodies[0].rows.length; i++)</code></br><br><code>if (i % 2)</code></br>`{<pre><code>    oTab.tBodies[0].rows[i].style.background = &apos;#CCC&apos;;
+} `&lt;/br&gt;</code></pre><code>else</code> </br><code>{oTab.tBodies[0].rows[i].style.background = &#39;&#39;}</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h3><h4 id="运动框架"><a href="#运动框架" class="headerlink" title="运动框架"></a>运动框架</h4><ul>
+<li>在运动开始的时候，关闭已有的定时器</li>
+<li>把运动和暂停隔开(if,else)</li>
+</ul>
+<blockquote>
+<p>不好写emmm，看代码吧 &lt;运动1&gt; JS源代码里面看</p>
+</blockquote>
+<h4 id="多物体运动框架"><a href="#多物体运动框架" class="headerlink" title="多物体运动框架"></a>多物体运动框架</h4><ul>
+<li>定时器作为物体的属性</li>
+<li>并且在写多个物体运动的时候，变量是不可以公用的，比如多个div淡入淡出就可以发现，会有异样详情看 JS代码里面的多物体淡入淡出。</li>
+<li>属性与运动对象绑定：速度、其他属性值等（比如透明度）</li>
+</ul>
+<blockquote>
+<p>如果写JS多物体运动框架可以参考JS网页里面“去掉offset,添加形参的运动框架” 消化消化知识点。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/27/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%8E%92%E5%BA%8F%E6%B3%95/" rel="prev" title="二叉树排序法">
+      <i class="fa fa-chevron-left"></i> 二叉树排序法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/27/%E6%8C%BA%E9%87%8D%E8%A6%81%E7%9A%84%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="挺重要的控制字符串">
+      挺重要的控制字符串 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#刚开始学JavaScript"><span class="nav-number">1.</span> <span class="nav-text">刚开始学JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义："><span class="nav-number">1.0.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识"><span class="nav-number">1.0.2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符-基本语句……"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">运算符 基本语句……</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#json"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数传参"><span class="nav-number">1.0.3.</span> <span class="nav-text">函数传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取行间事件"><span class="nav-number">1.0.4.</span> <span class="nav-text">提取行间事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取一组元素"><span class="nav-number">1.0.5.</span> <span class="nav-text">获取一组元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时器"><span class="nav-number">1.0.6.</span> <span class="nav-text">定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM基础"><span class="nav-number">1.0.7.</span> <span class="nav-text">DOM基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM方式操作元素属性"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">DOM方式操作元素属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建、插入和删除元素"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">创建、插入和删除元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格应用"><span class="nav-number">1.0.8.</span> <span class="nav-text">表格应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运动"><span class="nav-number">1.0.9.</span> <span class="nav-text">运动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运动框架"><span class="nav-number">1.0.9.1.</span> <span class="nav-text">运动框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多物体运动框架"><span class="nav-number">1.0.9.2.</span> <span class="nav-text">多物体运动框架</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZWZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZWZ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

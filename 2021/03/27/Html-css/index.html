@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yt32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yt16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Html&#x2F;CSS这个语法是真的简单，web开发都可以学一学喔！  先介绍一下Html吧主要框架可以不记得。VM或者Vscode都可以打一个英文字符的感叹号!然后回车实现框架。  title标签之间可以改网页的名字。 head标签之内可以加入CSS样式或者js代码 body标签是网页”身体”里面可以布局，写内容，可以写js  再介绍一下HTML的标签吧 h1~h6 标题 br 段内换行 span 段">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html-css">
+<meta property="og:url" content="http://yoursite.com/2021/03/27/Html-css/index.html">
+<meta property="og:site_name" content="ZWZ的博客嘻嘻">
+<meta property="og:description" content="Html&#x2F;CSS这个语法是真的简单，web开发都可以学一学喔！  先介绍一下Html吧主要框架可以不记得。VM或者Vscode都可以打一个英文字符的感叹号!然后回车实现框架。  title标签之间可以改网页的名字。 head标签之内可以加入CSS样式或者js代码 body标签是网页”身体”里面可以布局，写内容，可以写js  再介绍一下HTML的标签吧 h1~h6 标题 br 段内换行 span 段">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-27T04:30:14.160Z">
+<meta property="article:modified_time" content="2020-03-07T09:54:28.000Z">
+<meta property="article:author" content="ZWZ">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2021/03/27/Html-css/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Html-css | ZWZ的博客嘻嘻</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZWZ的博客嘻嘻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Html-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Html-css
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-07 17:54:28" itemprop="dateModified" datetime="2020-03-07T17:54:28+08:00">2020-03-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Html-CSS"><a href="#Html-CSS" class="headerlink" title="Html/CSS"></a>Html/CSS</h1><p>这个语法是真的简单，web开发都可以学一学喔！</p>
+<hr>
+<h3 id="先介绍一下Html吧"><a href="#先介绍一下Html吧" class="headerlink" title="先介绍一下Html吧"></a>先介绍一下Html吧</h3><p>主要框架可以不记得。VM或者Vscode都可以打一个英文字符的感叹号<code>!</code>然后回车实现框架。<br/></p>
+<ol>
+<li>title标签之间可以改网页的名字。</li>
+<li>head标签之内可以加入CSS样式或者js代码</li>
+<li>body标签是网页”身体”里面可以布局，写内容，可以写js</li>
+</ol>
+<h3 id="再介绍一下HTML的标签吧"><a href="#再介绍一下HTML的标签吧" class="headerlink" title="再介绍一下HTML的标签吧"></a>再介绍一下HTML的标签吧</h3><ul>
+<li>h1~h6 标题</li>
+<li>br 段内换行</li>
+<li>span 段内分组</li>
+<li>p 段落标签</li>
+<li>pre 预留格式</li>
+<li>hr 水平线</li>
+<li>a 超链接 (可以链接本地电脑的其他网站、其他站点、或者虚拟超链接#)</li>
+<li>img 图片标签</li>
+<li>div 区域</li>
+<li>ul 无序列表</li>
+<li>ol 有序列表</li>
+<li>li 列表，嵌套于ul ol中</li>
+<li>table 表格</li>
+<li>tr 行</li>
+<li>td 列 嵌套于tr中</li>
+<li>th 表头单元格 嵌套于tr中</li>
+<li>form 表单</li>
+<li>input type=”” value=”” (type里面的值有 text文本 password 密码 submit 确定 reset  重置 radio 单选框 checkbox 多选框)(value输入中文就可以显示文字了)</li>
+<li>select option 标签用于下弹的框</li>
+<li>textarea 文本域</li>
+<li>em\strong 斜体/强调 均无语意 嵌套于p中</li>
+<li>dl/dt/dd 自定义列表/列表项/描述 嵌套于dl中<blockquote>
+<p>光看是学不会的，主要要多敲！</p>
+</blockquote>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="CSS的样式添加方式"><a href="#CSS的样式添加方式" class="headerlink" title="CSS的样式添加方式"></a>CSS的样式添加方式</h3></li>
+</ul>
+<ol>
+<li>CSS可以行内添加(如<code>&lt;p width=&quot;300px&quot;&gt;</code>等)</li>
+<li>内嵌样式(在head标签之间加入style标签，写进style里面)</li>
+<li>外部引用(用 <strong>link标签引入</strong> 写比较大的页面的时候用这个可以方便维护)。</li>
+</ol>
+<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><ol>
+<li>标签选择器(<code>h1{font-size:20px</code>)</li>
+<li>类别选择器(<code>.one{font-size:10px} &lt;p class=&quot;one&quot;</code>&gt;)</li>
+<li>ID选择器(<code>#one{font-size:12px} &lt;p id=&quot;one&quot;&gt;</code>)</li>
+</ol>
+<h3 id="CSS文字样式"><a href="#CSS文字样式" class="headerlink" title="CSS文字样式"></a>CSS文字样式</h3><ol>
+<li>px (像素)</li>
+<li>em（字符，自适应用户所用字体）</li>
+<li>% (百分比）</li>
+</ol>
+<h3 id="CSS颜色"><a href="#CSS颜色" class="headerlink" title="CSS颜色"></a>CSS颜色</h3><ol>
+<li>red…（直接输入颜色名）</li>
+<li>rbg(x1,x2,x3,x4) (x4为透明度)</li>
+<li>rgb(x%,x%,x%) (百分比值)</li>
+</ol>
+<h3 id="CSS常用标签"><a href="#CSS常用标签" class="headerlink" title="CSS常用标签"></a>CSS常用标签</h3><blockquote>
+<p>由于太多了就列一点常用的吧</p>
+</blockquote>
+<ol>
+<li>color (颜色)</li>
+<li>text-align (对齐) (center\left\right\justify)</li>
+<li>line-height (行高) (居中一般与当前的框架高的相同)</li>
+<li>text-decoration (装饰线)（none\underline\overline\line-through）</li>
+<li>float（浮动)（left\right…）</li>
+<li>padding (内边距) (px)</li>
+<li>margin (外边距) (a,b,c,d)（上\右\下\左）</li>
+<li>vertical-align （属性设置元素的垂直对齐方式）</li>
+<li>transform（2D/3D 转换）</li>
+<li>overflow (超出边框时的操作) (hidden\auto…)</li>
+<li>transition (动画效果持续时长) (.s 多少s)</li>
+<li>border (边框) （solid #xxx）</li>
+<li>position (规定元素的定位类型) （absolute..）</li>
+<li>display (显示) (none/block…)<blockquote>
+<p>能力有限就这为止吧哈哈哈</p>
+</blockquote>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/27/HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" rel="prev" title="HashMap底层实现">
+      <i class="fa fa-chevron-left"></i> HashMap底层实现
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/27/IO%E6%B5%81/" rel="next" title="IO流">
+      IO流 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Html-CSS"><span class="nav-number">1.</span> <span class="nav-text">Html&#x2F;CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先介绍一下Html吧"><span class="nav-number">1.0.1.</span> <span class="nav-text">先介绍一下Html吧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再介绍一下HTML的标签吧"><span class="nav-number">1.0.2.</span> <span class="nav-text">再介绍一下HTML的标签吧</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">2.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS的样式添加方式"><span class="nav-number">2.0.1.</span> <span class="nav-text">CSS的样式添加方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS选择器"><span class="nav-number">2.0.2.</span> <span class="nav-text">CSS选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS文字样式"><span class="nav-number">2.0.3.</span> <span class="nav-text">CSS文字样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS颜色"><span class="nav-number">2.0.4.</span> <span class="nav-text">CSS颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS常用标签"><span class="nav-number">2.0.5.</span> <span class="nav-text">CSS常用标签</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZWZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZWZ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

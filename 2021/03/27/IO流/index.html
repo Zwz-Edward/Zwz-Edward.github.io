@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/yt32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/yt16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="I&#x2F;O流(input&#x2F;output)概述我们把数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分别为输入input和输出output  即流向内存是输入流 流出内存的输出流  Java中I&#x2F;O操作主要是指使用Java.io包下的内容，进行输入、输出操作。  输入也叫做读取数据 输出也叫做写出数据  根据数据的流向分为 输入流和输出流。  输入流：把数据从其他设备上读取到内存中的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IO流">
+<meta property="og:url" content="http://yoursite.com/2021/03/27/IO%E6%B5%81/index.html">
+<meta property="og:site_name" content="ZWZ的博客嘻嘻">
+<meta property="og:description" content="I&#x2F;O流(input&#x2F;output)概述我们把数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分别为输入input和输出output  即流向内存是输入流 流出内存的输出流  Java中I&#x2F;O操作主要是指使用Java.io包下的内容，进行输入、输出操作。  输入也叫做读取数据 输出也叫做写出数据  根据数据的流向分为 输入流和输出流。  输入流：把数据从其他设备上读取到内存中的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/06/17/OtcnW52hIbA9gH1.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/26/yIg8HsWpFKETXuj.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/26/nwzoXIcQiOqSlKP.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/26/BLc2FpPtQMCKY8f.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/26/fYXEjicyDTv1VOU.png">
+<meta property="article:published_time" content="2021-03-27T04:30:14.210Z">
+<meta property="article:modified_time" content="2020-06-27T08:54:42.000Z">
+<meta property="article:author" content="ZWZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/17/OtcnW52hIbA9gH1.png">
+
+<link rel="canonical" href="http://yoursite.com/2021/03/27/IO%E6%B5%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>IO流 | ZWZ的博客嘻嘻</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZWZ的博客嘻嘻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/IO%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IO流
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-27 16:54:42" itemprop="dateModified" datetime="2020-06-27T16:54:42+08:00">2020-06-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="I-O流-input-output"><a href="#I-O流-input-output" class="headerlink" title="I/O流(input/output)"></a>I/O流(input/output)</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们把数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分别为<code>输入input</code>和<code>输出output</code></p>
+<ul>
+<li>即流向内存是输入流</li>
+<li>流出内存的输出流</li>
+</ul>
+<p>Java中I/O操作主要是指使用Java.io包下的内容，进行输入、输出操作。</p>
+<ul>
+<li>输入也叫做读取数据</li>
+<li>输出也叫做写出数据</li>
+</ul>
+<p>根据数据的流向分为 输入流和输出流。</br></p>
+<ul>
+<li>输入流：把数据从<strong>其他设备</strong>上读取到<strong>内存</strong>中的流。</li>
+<li>输出流：把数据从<strong>内存</strong>中写出到<strong>其他设备</strong>上的流。</li>
+</ul>
+<p>格局数据的类型分为：<strong>字节流</strong>和<strong>字符流</strong>。</p>
+<ul>
+<li>字节流：以字节为单位，读写数据的流</li>
+<li>字符流：以字符为单位，读写数据的流。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/06/17/OtcnW52hIbA9gH1.png" alt="1592404932_1_.jpg"></p>
+<h1 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h1><hr>
+<h2 id="一切皆为字节"><a href="#一切皆为字节" class="headerlink" title="一切皆为字节"></a>一切皆为字节</h2><p>一切文件数据(文本、图片、视频等)在存储时，都是以二进制数字的形式保存，都一个一个字节，那么传输亦是如此。所以，字节流可以传输任意文件数据。在操作流的时候，我们要时刻明确，无论使用上面样的流对象，底层传输的始终为二进制数据</p>
+<h2 id="字节输出流-OutputStream"><a href="#字节输出流-OutputStream" class="headerlink" title="字节输出流[OutputStream]"></a>字节输出流[OutputStream]</h2><p>java.io.OutputStream抽象类是表示字节输出流的所以类的超类(父类),将指定的字节信息写出到目的地。它定义了字节输出流的基本共性功能方法。</p>
+<ul>
+<li><code>public void close()</code>:关闭此输出流并释放与此流相关联的系统资源。</li>
+<li><code>public void flush()</code>：刷新此输出流，并强制任何缓冲的输出字节被写出。</li>
+<li><code>public void write(byte[] b)</code>：将b.length字节从指定的字节数组写入此输出流。</li>
+<li><code>public void write(byte[] b,int off, int len)</code>:从指定的字节数组写入len字节，从偏移量off开始输出到此输出流。</li>
+<li><code>public abstract void write(int b)</code>：将指定的字节输出流。</li>
+</ul>
+<blockquote>
+<p>使用流之后必须close关闭资源。</p>
+</blockquote>
+<h2 id="FileOutputStream类"><a href="#FileOutputStream类" class="headerlink" title="FileOutputStream类"></a>FileOutputStream类</h2><p><code>OutputStream</code>很多子类，这是其中之一。<br><code>java.io.FileOutputStream</code>类是文件输出流，用于将数据写出到文件。</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li><code>public FileOutputStream(File file)</code>:创建文件输出流以写入由指定的File对象表示的文件。</li>
+<li><code>public FileOutputStream(String name)</code>：创建文件输出流以指定的名称写入文件。</li>
+</ul>
+<p>当年创建一个流对象时，必须传入一个文件路径。该路径下，如果没有这个文件，就会创建该文件，如果由，会清空这个文件的数据。</p>
+<p>例子：</p>
+<pre><code>public class testOutputStream {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream(&quot;a.txt&quot;);
+        fos.write(97);
+        fos.close();
+
+        //一次写多个字节的方法、
+        FileOutputStream fos1 = new FileOutputStream(new File(&quot;b.txt&quot;));
+        byte []bytes = {65,66,67,68,69};  //ABCDE
+        fos1.write(bytes,2,3);
+
+        //写入字符串
+        byte[] bytes1 = &quot;你好&quot;.getBytes();
+        System.out.println(Arrays.toString(bytes1));//[-28, -67, -96, -27, -91, -67]
+        fos1.write(bytes1);
+        fos1.close();
+    }
+}</code></pre><p>会输入<code>CDE你好</code> 进入b.txt文件中</p>
+<blockquote>
+<p>输入中文的话可以用字节数组 <code>byte []b = &quot;中文字符串&quot;.getbytes()</code>; 接着.write(b)即可。</p>
+</blockquote>
+<h3 id="数据的追加续写"><a href="#数据的追加续写" class="headerlink" title="数据的追加续写"></a>数据的追加续写</h3><p>每次运行以上的代码都会创建输出流对象，都会清空目标文件中的数据，通过</p>
+<ul>
+<li>public FileOutputStream(File file,boolean append):创建文件输出流以写入由指定的File对象表示的文件。</li>
+<li>public FileOutputStream(String name,boolean append)：创建文件输出流以指定的名称写入文件。</li>
+</ul>
+<p>这俩方法都需要放入一个布尔类型的值即<code>true</code> / <code>false</code></p>
+<pre><code>public class TestOutputStream02 {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream(&quot;c.txt&quot;,true);
+        for (int i = 1;i&lt;=10;i++){
+            fos.write(&quot;你好&quot;.getBytes());
+            fos.write(&quot;\r\n&quot;.getBytes());
+        }
+
+        fos.close();
+    }
+}</code></pre><p>会输出 10行你好</p>
+<blockquote>
+<p>回车符<code>\r</code>换行符<code>\n</code>：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>回车符：回到一行的开头。</li>
+<li>换行符：下一行。</li>
+</ul>
+</blockquote>
+<h2 id="字节输入流-InputStream"><a href="#字节输入流-InputStream" class="headerlink" title="字节输入流[InputStream]"></a>字节输入流[InputStream]</h2><p><code>java.io.InputStream</code>抽象类表示字节输入流的所有类的超类，可以读取字节信息到内存中，它定义了字节输入流的基本共性方法。</p>
+<ul>
+<li><code>public void close()</code>：关闭输入流及其关联的系统资源</li>
+<li><code>public abstract int read()</code>：从输入流读取数据的下一个字节。</li>
+<li><code>public int read(byte []b)</code>：从输入读取一些字节数，并将他们存储到字节数组b中。</br><br>小例子：</li>
+</ul>
+<pre><code>    public classTestInputStream {
+    public static void main(String[] args) throws IOException {
+        FileInputStream fis = new FileInputStream(&quot;a.txt&quot;);
+        //每次读取完指针都会往后移动一位
+        /*System.out.println(fis.read());
+        System.out.println(fis.read());
+        System.out.println(fis.read());*/
+
+        /*
+            (len = fis.read())!=-1
+                1.fis.read();读取一个字节
+                2.len = fis.read();把读取到的字节赋值给变量len
+                3.len != -1 的时候进入循环
+         */
+        int len = 0;
+        while ((len = fis.read())!=-1){
+            System.out.print((char) len + &quot; &quot;);
+        }
+
+        //如果变成
+        /*while(fis.read()!=-1){
+            System.out.print(len + &quot; &quot;);
+        }
+
+        则会输出 98 -1；
+        因为在判断的时候已经读了一位了，打印的时候往后挪一位，因此打印不出97和99
+        */
+        fis.close();
+        /*byte []b =
+        System.out.println(fis.read(b));*/
+    }
+}</code></pre><p>会输出文件中的 a b c</p>
+<p>优化循环版</p>
+<pre><code>byte []bytes = new byte[1024];
+    int len = 0;
+    while ((len = fis.read(bytes)) != -1) {
+    // 每次读取后,把数组的有效字节部分，变成字符串打印
+        System.out.println(new String(bytes,0,len));//len 每次读取的有效字节个数
+    }
+    fis.close();
+}</code></pre><h3 id="练习文件复制"><a href="#练习文件复制" class="headerlink" title="练习文件复制"></a>练习文件复制</h3><pre><code>public class TestCopyFile {
+    public static void main(String[] args) throws IOException {
+        //1.创建一个字节输入流对象，构造方法中绑定要读取的数据流
+        FileInputStream fis = new FileInputStream(&quot;C:\\1.jpg&quot;);
+        //2，创建一个字节输出流，构造方法中绑定要写入的目的地
+        FileOutputStream fos = new FileOutputStream(&quot;d:\\1.jpg&quot;);
+        //使用数组缓冲读取多个字节，写入多个字节
+        byte []bytes  = new  byte[1024];
+        int len = 0;
+        while ((len = fis.read(bytes))!=-1){
+            fos.write(bytes,0,len);
+        }
+        fos.close();
+        fis.close();
+    }
+}</code></pre><blockquote>
+<p>Tips：流先开后关，后开先关</p>
+</blockquote>
+<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><h2 id="Reader-字符输入流"><a href="#Reader-字符输入流" class="headerlink" title="Reader [字符输入流]"></a>Reader [字符输入流]</h2><h3 id="FileReader类"><a href="#FileReader类" class="headerlink" title="FileReader类"></a>FileReader类</h3><pre><code>java.io.Reader:字符输入流，是字符输入流的最顶层的父类，
+    定义了一些共性的成员方法，是一个抽象类
+
+    共性成员方法：
+        int read() 读取一个字符并返回；
+        int read(char []c) 一次读取多个字符，将字符读入数组
+        close() 关闭字符输入流的资源
+
+    java.io.FileReader extends InputStreamReader extends Reader
+    FileReader：文件字符输入流
+    作用：把硬盘的文件的数据以字符的方式读取到内存中
+
+    构造方法:
+        FileReader(String fileName)
+        FileReader(File file)
+        参数：读取文件的数据源
+            String fileName:文件的路径
+            File file:一个文件
+        FileReader构造方法的作用：
+            1.创建一个FileReader对象
+            2.把FileReader对象指向要读取的文件
+
+
+public class TestReader {
+    public static void main(String[] args) throws IOException {
+        //1.创建FileReader对象，构造方法中绑定要读取的数据源
+        FileReader fr = new FileReader(&quot;b.txt&quot;);
+        //2.使用FileReader对象中的方法read读取文件
+        //int read()读取单个字符
+        /*int len = 0;
+        while ((len = fr.read())!= -1){
+            System.out.print((char)len);
+        }*/
+        //一次多个字符
+        char[] chars = new char[1024];
+        int len = 0;
+        while ((len = fr.read(chars))!= -1){
+            System.out.println(new String(chars,0,len));
+        }
+        fr.close();
+    }
+}</code></pre><h2 id="Writer-字符输出流"><a href="#Writer-字符输出流" class="headerlink" title="Writer [字符输出流]"></a>Writer [字符输出流]</h2><h3 id="FileWriter类"><a href="#FileWriter类" class="headerlink" title="FileWriter类"></a>FileWriter类</h3><pre><code>/*
+    java.io.Writer:字符输出流，是所有字符输出流的最顶层的父类，是一个抽象类
+
+    共性的成员方法：
+        void write(int c) 写入单个字符。
+        void write(char [] c) 写入字符数组
+        abstract void write (char []c,int off,int len)写入字符数组的某一部分，off数组的开始索引。len写的字符个数。
+        void write(String str)写入字符串
+        void write(String str,int off, int len)写入字符串的某一部分,off,len与上同理
+        void flush()刷新该流的缓冲。
+        void close()关闭流。
+
+    java.io.FileWriter extends OutputStreamWriter extends Writer
+*/
+public class TestWriter {
+    public static void main(String[] args) throws IOException {
+
+        //1.创建FileWriter对象，构造方法中绑定要写入数据的目的地
+        FileWriter fw = new FileWriter(&quot;d.txt&quot;);
+        //2.使用FileWriter中的方法write，-&gt;把数据写入到内存的缓冲区中&lt;-(字符转换为字节的过程)
+        fw.write(97);
+        //3.使用fileWrite中的flush方法，把内存缓冲区的数据，刷新到文件中
+        fw.flush();
+        //4.释放资源
+        fw.close();
+    }
+}</code></pre><p>我们也可以用一个数组批量的写入数据</p>
+<pre><code>public class TestWriter02 {
+    public static void main(String[] args) throws IOException {
+        FileWriter fw2 = new  FileWriter(&quot;f.txt&quot;);
+        char []cs = {&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;};
+        fw2.write(cs);
+        fw2.close();
+    }
+}</code></pre><p>在<code>f.txt</code>中会有abcde</p>
+<h2 id="IO-异常处理"><a href="#IO-异常处理" class="headerlink" title="IO 异常处理"></a>IO 异常处理</h2><blockquote>
+<p><strong>JDK7</strong>以前的处理方法</p>
+</blockquote>
+<pre><code>/*
+    jdk1.7之前，try catch finally处理流中的异常
+    格式：
+        try{
+            可能回产出异常的代码
+        }catch(异常类变量 文件名){
+            异常的处理逻辑
+        }finally{
+            一定会指定的代码
+            资源释放
+        }
+*/
+public class TestTryCatch {
+    public static void main(String[] args){
+        //提高变量fw的作用域
+        FileWriter fw = null;
+        try{
+            //可能会产生异常的代码
+            fw = new FileWriter(&quot;w:/g.txt&quot;,true);
+            for (int i = 0; i &lt; 10;i++){
+                fw.write(&quot;Hello World&quot;+ i +&quot;\r\n&quot;);
+            }
+            fw.close();
+        }catch (IOException e){
+            //异常的处理逻辑
+            System.out.println(e);
+        }finally {
+            //一定会执行的代码
+            //创建对象失败了，fw的默认值是null，null是不能调用方法的，会抛出NullPointerException，需要增加一个判断，不是null在把资源释放掉
+            if (fw != null) {
+                try {
+                    //fw.close()方法声明抛出了IOException异常对象，所以我们就处理这个异常对象，要么throws要么try/catch
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}</code></pre><blockquote>
+<p>然鹅在<strong>JDK9</strong>的改进可以在try中创建对象被传入的对象无需手动close</p>
+</blockquote>
+<pre><code>改进前格式：
+public class HandleException2 {
+    public static void main(String[] args) {
+    // 创建流对象
+    try ( FileWriter fw = new FileWriter(&quot;fw.txt&quot;); ) {
+    // 写出数据
+    fw.write(&quot;黑马程序员&quot;); //黑马程序员
+    } catch (IOException e) {
+    e.printStackTrace();
+        }
+    }
+}
+
+改进后
+// 被final修饰的对象
+final Resource resource1 = new Resource(&quot;resource1&quot;);
+// 普通对象
+Resource resource2 = new Resource(&quot;resource2&quot;);
+// 引入方式：直接引入
+try (resource1; resource2) {
+// 使用对象
+}</code></pre><h2 id="属性集"><a href="#属性集" class="headerlink" title="属性集"></a>属性集</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p><code>java.io.Properties</code>继承于<code>Hashtable</code>,来表示一个持久的属性集。它使用键值对结构储存数据，每个键及其对应的字符串都是一个字符串(那就不用写泛型了hhhh)。该类经常被Java类使用，比如获取系统属性时，<code>System.getProperties</code>方法就是返回一个<code>Properties</code>对象。</p>
+<h3 id="Properties类"><a href="#Properties类" class="headerlink" title="Properties类"></a>Properties类</h3><h4 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h4><ul>
+<li><code>public properties()</code>:创建一个空的属性列表</li>
+</ul>
+<h4 id="基本储存方法"><a href="#基本储存方法" class="headerlink" title="基本储存方法"></a>基本储存方法</h4><ul>
+<li><p><code>public Object setProperty(String key ,String value)</code>：保存一对属性。</p>
+</li>
+<li><p><code>public String getProperty(String key)</code>：使用此属性列表中指定的键搜索属性值。</p>
+</li>
+<li><p><code>public Set&lt;String&gt; stringPropertyNames()</code>:所有键的名称的集合。</p>
+<p>  public class TestProperties {</p>
+<pre><code>public static void main(String[] args) {
+    show01();
+}
+
+private static void show01(){
+    //创建Properties集合对象
+    Properties prop = new Properties();
+    //使用setProperty往里面添加元素
+    prop.setProperty(&quot;zwz&quot;,&quot;175&quot;);
+    prop.setProperty(&quot;hxm&quot;,&quot;147&quot;);
+    prop.setProperty(&quot;yhx&quot;,&quot;160&quot;);
+
+    //使用StringPropertyName把Properties集合中的键取出，存放在set集合中;
+    Set&lt;String&gt; set = prop.stringPropertyNames();
+    //遍历set集合，取出Properties集合的每一个键
+    for (String key : set){
+        //使用getProperty王法通过key获取value
+        String value = prop.getProperty(key);
+        System.out.println(key + &quot;=&quot;+ value);
+    }
+}</code></pre><p>  }</p>
+</li>
+</ul>
+<p>输出结果会是</p>
+<pre><code>hxm=147
+zwz=175
+yhx=160</code></pre><h4 id="在Property集合中于流相关的操作"><a href="#在Property集合中于流相关的操作" class="headerlink" title="在Property集合中于流相关的操作"></a>在Property集合中于流相关的操作</h4><p><code>public void load(InputStream inStream)</code>：从字节输入流中读取键值对</p>
+<pre><code>public class TestProperties03 {
+    public static void main(String[] args) throws IOException {
+        show03();
+    }
+    /*
+        可以使用Properties集合中的load方法，把硬盘中保存的文件(键值对)，读取到集合中使用
+        void load(InputStream inStream)
+        void load(Reader reader)
+        参数：
+            InputStream inStream:字节输入流，不能读取含有中文的键值对
+            Reader reader：字符输入流，读取含有中文的键值对
+        使用步骤：
+            1.创建Properties对象
+            2.使用Properties的load方法，保存键值对文件
+            3.遍历Properties集合
+
+
+    */
+    public static void show03() throws IOException {
+        //1.创建Properties对象
+        Properties p = new Properties();
+        //2.使用Properties的load方法，保存键值对文件
+        p.load(new FileReader(&quot;prop.txt&quot;));
+        //3.遍历Properties集合
+        Set&lt;String&gt; set = p.stringPropertyNames();
+        for (String key : set){
+            String value = p.getProperty(key);
+            System.out.println(key + &quot;=&quot; + value);
+        }
+    }
+}</code></pre><hr>
+<h1 id="缓冲流，转换流，序列化流"><a href="#缓冲流，转换流，序列化流" class="headerlink" title="缓冲流，转换流，序列化流"></a>缓冲流，转换流，序列化流</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>缓冲流：可以高效读写</li>
+<li>转换流：可以转换编码方式</li>
+<li>序列化流：可以持久存储对象</li>
+</ol>
+<h2 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h2><p>缓冲流是对四个基本的FileXXX流的增强，所以也是四个流：</p>
+<ul>
+<li><p>字符缓冲流<code>BufferedInputStream</code>,<code>BufferedOutputStream</code></p>
+</li>
+<li><p>字符缓冲流：<code>BufferedRead</code>,<code>BufferedWritter</code></p>
+</li>
+<li><p>缓冲流的基本原理，是在创建流对象时，会创建一个内置的默认大小的缓冲区数组，通过缓冲区读写，减少系统IO次数，从而提高读写的效率。<br>##字节缓冲流<br>###构造方法</p>
+<p>  //创建字节缓冲输入流<br>  BufferedInputStream bis = new BufferedInputStream(new FileInputStrem(“xxx.txt”));<br>  //创建字节缓冲输出流<br>  BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(“xxx.txt”));</p>
+</li>
+</ul>
+<p>比较一下复制文件的效率</br><br>此处是未使用</p>
+<pre><code>public class TestCopyFile {
+    public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+        //1.创建一个字节输入流对象，构造方法中绑定要读取的数据流
+        FileInputStream fis = new FileInputStream(&quot;e:\\我们的回忆.rar&quot;);
+        //2，创建一个字节输出流，构造方法中绑定要写入的目的地
+        FileOutputStream fos = new FileOutputStream(&quot;d:\\我们的回忆.rar&quot;);
+        //使用数组缓冲读取多个字节，写入多个字节
+        byte []bytes  = new  byte[1024];
+        int len = 0;
+        while ((len = fis.read(bytes))!=-1){
+            fos.write(bytes,0,len);
+        }
+        fos.close();
+        fis.close();
+        long end = System.currentTimeMillis();
+        System.out.println(&quot;未用缓冲流所用的时间：&quot;+(end - start)+&quot;ms&quot;);
+    }
+}</code></pre><p>耗时</p>
+<pre><code>未用缓冲流所用的时间：3810ms</code></pre><p>此处是使用了</p>
+<pre><code>public class TestCopyFile02 {
+    public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+        FileOutputStream fos = new  FileOutputStream(&quot;d:/1.jpg&quot;);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+        FileInputStream fis = new FileInputStream(&quot;c:/1.jpg&quot;);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+
+        int len = 0;
+        byte []bytes = new byte[1024];
+        while ((len = bis.read(bytes))!=-1){
+            bos.write(bytes,0,len);
+        }
+
+        bis.close();
+        bos.close();
+        long end = System.currentTimeMillis();
+        System.out.println(&quot;用缓冲流所用的时间：&quot;+(end - start)+&quot;ms&quot;);
+    }</code></pre><p>结果</p>
+<pre><code>用缓冲流所用的时间：47ms</code></pre><p>特有的方法</p>
+<ul>
+<li>BufferedReader:<code>public String readLine()</code>：读一行文字</li>
+<li>BufferedWriter:<code>public void newLine()</code>：写一行行分隔符，由系统属性定义符号。<blockquote>
+<p>(windows: \r\n Linux:\n Mac:\r)</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="练习文本排序"><a href="#练习文本排序" class="headerlink" title="练习文本排序"></a>练习文本排序</h3><pre><code>public class TestFileSort {
+    public static void main(String[] args) throws IOException {
+        //1.创建一个HashMap对象，可以key存储每行的序号(1,2,3,...);value:存储每行文本
+        HashMap&lt;String,String&gt; map = new HashMap&lt;&gt;();
+        //2.创建字符缓冲输入流对象，构造方法中绑定字符输入流
+        BufferedReader br = new BufferedReader(new FileReader(&quot;in.txt&quot;));
+        // 3.创建字符缓冲输出流对象，构造方法中绑定字符输出流
+        BufferedWriter bw = new BufferedWriter(new FileWriter(&quot;out.txt&quot;));
+        //4.使用字符缓冲输入流中的方法readline，逐行读取
+        String line;
+        while((line = br.readLine())!=null){
+            //5.对读取到的文本进行切割，获得行中序号和文本内容
+            String []arr = line.split(&quot;\\.&quot;);
+            //6.把切割好的序号和文本的内容存储到HashMap中(key序号是有序的，会自动排序)
+            map.put(arr[0],arr[1]);
+        }
+
+        //7.遍历HashMap
+        for (String key:map.keySet()){
+            String value = map.get(key);
+            //8.把每一个键值对，拼接成文本行
+            line = key + &quot;.&quot; + value;
+            //9.把拼接好的文本，使用字符缓冲输出流中的方法write，写到文件中
+            bw.write(line);
+            bw.newLine();//换行
+        }
+        bw.close();
+        br.close();
+    }
+}</code></pre><h2 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h2><h3 id="字符编码和字符集"><a href="#字符编码和字符集" class="headerlink" title="字符编码和字符集"></a>字符编码和字符集</h3><p><strong>字符编码</strong></br><br>计算机中存储的信息都是用二进制数表示的，而我们在屏幕上看到的数字、英文、标点符号、汉字等字符是二进制数转换之后的结果。按照某种规则。将字符存储到计算机中，成为编码。反之，将储存在计算机中的二进制数按某种规则解析显示出来，称为解码。</p>
+<p><strong>字符集</strong></br></p>
+<ul>
+<li>字符集：也叫编码表，是一个系统支持的所有字符的集合。包括各国文字、标点符号、图形符号、数字等。</li>
+</ul>
+<p>常见的字符集有ASCII字符集、GBK字符集、Unicode字符集等等……<br><img src="https://i.loli.net/2020/06/26/yIg8HsWpFKETXuj.png" alt="1593171632_1_.jpg"><br>三种字符集就不赘述了。</p>
+<h3 id="编码的问题"><a href="#编码的问题" class="headerlink" title="编码的问题"></a>编码的问题</h3><p>在IDEA里面，<code>FileReader</code>读取文本文件，因为IDEA是默认以 utf-8的格式编码，Windows默认以GBK编码，所以读取会有乱码，那么怎么读呢？看下一小节。</p>
+<p>###InputStreamReader类<br>转换流<code>Java.io.InputStreamReader</code>的超类是Reader，是字节流到字符流的桥梁，它读取字节，并使用指定的字符集将其解码为字符。它的字符集可以由名称指定，也可以接受平台默认的字符集。</p>
+<h4 id="构造方法-2"><a href="#构造方法-2" class="headerlink" title="构造方法"></a>构造方法</h4><ul>
+<li>InputStreamReader(InputStream in)：创建一个使用默认字符集的字符流。</li>
+<li>InputStreamReader(InputStream in，String charsetName)：创建一个指定字符集的字符流。</li>
+</ul>
+<h4 id="指定编码读取"><a href="#指定编码读取" class="headerlink" title="指定编码读取"></a>指定编码读取</h4><pre><code>public class TestInputStreamReader {
+    public static void main(String[] args) throws IOException{
+        read_utf_8();
+    }
+
+    private static void read_utf_8() throws IOException {
+        //1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表名称
+        //如果不按照编码格式解码会出现乱码
+        //InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;utf_8.txt&quot;),&quot;GBK&quot;);
+        InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;utf_8.txt&quot;),&quot;utf-8&quot;);
+        int len;
+        while ((len = isr.read())!=-1){
+            System.out.print((char)len);
+        }
+        isr.close();
+    }
+}</code></pre><p>同理写入的时候也这样的</p>
+<pre><code>public class TesrOutputStreamWriter {
+    public static void main(String[] args) throws IOException {
+        write_utf_8();
+    }
+
+    private static void write_utf_8() throws IOException {
+        //1.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表名称
+        //如果按照GBK格式写入文件，那么在IDEA中打开会是乱码
+        //OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;utf_8.txt&quot;),&quot;GBK&quot;);
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;utf_8.txt&quot;));
+        //2.使用OutputStreamWriter对象中的write方法，把字符转换为字节存储缓冲区中(编码)
+        osw.write(&quot;你好&quot;);
+        osw.flush();
+        osw.close();
+    }
+}</code></pre><p><img src="https://i.loli.net/2020/06/26/nwzoXIcQiOqSlKP.png" alt="1593174877_1_.jpg"></p>
+<h4 id="练习：转换文件编码"><a href="#练习：转换文件编码" class="headerlink" title="练习：转换文件编码"></a>练习：转换文件编码</h4><pre><code>public class TestChangeCode {
+    public static void main(String[] args) throws IOException {
+        //1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表GBK
+        InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;我是GBK格式的文本.txt&quot;), &quot;GBK&quot;);
+        //2.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表UTF-8
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;我是utf-8格式的文件&quot;));
+        //3.使用InputStreamReader对象中的read方法读取文件
+        int len;
+        while ((len = isr.read())!=-1){
+            osw.write(len);
+        }
+        //释放资源
+        osw.close();
+        isr.close();
+    }
+}</code></pre><h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p>Java提供了一种对象<strong>序列化</strong>的机制。用一个字节序列可以表示一个对象，该字节序列包含该(对象的数据)、(对象的类型)、(对象中存储的属性)。字节序列写出到文件之后，相当于文件中持久保存了一个对象的信息。</p>
+<p><img src="https://i.loli.net/2020/06/26/BLc2FpPtQMCKY8f.png" alt="1593175730_1_.jpg"></p>
+<h3 id="ObjectOutputStream类"><a href="#ObjectOutputStream类" class="headerlink" title="ObjectOutputStream类"></a>ObjectOutputStream类</h3><p>java.io.ObjectOutputStream类，将Java对象的初始数据类型写到文件中，实现持久储存</p>
+<p><strong>序列化操作</strong></p>
+<ol>
+<li><p>想要序列化，必须满足两个条件：</p>
+<ul>
+<li><p>该类(必须必须必须！！！)实现<code>java.io.Serializable</code>接口，<code>Serializable</code>是一个标记接口，不实现此接口的类将不会使用任何状态的序列化或反序列化，会抛出<code>NotSerializableException</code>. </p>
+</li>
+<li><p>该类的所有属性必须是可序列化的。如果有一个属性不需要序列化。则必须用<code>transient</code>(瞬态)关键字修饰</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2020/06/26/fYXEjicyDTv1VOU.png" alt="1593177870_1_.png"></p>
+<h3 id="ObjectInputStream"><a href="#ObjectInputStream" class="headerlink" title="ObjectInputStream"></a>ObjectInputStream</h3><p>####反序列操作1<br>    /*<br>     使用步骤：<br>        1.创建ObjectInputStream对象<br>        2.使用ObjectInputStream对象的方法，readObject()读取保存对象的文件<br>        3.释放资源<br>        4.使用读取的对象(打印)</p>
+<pre><code>*/
+public class TestObjectInputStream {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        //1.创建ObjectInputStream对象
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;person.txt&quot;));
+        //2.使用ObjectInputStream对象的方法，readObject()读取保存对象的文件
+        Object o = ois.readObject();
+        //3.释放资源
+        ois.close();
+        //4.运用
+        System.out.println(o);
+    }
+}</code></pre><p>对于JVM可以反序列化的对象，他必须是能够找到class文件的类。如果找不到.class文件，会抛出一个<code>ClassNotFoundException</code>异常。</p>
+<p>####反序列操作2<br>当JVM反序列化对象时，能找到.class文件，但是.class文件在序列化对象之后发生了修改，那么反序列化操作也会失败。会抛出<code>InvalidClassException</code>异常。发生这个异常的原因如下：</p>
+<ul>
+<li>该类的序列版本号与从流中读取的类描述符的版本号不匹配</li>
+<li>该类包含位置数据类型</li>
+<li>该类没有可访问的无参数构造方法</li>
+</ul>
+<p><code>Serializable</code>接口给需要序列化的类，提供一个版本的序列化。<code>SerialVersionUID</code>该版本号的目的在于验证序列化的对象和对应的类是否版本匹配。</p>
+<h4 id="训练：序列化集合"><a href="#训练：序列化集合" class="headerlink" title="训练：序列化集合"></a>训练：序列化集合</h4><pre><code>/*
+    练习，序列化集合
+        当我们想在文件中保存多个对象的时候
+        可以把多个对象存储到一个集合中
+        对集合进行序列化于反序列化
+    分析：
+        1.定义一个Person对象的ArrayList集合
+        2.往ArrayList集合中存储Person对象
+        3.创建一个序列化流ObjectOutputStream对象
+        4.使用ObjectOutputStream对象中的方法writeObject，对集合进行序列化
+        5.创建一个反序列化ObjectInputStream对象
+        6.使用ObjectInputStream对象中的方法readObject读取文件中保存的集合
+        7.把Object类型转换为ArrayList类型
+        8.遍历ArrayList
+        9.释放资源
+*/
+public class TestSerializedCollection {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        //1.定义一个Person对象的ArrayList集合
+        ArrayList&lt;Person&gt; list = new ArrayList&lt;&gt;();
+        //2.往ArrayList集合中存储Person对象
+        list.add(new Person(&quot;曾炜圳&quot;,18));
+        list.add(new Person(&quot;黄雪蔓&quot;,18));
+        list.add(new Person(&quot;姚海霞&quot;,20));
+        //3.创建一个序列化流ObjectOutputStream对象
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;序列化对象.txt&quot;));
+        //4.使用ObjectOutputStream对象中的方法writeObject，对集合进行序列化
+        oos.writeObject(list);
+        //5.创建一个反序列化ObjectInputStream对象
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;序列化对象.txt&quot;));
+        //6.使用ObjectInputStream对象中的方法readObject读取文件中保存的集合
+        Object o = ois.readObject();
+        //7.把Object类型转换为ArrayList类型
+        ArrayList&lt;Person&gt; list2 = (ArrayList&lt;Person&gt;)(o);
+        //8.遍历ArrayList
+        for (Person person : list2) {
+            System.out.println(person);
+        }
+        //9.释放资源
+        ois.close();
+        oos.close();
+    }
+}</code></pre><blockquote>
+<p>Person类中有相应的name，age，get，set方法以及toString方法</p>
+</blockquote>
+<p>##打印流<br>###概述<br>平时我们控制台打印输出。调用<code>print</code>方法和<code>println</code>方法完成的这两个方法都来源于java.io.PrintStream类，该类能够方便打印各种数据类型的值。</p>
+<p>###PrintStream类<br>####构造方法</p>
+<ul>
+<li><p>public PrintStream(String fileName)：使用指定的文件名创建一个打印流。<br>举栗子：</p>
+<p>  PrintStream ps = new PrintStream(“ps.txt”);</p>
+</li>
+</ul>
+<h4 id="改变打印流向"><a href="#改变打印流向" class="headerlink" title="改变打印流向"></a>改变打印流向</h4><pre><code>public class TestPrintStream{
+    public static void main(String[] args)throws IOException{
+        //调用系统的打印流，在控制台直接输出97
+        System.out.println(97);
+
+        //创建打印流，指定文件的名称
+        PrintStream ps = new PrintStream(&quot;ps.txt&quot;);
+
+        //设置系统的打印流流向，输出到ps.txt中
+        System.setOut(ps);
+        //调用系统的打印流,ps.txt中输出97
+        System.out.println(97);
+    }
+}</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/27/Html-css/" rel="prev" title="Html-css">
+      <i class="fa fa-chevron-left"></i> Html-css
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/27/Java/" rel="next" title="Java">
+      Java <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O流-input-output"><span class="nav-number">1.</span> <span class="nav-text">I&#x2F;O流(input&#x2F;output)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字节流"><span class="nav-number">2.</span> <span class="nav-text">字节流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一切皆为字节"><span class="nav-number">2.1.</span> <span class="nav-text">一切皆为字节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节输出流-OutputStream"><span class="nav-number">2.2.</span> <span class="nav-text">字节输出流[OutputStream]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileOutputStream类"><span class="nav-number">2.3.</span> <span class="nav-text">FileOutputStream类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的追加续写"><span class="nav-number">2.3.2.</span> <span class="nav-text">数据的追加续写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节输入流-InputStream"><span class="nav-number">2.4.</span> <span class="nav-text">字节输入流[InputStream]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#练习文件复制"><span class="nav-number">2.4.1.</span> <span class="nav-text">练习文件复制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符流"><span class="nav-number">3.</span> <span class="nav-text">字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-字符输入流"><span class="nav-number">3.1.</span> <span class="nav-text">Reader [字符输入流]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FileReader类"><span class="nav-number">3.1.1.</span> <span class="nav-text">FileReader类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Writer-字符输出流"><span class="nav-number">3.2.</span> <span class="nav-text">Writer [字符输出流]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FileWriter类"><span class="nav-number">3.2.1.</span> <span class="nav-text">FileWriter类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO-异常处理"><span class="nav-number">3.3.</span> <span class="nav-text">IO 异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性集"><span class="nav-number">3.4.</span> <span class="nav-text">属性集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties类"><span class="nav-number">3.4.2.</span> <span class="nav-text">Properties类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法-1"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本储存方法"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">基本储存方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在Property集合中于流相关的操作"><span class="nav-number">3.4.2.3.</span> <span class="nav-text">在Property集合中于流相关的操作</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓冲流，转换流，序列化流"><span class="nav-number">4.</span> <span class="nav-text">缓冲流，转换流，序列化流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">4.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲流"><span class="nav-number">4.2.</span> <span class="nav-text">缓冲流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#练习文本排序"><span class="nav-number">4.2.1.</span> <span class="nav-text">练习文本排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换流"><span class="nav-number">4.3.</span> <span class="nav-text">转换流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符编码和字符集"><span class="nav-number">4.3.1.</span> <span class="nav-text">字符编码和字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码的问题"><span class="nav-number">4.3.2.</span> <span class="nav-text">编码的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法-2"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指定编码读取"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">指定编码读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习：转换文件编码"><span class="nav-number">4.3.2.3.</span> <span class="nav-text">练习：转换文件编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化"><span class="nav-number">4.4.</span> <span class="nav-text">序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述-2"><span class="nav-number">4.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ObjectOutputStream类"><span class="nav-number">4.4.2.</span> <span class="nav-text">ObjectOutputStream类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ObjectInputStream"><span class="nav-number">4.4.3.</span> <span class="nav-text">ObjectInputStream</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#训练：序列化集合"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">训练：序列化集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改变打印流向"><span class="nav-number">4.4.3.2.</span> <span class="nav-text">改变打印流向</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZWZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZWZ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
