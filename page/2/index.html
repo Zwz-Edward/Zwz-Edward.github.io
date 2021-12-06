@@ -165,6 +165,139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">网络编程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:15" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:15+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-23 10:58:00" itemprop="dateModified" datetime="2020-07-23T10:58:00+08:00">2020-07-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><hr>
+<ul>
+<li>软件架构CS/BS</li>
+<li>网络通信三要素</li>
+<li>TCP通信</li>
+<li>Socket套接字</li>
+<li>ServerSocket</li>
+</ul>
+<h2 id="P1-网络编程入门"><a href="#P1-网络编程入门" class="headerlink" title="P1 网络编程入门"></a>P1 网络编程入门</h2><h3 id="软件结构"><a href="#软件结构" class="headerlink" title="软件结构"></a>软件结构</h3><ul>
+<li><strong>C/S结构</strong>：全称为Client/Server结构，是指客户端和服务器结构，常见的有QQ，迅雷等</li>
+<li><strong>B/S结构</strong>：全称为Browser/Server结构，是指浏览器和服务器结构，常见浏览器有谷歌，火狐等。</li>
+</ul>
+<h2 id="网络通信协议"><a href="#网络通信协议" class="headerlink" title="网络通信协议"></a>网络通信协议</h2><hr>
+<ul>
+<li><strong>网络通信协议</strong>：通信协议是对计算机必须遵守的规则，只有遵守这些规则，计算机间才能进行通信，这就好比在道路中行驶的汽车一定要遵守交通规则一样，协议中对数据的传输格式、传输速率、传输步骤等做了统一规定，通信双方必须同时，最终完成数据交换。</li>
+<li><strong>TCP/IP协议：</strong>传输控制协议/因特网互联协议(transimission Control Protocol/Internet Protocol),是Internet最基本，最广泛的协议。定义了计算机如何连入Internet，以及数据如何在它们之间传输的标准。它内部包含一系列的用于处理数据通信的协议，并用了4层的分层模型，每一层都呼叫它的下一层所提供的协议来完成自己的需求。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/22/Ad4bSoFKqreBt97.png" alt="1595417186_1_.jpg"></p>
+<h3 id="协议分类"><a href="#协议分类" class="headerlink" title="协议分类"></a>协议分类</h3><p>通信的协议还是比较复杂的，<code>java.net</code>包中包含的类和接口，他们提供低层次的通信细节，我们可以直接使用这些类和接口，不需要考虑其他细节。</p>
+<p><code>java.net</code>包中提供了两种常见的网络协议的支持：</p>
+<ul>
+<li>TCP:传输控制协议(Transmission Control Protocol)。TCP协议是面向连接的通信协议，即传输数据之气那在发送端和接收端建立逻辑连接。然后传输数据。它提供了两台计算机之间可靠无差的数据传输。<ul>
+<li>三次握手：TCP协议中，在发送数据的准备阶段，客户端和服务器之间的三次交互，以保证连接的可靠。<ul>
+<li>第一次握手，客户端向服务器端发送连接请求。等待服务器的确认</li>
+<li>第二次握手，服务器端向客户端回送一个响应。通知客户端收到了连接请求。</li>
+<li>第三次握手，客户端再次向服务器发送确认信息，确认连接。整个交互过程如下图。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/22/Rf1Ne3xukT2DJMc.png" alt="1595421452_1_.jpg"></p>
+<p>完成三次握手，链接建立之后客户端和服务器就可以开始进行数据传输了。由于这种面向链接的特性。TCP协议以保证传输数据的安全，所以应用很广泛。比如下载文件、浏览网页等。</p>
+<ul>
+<li>UDP：用户数据报协议(User Datagram Protocol)。UDP协议是一个面向无连接的协议。数据传输时。不需要建立连接。不管对象端服务是否启动，直接将数据、数据源和目的地都封装在一个数据包中，直接发送。每个数据包的大小都在64k以内。不可以靠协议。因为无连接。所以传输速度快。但容易丢失数据。日常中，例如视频会议、QQ聊天等。</li>
+</ul>
+<h3 id="网络编程三要素"><a href="#网络编程三要素" class="headerlink" title="网络编程三要素"></a>网络编程三要素</h3><h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4><ul>
+<li>协议：计算机网络通信必须遵守的规则，已经介绍过了。如上<h4 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h4></li>
+<li>IP地址：指<strong>互联网协议地址(Internet Protocol Address)</strong>，俗称IP。IP地址用来给一个网络中的计算设备做唯一的编号。如果我们把”个人电脑”比作一台电话的话，那么IP地址就相当于电话号码。<ul>
+<li>其分类为<ul>
+<li>IPv4：是一个32位的二进制数。通常被分为4个字节。表示成<code>a，b，c，d</code>的形式，例如<code>192.168.1.1</code>其中a、b、c、d都是0-255之间的十进制整数，那么最多可以表示42亿个</li>
+<li>IPV6：由于互联网的蓬勃发展，IP地址的需求越来越大，但是网络地址有限，使得IP贼紧张。为了扩大地址空间，拟通过IPV6重新定义地址空间，采用128位地址长度，每16个字节一组，分为8组16进制数，表示成<code>ABCD:EF01:2345:6789:ABCD:EF01:2345:6789</code>,号称可以位全世界的每一粒沙子编上一个网址，这样就解决了网络地址资源数量不够的问题了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>网络的通信，本质上是两个进程(应用程序)的通信，每台计算机都有很多的进程，那么在网络通信时，如何区分这些进程呢？</p>
+<p>如果说<strong>IP地址</strong>可以唯一标识网络中的设备，那么<strong>端口号就可以唯一识别标识设备中的进程了。</strong></p>
+<ul>
+<li>端口号：用两个字节表示的整数，它的取值范围是0-65535。其中，0-1023之间的端口号用于一些知名的网络服务和应用，普通的应用程序需要使用1024以上的端口号。如果端口号被另一个服务或应用所占用，会导致当前程序启动失败</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/20/wcYpmOKXdbTHWG9.png" alt="1595204966_1_.jpg"></p>
+<blockquote>
+<p>端口号就像门牌号一样我们可以通过IP来寻找另一台的电脑，端口号是逻辑端口，我们无法直接查看，可以利用一些软件看到或者是用cmd命令<code>findstr &quot;PID号&quot;</code>查看是什么应用使用了该端口。</p>
+</blockquote>
+<blockquote>
+<p>常用的端口有80 网络端口，比如<code>www.baidu.com:80</code>才可以进入，如果是<code>www.baidu.com:79</code>则进入失败。</p>
+</blockquote>
+<blockquote>
+<p>数据库 mysql：3306 oracle：1521</p>
+</blockquote>
+<blockquote>
+<p>Tomcat服务器：8080</p>
+</blockquote>
+<p>利用<code>协议</code>+<code>IP地址</code>+<code>端口号</code>三元组合，就可以标识网络中的进程了。那么进程间的通信就可以利用这个标识与其它进程进行交互。</p>
+<h2 id="TCP通信程序"><a href="#TCP通信程序" class="headerlink" title="TCP通信程序"></a>TCP通信程序</h2><p><img src="https://i.loli.net/2020/07/20/bnOMfmxyUuwC27H.png" alt="1595206041_1_.jpg"></p>
+<h2 id="TCP文件上传案例"><a href="#TCP文件上传案例" class="headerlink" title="TCP文件上传案例"></a>TCP文件上传案例</h2><p><img src="https://i.loli.net/2020/07/21/1KPBMXrcLDOS5Tm.png" alt="1595330645_1_.jpg"></p>
+<p><img src="https://i.loli.net/2020/07/22/YQZy4DaPgOX9Bjk.png" alt="1595406837_1_.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E7%BA%BF%E7%A8%8B%E6%B1%A0&Lambda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2275,75 +2408,11 @@ AS &quot;OUT_PUT&quot; FROM employees </code></pre></li>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Maven/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZWZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZWZ的博客嘻嘻">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/27/Maven/" class="post-title-link" itemprop="url">Maven</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-09 20:56:02" itemprop="dateModified" datetime="2021-03-09T20:56:02+08:00">2021-03-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2409,7 +2478,7 @@ AS &quot;OUT_PUT&quot; FROM employees </code></pre></li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
