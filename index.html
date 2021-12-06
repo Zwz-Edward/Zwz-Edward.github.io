@@ -260,6 +260,110 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/28/spring%E6%BA%90%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/28/spring%E6%BA%90%E7%A0%81/" class="post-title-link" itemprop="url">spring源码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-11-28 19:59:03" itemprop="dateCreated datePublished" datetime="2021-11-28T19:59:03+08:00">2021-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-12-06 19:34:56" itemprop="dateModified" datetime="2021-12-06T19:34:56+08:00">2021-12-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3>Spring 源码
+
+<p>通过test方法进入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Application contexe = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"xxx.xml"</span>)；</span><br></pre></td></tr></table></figure>
+
+
+
+<p>点击ClassPathXmlApplicationContext进入源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      String[] configLocations, <span class="keyword">boolean</span> refresh, @Nullable ApplicationContext parent)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">           <span class="keyword">super</span>(parent);							<span class="comment">//调用父类方法</span></span><br><span class="line">           setConfigLocations(configLocations);		<span class="comment">//设置配置路径 上面的xxx.xml</span></span><br><span class="line">           <span class="keyword">if</span> (refresh) &#123;</span><br><span class="line">              refresh();							<span class="comment">//进入refresh</span></span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h3><h4 id="第一步创建BeanFactory工厂"><a href="#第一步创建BeanFactory工厂" class="headerlink" title="第一步创建BeanFactory工厂"></a>第一步创建BeanFactory工厂<br></h4><hr>
+<p>prepareRefresh();        //准备刷新</p>
+<hr>
+<p>protected void prepareRefresh() {<br>        // Switch to active.<br>        this.startupDate = System.currentTimeMillis();            //设置开始时间<br>        this.closed.set(false);                //设置系统关闭为false<br>        this.active.set(true);                //设置系统活跃为true<br>        if (logger.isDebugEnabled()) {<br>            if (logger.isTraceEnabled()) {<br>                logger.trace(“Refreshing “ + this);<br>            }<br>            else {<br>                logger.debug(“Refreshing “ + getDisplayName());<br>            }<br>        }</p>
+<hr>
+<p>initPropertySources();        //初始化一些启动资源</p>
+<p>getEnvironment().validateRequiredProperties();     //准备一些环境对象</p>
+<hr>
+<p>protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {<br>        refreshBeanFactory();            //刷新刷新beanfactory<br>        return getBeanFactory();<br>}</p>
+<p>protected final void refreshBeanFactory() throws BeansException {<br>        if (hasBeanFactory()) {            //如果存在beanfactory<br>            destroyBeans();                //则销毁并关闭<br>            closeBeanFactory();<br>        }<br>        try {<br>            //创建的beanfactory 的 默认名字是DefaultListableBeanFactory<br>            DefaultListableBeanFactory beanFactory = createBeanFactory();<br>            beanFactory.setSerializationId(getId());        //设置序列号<br>            customizeBeanFactory(beanFactory);                //设置一些参数<br>            loadBeanDefinitions(beanFactory);            //加载文件 完善BeanDefinitions<br>            this.beanFactory = beanFactory;<br>        }<br>        catch (IOException ex) {<br>            throw new ApplicationContextException(“I/O error parsing bean definition source for “ + getDisplayName(), ex);<br>        }<br>    }    </p>
+<h2 id="上述完成beanfactory是实例化"><a href="#上述完成beanfactory是实例化" class="headerlink" title="(上述完成beanfactory是实例化)"></a>(上述完成beanfactory是实例化)</h2><p>prepareBeanFactory(beanFactory);            //准备bean工厂(为beanfactory赋予属性值，之前只是为beanfactory开辟了空间。)</p>
+<p>——————— //接着开始调用<br>invokeBeanFactoryPostProcessors(beanFactory);<br>/**<br>    *  Instantiate and invoke all registered BeanFactoryPostProcessor beans,<br>    *  respecting explicit order if given.<br>    *  <p>Must be called before singleton instantiation.<br>*/<br>    //上面方法的注解<br>    //实例化和调用所有已经注册了的beans</p>
+<hr>
+<p>registerBeanPostProcessors(beanFactory);        //注册bean，并不会调用</p>
+<hr>
+<p>initMessageSource();        //国际化处理</p>
+<hr>
+<p>//在实例化Bean之前要准备好监听器<br>// Initialize event multicaster for this context.<br>                initApplicationEventMulticaster();</p>
+<pre><code>// Initialize other special beans in specific context subclasses.
+onRefresh();
+
+// Check for listener beans and register them.
+registerListeners();</code></pre><hr>
+<p>// Instantiate all remaining (non-lazy-init) singletons.<br>finishBeanFactoryInitialization(beanFactory);        //实例化所有剩下非懒加载的单例化对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![1637152755808](C:\Users\ZWZ\AppData\Roaming\Typora\typora-user-images\1637152755808.png)</span><br><span class="line"></span><br><span class="line">此处返回一个实例化的bean</span><br><span class="line"></span><br><span class="line">![1637152879675](C:\Users\ZWZ\AppData\Roaming\Typora\typora-user-images\1637152879675.png)</span><br><span class="line"></span><br><span class="line">通过反射创建一个新的构造器 从而实例化bean</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![1637153331791](C:\Users\ZWZ\AppData\Roaming\Typora\typora-user-images\1637153331791.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;填充属性通过</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">populateBean(beanName, bd, bw);</span><br></pre></td></tr></table></figure>
+
+<p>在此之前需要invoke一下aware方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invokeAwareMethods(beanName, bean);</span><br></pre></td></tr></table></figure>
+
+<p>之后执行after的方法，得到的对象返回 从而获取到完整的bean对象</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/10/12/pom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2056,411 +2160,6 @@ returntest4        //public String test(String s,int a)输出结果</code></pre>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E8%87%AA%E5%B7%B1%E6%91%B8%E7%B4%A2%E7%9A%84C%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZWZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZWZ的博客嘻嘻">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/27/%E8%87%AA%E5%B7%B1%E6%91%B8%E7%B4%A2%E7%9A%84C%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">自己摸索的C语言</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-03-27 12:30:15" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:15+08:00">2021-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-28 21:42:04" itemprop="dateModified" datetime="2020-03-28T21:42:04+08:00">2020-03-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="从零开始的C语言生活"><a href="#从零开始的C语言生活" class="headerlink" title="从零开始的C语言生活"></a>从零开始的C语言生活</h1><p><strong>苦逼大学生被迫学习C语言</strong></p>
-<p>IDE当然是我们可爱微软的VS2010的啦(2019不会用）<br>这软件不同于Devc++,每个源文件只能有一个主函数。<br><br/><br><br/><br>必须要记住的头文件，以及引用的库，以及最后返回空。</p>
-<ol>
-<li><code>#include &lt;stdio.h&gt;</code></li>
-<li><code>#inclde &lt;stdlib.h&gt;</code></li>
-<li><code>system(&quot;pause&quot;);</code></li>
-<li><code>return 0;</code><blockquote>
-<p>system在”studlib.h”的库里面定义了，所以可以直接用，没有引用此库是用不了的wo~</p>
-</blockquote>
-</li>
-</ol>
-<p>一开始学的当然是<code>printf(&quot;Hello World!\n&quot;)；</code>没啥好说的。接下来就是学习了一些基本的运算符。简单背一背还是会用的</p>
-<hr/>
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数始终是我有点头疼的点。<br/></p>
-<ol>
-<li>全局定义一个函数<br/></li>
-<li>主函数里面直接运用<br/></li>
-<li>主函数后解释函数的功能（注意是否有实参，有则需要返回值。<br/></li>
-</ol>
-<p>一个小例子<br/></p>
-<ol>
-<li><code>int max (int x,int y,int z)</code> /* 函数声明 */</li>
-<li><code>int main{return 0;}</code>    </li>
-<li><code>int max (int x,int y,int z)</code> /* 再写max函数代表什么意思 */<blockquote>
-<p>一个标准的引用实参例子 (大概~</p>
-</blockquote>
-<hr/>
-
-</li>
-</ol>
-<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><blockquote>
-<p>其实学起来不难会用才叫难。</p>
-</blockquote>
-<p>指针：其值为另一个变量的地址。</br><br>指针变量：就是变量存储了一分数据的指针。</br><br>例如：现在假设有一个 char 类型的变量 c，它存储了字符 ‘K’（ASCII码为十进制数 75），并占用了地址为 0X11A 的内存（地址通常用十六进制表示）。另外有一个指针变量 p，它的值为 0X11A，正好等于变量 c 的地址，这种情况我们就称 p 指向了 c，或者说 p 是指向变量 c 的指针。</br><br><img src="http:c.biancheng.net/uploads/allimg/190114/1IG34354-0.png" alt=""></br><br></br><br>由于指针储存的内容是地址所以给指针赋值的时候需要用上取地址符&amp;，例如：<code>int *p=&amp;a;</code></br><br>在定义指针的时候必须带有<code>*</code>，但是再次给指针赋值的时候不带<code>*</code>，例如：<code>int *p; p=&amp;b;</code></br></p>
-<blockquote>
-<p>CPU读写数据必须要知道数据在内存中的地址，普通变量和指针变量不过是地址的助记符，虽然<em>p和a获得的数据一样,但是他们运行过程稍有不同，a一次就可以获取数据，</em>p需要两次。</p>
-</blockquote>
-<p>例如变量a、p地址为0X1000、0XF0A0，指向关系如下：</br><br><img src="http://c.biancheng.net/uploads/allimg/190114/1IG3MJ-2.jpg" alt=""></br></p>
-<p>也就是说，使用指针是间接获取数据，使用变量名是直接获取数据，前者比后者的代价要高。</p>
-<p>一个小小的案例:</p>
-<pre><code>   #include &lt;stdio.h&gt;
-
-int main ()
-{
-   int  var = 20;   /* 实际变量的声明 */
-   int  *ip;        /* 指针变量的声明 */
-
-   ip = &amp;var;  /* 在指针变量中存储 var 的地址 */
-
-   printf(&quot;Address of var variable: %p\n&quot;, &amp;var  );
-
-   /* 在指针变量中存储的地址 */
-   printf(&quot;Address stored in ip variable: %p\n&quot;, ip );
-
-   /* 使用指针访问值 */
-   printf(&quot;Value of *ip variable: %d\n&quot;, *ip );
-
-   return 0;
-}</code></pre><p>执行完会有</p>
-<pre><code>Address of var variable: bffd8b3c
-Address stored in ip variable: bffd8b3c
-Value of *ip variable: 20</code></pre><p>很明显在 <code>ip</code>与<code>*ip</code>有所不同，<code>ip</code>取的是地址，<code>*ip</code>取的是值</p>
-<h3 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h3><p>指向指针的指针是一种多级间接寻址的形式，或者说是一个指针链。通常，一个指针包含一个变量的地址。当我们定义一个指向指针的指针时，第一个指针包含了第二个指针的地址，第二个指针指向包含实际值的位置。</br><br><img src="https://www.runoob.com/wp-content/uploads/2014/09/pointer_to_pointer.jpg" alt=""></p>
-<p>当一个目标值被一个指针间接指向到另一个指针时，访问这个值需要使用两个星号运算符，如下面实例所示：</p>
-<pre><code>int main ()
-{
-       int  var;
-       int  *ptr;
-       int  **pptr;
-
-       var = 3000;
-
-       /* 获取 var 的地址 */
-       ptr = &amp;var;
-
-       /* 使用运算符 &amp; 获取 ptr 的地址 */
-       pptr = &amp;ptr;
-
-       /* 使用 pptr 获取值 */
-       printf(&quot;Value of var = %d\n&quot;, var );
-       printf(&quot;Value available at *ptr = %d\n&quot;, *ptr );
-       printf(&quot;Value available at **pptr = %d\n&quot;, **pptr);
-
-       return 0;
-}</code></pre><p>会输出</p>
-<pre><code>Value of var = 3000
-Value available at *ptr = 3000
-Value available at **pptr = 3000</code></pre><h3 id="传递指针给函数"><a href="#传递指针给函数" class="headerlink" title="传递指针给函数"></a>传递指针给函数</h3><p>例如：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;time.h&gt;
-
-void getSeconds(unsigned long *par);
-
-int main ()
-{
-       unsigned long sec; /* 定义无符号long型 */
-
-
-       getSeconds(&amp;sec);/* 把sec的地址赋给函数形参(即指针par) */
-
-       /* 输出实际值 */
-       printf(&quot;Number of seconds: %ld\n&quot;, sec);
-
-       return 0;
-}
-
-void getSeconds(unsigned long *par)
-{
-       /* 获取当前的秒数 */
-       *par = time( NULL );
-       return;
-}</code></pre><h2 id="C结构体"><a href="#C结构体" class="headerlink" title="C结构体"></a>C结构体</h2><p>结构是 C 编程中另一种用户自定义的可用的数据类型，它允许您存储不同类型的数据项。</p>
-<p>定义结构，必须用struct语句。struct语句定义了一个包含多个成员的新的数据类型<br>格式如下：</p>
-<pre><code>struct tag { 
-    member-list
-    member-list 
-    member-list  
-    ...
-} variable-list ;</code></pre><p>Tag 是结构体标签。</p>
-<p>member-list 是标准的变量定义，比如 int i; 或者 float f，或者其他有效的变量定义。</p>
-<p>variable-list 结构变量，定义在结构的末尾，最后一个分号之前，您可以指定一个或多个结构变量。</p>
-<blockquote>
-<p>在一般情况下，tag、member-list、variable-list 这 3 部分至少要出现 2 个。</p>
-</blockquote>
-<p>初始化结构体变量：</p>
-<pre><code>struct Books
-{
-       char  title[50];
-       char  author[50];
-       char  subject[100];
-       int   book_id;
-} book = {&quot;C 语言&quot;, &quot;RUNOOB&quot;, &quot;编程语言&quot;, 123456}; //与上面相互对应
-
-int main()
-{
-    printf(&quot;title : %s\nauthor: %s\nsubject: %s\nbook_id: %d\n&quot;, book.title, book.author, book.subject, book.book_id);
-}</code></pre><p>会输出</p>
-<pre><code>title : C 语言
-author: RUNOOB
-subject: 编程语言
-book_id: 123456</code></pre><p>我们也可以不必在struct的末尾定义一个变量 例如：</p>
-<pre><code>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include&lt;string.h&gt;
-struct Books
-{
-   char  title[50];
-   char  author[50];
-   char  subject[100];
-   int   book_id;
-};                                        //千万别忘记加逗号
-
-int main()
-{
-    struct Books book1;                    //定义变量
-    struct Books book2;
-    strcpy (book1.title,&quot;I love Java&quot;); //&lt;string.h&gt;提供的为变量赋字符串的功能
-    strcpy (book1.author,&quot;ZWZ&quot;);
-    strcpy (book1.subject,&quot;JAVA&quot;);
-    book1.book_id = 1000;
-
-    printf(&quot;Title =%s\n&quot;,book1.title); //由于是字符串，要用%s
-    printf(&quot;Author =%s\n&quot;,book1.author);
-    printf(&quot;Subject =%s\n&quot;,book1.subject);
-    printf(&quot;id =%d\n&quot;,book1.book_id);
-    system(&quot;pause&quot;);
-    return 0;
-}</code></pre><p>也会输出</p>
-<pre><code>Title =I love Java
-Author =ZWZ
-Subject =JAVA
-id =1000</code></pre><p>还能作为函数体参数/指针</p>
-<pre><code>#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include&lt;string.h&gt;
-struct Books
-{
-   char  title[50];
-   char  author[50];
-   char  subject[100];
-   int   book_id;
-};
-void Print(struct Books book); //book改为*book
-int main()
-{    
-    struct Books book1;
-    strcpy(book1.title,&quot;I Love Java&quot;);
-    strcpy(book1.author,&quot;ZWZ&quot;);
-    strcpy(book1.subject,&quot;Java&quot;);
-    book1.book_id = 10;
-
-    Print(book1);                //book1改为寻址&amp;book1
-
-    system(&quot;pause&quot;);
-    return 0;
-}
-void Print(struct Books book)
-{
-    printf (&quot;Title = %s\n&quot;,book.title); //book.title改为 book-&gt;title 如下类似
-    printf (&quot;author = %s\n&quot;,book.author);
-    printf (&quot;subject = %s\n&quot;,book.subject);
-    printf (&quot;Id = %d\n&quot;,book.book_id); 
-}</code></pre><h2 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h2><p>共用体是一种特殊的数据类型，允许您在相同的内存位置存储不同的数据类型。您可以定义一个带有多成员的共用体，但是任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式</p>
-<p>基本格式是：</p>
-<pre><code>union union tap
-{    
-    标准的变量定义
-    标准的变量定义
-    ...
-}[one or more union variables]</code></pre><p>在使用共同体时候应注意不能一次性给多个变量赋值例如：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-union Data
-{
-   int i;
-   float f;
-   char  str[20];
-};
-
-int main( )
-{
-   union Data data;        
-
-   data.i = 10;
-   data.f = 220.5;
-   strcpy( data.str, &quot;C Programming&quot;);
-
-   printf( &quot;data.i : %d\n&quot;, data.i);
-   printf( &quot;data.f : %f\n&quot;, data.f);
-   printf( &quot;data.str : %s\n&quot;, data.str);
-
-   return 0;
-}</code></pre><p>会出现    </p>
-<pre><code>data.i : 1917853763
-data.f : 4122360580327794860452759994368.000000
-data.str : C Programming</code></pre><p>i和f的值均有损耗没事因为最后付给变量的值占用了内存位置，即str成员可以完好输出的原因。但是换种方法就可以输出完全例如：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-union Data
-{
-   int i;
-   float f;
-   char  str[20];
-};
-
-int main( )
-{
-   union Data data;        
-
-   data.i = 10;
-   printf( &quot;data.i : %d\n&quot;, data.i);
-
-   data.f = 220.5;
-   printf( &quot;data.f : %f\n&quot;, data.f);
-
-   strcpy( data.str, &quot;C Programming&quot;);
-   printf( &quot;data.str : %s\n&quot;, data.str);
-
-   return 0;
-}</code></pre><p>会输出</p>
-<pre><code>data.i : 10
-data.f : 220.500000
-data.str : C Programming</code></pre><h2 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h2><p>基本的定义语法是    </p>
-<pre><code>struct /* 冒号后面表示可识别的2进制位数 */
-{
-  unsigned int widthValidated ： ;
-  unsigned int heightValidated;
-} status ： ;</code></pre><p>例子：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-struct
-{
-  unsigned int age : 3;
-} Age;
-
-int main( )
-{
-   Age.age = 4;
-   printf( &quot;Sizeof( Age ) : %d\n&quot;, sizeof(Age) );
-   printf( &quot;Age.age : %d\n&quot;, Age.age );
-
-   Age.age = 7;
-   printf( &quot;Age.age : %d\n&quot;, Age.age );
-
-   Age.age = 8; // 二进制表示为 1000 有四位，超出
-   printf( &quot;Age.age : %d\n&quot;, Age.age );
-
-   return 0;
-}</code></pre><p>会输出</p>
-<pre><code>Sizeof( Age ) : 4
-Age.age : 4
-Age.age : 7
-Age.age : 0</code></pre><blockquote>
-<p>很明显，把10进制转化为二进制的时候超过了位域规定的位数，则会使数据直接损坏。</p>
-</blockquote>
-<h2 id="typedef-和-define-区别"><a href="#typedef-和-define-区别" class="headerlink" title="typedef 和 #define 区别"></a>typedef 和 #define 区别</h2><ol>
-<li>typedef只可以为类型定义字符名称，#define不仅可以定义字符名称，还可以为数值定义名称 即<code>#define True one</code> 也是可以的</li>
-<li>typedef 由编译器执行解释，#define语句由预编译器进行处理的。</li>
-</ol>
-<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ol>
-<li>int getchar(void)只会读取单一的字符。可以用循环的方法获取多个字符</li>
-<li>int putchar(int c)一次只会输出一个单一字符，亦可用循环获取。</li>
-<li>char * gets(char*s)函数是读取一行s到缓冲区，直到终止符或EOF；</li>
-<li>int puts(const char*s)函数吧字符串s和一个尾随的换行符写入stdout中。</li>
-</ol>
-<pre><code>#include &lt;stdio.h&gt;
-
-int main( )
-{
-   char str[100];
-
-   printf( &quot;Enter a value :&quot;);
-   gets( str );
-
-   printf( &quot;\nYou entered: &quot;);
-   puts( str );
-   return 0;
-}</code></pre><p>如果输入 i love hxm<br>会弹出 i love hxm</p>
-<blockquote>
-<p>如果改变为str[1]，再输入以上语句，虽然会输出出结果，但是会报错！我也不知道为啥报错还能输出出来= =</p>
-</blockquote>
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归指的是在函数的定义中使用函数自身的方法。一个简单的求阶乘的例子：</p>
-<pre><code>#include &lt;stdio.h&gt;
-
-double factorial(unsigned int i)
-{
-   if(i &lt;= 1)
-   {
-      return 1;
-   }
-   return i * factorial(i - 1);
-}
-int  main()
-{
-    int i = 15;
-    printf(&quot;%d 的阶乘为 %f\n&quot;, i, factorial(i));
-    return 0;
-}</code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2531,7 +2230,7 @@ int  main()
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

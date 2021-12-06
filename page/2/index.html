@@ -165,6 +165,411 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E8%87%AA%E5%B7%B1%E6%91%B8%E7%B4%A2%E7%9A%84C%E8%AF%AD%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/%E8%87%AA%E5%B7%B1%E6%91%B8%E7%B4%A2%E7%9A%84C%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">自己摸索的C语言</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:15" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:15+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-28 21:42:04" itemprop="dateModified" datetime="2020-03-28T21:42:04+08:00">2020-03-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="从零开始的C语言生活"><a href="#从零开始的C语言生活" class="headerlink" title="从零开始的C语言生活"></a>从零开始的C语言生活</h1><p><strong>苦逼大学生被迫学习C语言</strong></p>
+<p>IDE当然是我们可爱微软的VS2010的啦(2019不会用）<br>这软件不同于Devc++,每个源文件只能有一个主函数。<br><br/><br><br/><br>必须要记住的头文件，以及引用的库，以及最后返回空。</p>
+<ol>
+<li><code>#include &lt;stdio.h&gt;</code></li>
+<li><code>#inclde &lt;stdlib.h&gt;</code></li>
+<li><code>system(&quot;pause&quot;);</code></li>
+<li><code>return 0;</code><blockquote>
+<p>system在”studlib.h”的库里面定义了，所以可以直接用，没有引用此库是用不了的wo~</p>
+</blockquote>
+</li>
+</ol>
+<p>一开始学的当然是<code>printf(&quot;Hello World!\n&quot;)；</code>没啥好说的。接下来就是学习了一些基本的运算符。简单背一背还是会用的</p>
+<hr/>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数始终是我有点头疼的点。<br/></p>
+<ol>
+<li>全局定义一个函数<br/></li>
+<li>主函数里面直接运用<br/></li>
+<li>主函数后解释函数的功能（注意是否有实参，有则需要返回值。<br/></li>
+</ol>
+<p>一个小例子<br/></p>
+<ol>
+<li><code>int max (int x,int y,int z)</code> /* 函数声明 */</li>
+<li><code>int main{return 0;}</code>    </li>
+<li><code>int max (int x,int y,int z)</code> /* 再写max函数代表什么意思 */<blockquote>
+<p>一个标准的引用实参例子 (大概~</p>
+</blockquote>
+<hr/>
+
+</li>
+</ol>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><blockquote>
+<p>其实学起来不难会用才叫难。</p>
+</blockquote>
+<p>指针：其值为另一个变量的地址。</br><br>指针变量：就是变量存储了一分数据的指针。</br><br>例如：现在假设有一个 char 类型的变量 c，它存储了字符 ‘K’（ASCII码为十进制数 75），并占用了地址为 0X11A 的内存（地址通常用十六进制表示）。另外有一个指针变量 p，它的值为 0X11A，正好等于变量 c 的地址，这种情况我们就称 p 指向了 c，或者说 p 是指向变量 c 的指针。</br><br><img src="http:c.biancheng.net/uploads/allimg/190114/1IG34354-0.png" alt=""></br><br></br><br>由于指针储存的内容是地址所以给指针赋值的时候需要用上取地址符&amp;，例如：<code>int *p=&amp;a;</code></br><br>在定义指针的时候必须带有<code>*</code>，但是再次给指针赋值的时候不带<code>*</code>，例如：<code>int *p; p=&amp;b;</code></br></p>
+<blockquote>
+<p>CPU读写数据必须要知道数据在内存中的地址，普通变量和指针变量不过是地址的助记符，虽然<em>p和a获得的数据一样,但是他们运行过程稍有不同，a一次就可以获取数据，</em>p需要两次。</p>
+</blockquote>
+<p>例如变量a、p地址为0X1000、0XF0A0，指向关系如下：</br><br><img src="http://c.biancheng.net/uploads/allimg/190114/1IG3MJ-2.jpg" alt=""></br></p>
+<p>也就是说，使用指针是间接获取数据，使用变量名是直接获取数据，前者比后者的代价要高。</p>
+<p>一个小小的案例:</p>
+<pre><code>   #include &lt;stdio.h&gt;
+
+int main ()
+{
+   int  var = 20;   /* 实际变量的声明 */
+   int  *ip;        /* 指针变量的声明 */
+
+   ip = &amp;var;  /* 在指针变量中存储 var 的地址 */
+
+   printf(&quot;Address of var variable: %p\n&quot;, &amp;var  );
+
+   /* 在指针变量中存储的地址 */
+   printf(&quot;Address stored in ip variable: %p\n&quot;, ip );
+
+   /* 使用指针访问值 */
+   printf(&quot;Value of *ip variable: %d\n&quot;, *ip );
+
+   return 0;
+}</code></pre><p>执行完会有</p>
+<pre><code>Address of var variable: bffd8b3c
+Address stored in ip variable: bffd8b3c
+Value of *ip variable: 20</code></pre><p>很明显在 <code>ip</code>与<code>*ip</code>有所不同，<code>ip</code>取的是地址，<code>*ip</code>取的是值</p>
+<h3 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h3><p>指向指针的指针是一种多级间接寻址的形式，或者说是一个指针链。通常，一个指针包含一个变量的地址。当我们定义一个指向指针的指针时，第一个指针包含了第二个指针的地址，第二个指针指向包含实际值的位置。</br><br><img src="https://www.runoob.com/wp-content/uploads/2014/09/pointer_to_pointer.jpg" alt=""></p>
+<p>当一个目标值被一个指针间接指向到另一个指针时，访问这个值需要使用两个星号运算符，如下面实例所示：</p>
+<pre><code>int main ()
+{
+       int  var;
+       int  *ptr;
+       int  **pptr;
+
+       var = 3000;
+
+       /* 获取 var 的地址 */
+       ptr = &amp;var;
+
+       /* 使用运算符 &amp; 获取 ptr 的地址 */
+       pptr = &amp;ptr;
+
+       /* 使用 pptr 获取值 */
+       printf(&quot;Value of var = %d\n&quot;, var );
+       printf(&quot;Value available at *ptr = %d\n&quot;, *ptr );
+       printf(&quot;Value available at **pptr = %d\n&quot;, **pptr);
+
+       return 0;
+}</code></pre><p>会输出</p>
+<pre><code>Value of var = 3000
+Value available at *ptr = 3000
+Value available at **pptr = 3000</code></pre><h3 id="传递指针给函数"><a href="#传递指针给函数" class="headerlink" title="传递指针给函数"></a>传递指针给函数</h3><p>例如：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+void getSeconds(unsigned long *par);
+
+int main ()
+{
+       unsigned long sec; /* 定义无符号long型 */
+
+
+       getSeconds(&amp;sec);/* 把sec的地址赋给函数形参(即指针par) */
+
+       /* 输出实际值 */
+       printf(&quot;Number of seconds: %ld\n&quot;, sec);
+
+       return 0;
+}
+
+void getSeconds(unsigned long *par)
+{
+       /* 获取当前的秒数 */
+       *par = time( NULL );
+       return;
+}</code></pre><h2 id="C结构体"><a href="#C结构体" class="headerlink" title="C结构体"></a>C结构体</h2><p>结构是 C 编程中另一种用户自定义的可用的数据类型，它允许您存储不同类型的数据项。</p>
+<p>定义结构，必须用struct语句。struct语句定义了一个包含多个成员的新的数据类型<br>格式如下：</p>
+<pre><code>struct tag { 
+    member-list
+    member-list 
+    member-list  
+    ...
+} variable-list ;</code></pre><p>Tag 是结构体标签。</p>
+<p>member-list 是标准的变量定义，比如 int i; 或者 float f，或者其他有效的变量定义。</p>
+<p>variable-list 结构变量，定义在结构的末尾，最后一个分号之前，您可以指定一个或多个结构变量。</p>
+<blockquote>
+<p>在一般情况下，tag、member-list、variable-list 这 3 部分至少要出现 2 个。</p>
+</blockquote>
+<p>初始化结构体变量：</p>
+<pre><code>struct Books
+{
+       char  title[50];
+       char  author[50];
+       char  subject[100];
+       int   book_id;
+} book = {&quot;C 语言&quot;, &quot;RUNOOB&quot;, &quot;编程语言&quot;, 123456}; //与上面相互对应
+
+int main()
+{
+    printf(&quot;title : %s\nauthor: %s\nsubject: %s\nbook_id: %d\n&quot;, book.title, book.author, book.subject, book.book_id);
+}</code></pre><p>会输出</p>
+<pre><code>title : C 语言
+author: RUNOOB
+subject: 编程语言
+book_id: 123456</code></pre><p>我们也可以不必在struct的末尾定义一个变量 例如：</p>
+<pre><code>#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};                                        //千万别忘记加逗号
+
+int main()
+{
+    struct Books book1;                    //定义变量
+    struct Books book2;
+    strcpy (book1.title,&quot;I love Java&quot;); //&lt;string.h&gt;提供的为变量赋字符串的功能
+    strcpy (book1.author,&quot;ZWZ&quot;);
+    strcpy (book1.subject,&quot;JAVA&quot;);
+    book1.book_id = 1000;
+
+    printf(&quot;Title =%s\n&quot;,book1.title); //由于是字符串，要用%s
+    printf(&quot;Author =%s\n&quot;,book1.author);
+    printf(&quot;Subject =%s\n&quot;,book1.subject);
+    printf(&quot;id =%d\n&quot;,book1.book_id);
+    system(&quot;pause&quot;);
+    return 0;
+}</code></pre><p>也会输出</p>
+<pre><code>Title =I love Java
+Author =ZWZ
+Subject =JAVA
+id =1000</code></pre><p>还能作为函数体参数/指针</p>
+<pre><code>#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+struct Books
+{
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+void Print(struct Books book); //book改为*book
+int main()
+{    
+    struct Books book1;
+    strcpy(book1.title,&quot;I Love Java&quot;);
+    strcpy(book1.author,&quot;ZWZ&quot;);
+    strcpy(book1.subject,&quot;Java&quot;);
+    book1.book_id = 10;
+
+    Print(book1);                //book1改为寻址&amp;book1
+
+    system(&quot;pause&quot;);
+    return 0;
+}
+void Print(struct Books book)
+{
+    printf (&quot;Title = %s\n&quot;,book.title); //book.title改为 book-&gt;title 如下类似
+    printf (&quot;author = %s\n&quot;,book.author);
+    printf (&quot;subject = %s\n&quot;,book.subject);
+    printf (&quot;Id = %d\n&quot;,book.book_id); 
+}</code></pre><h2 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h2><p>共用体是一种特殊的数据类型，允许您在相同的内存位置存储不同的数据类型。您可以定义一个带有多成员的共用体，但是任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式</p>
+<p>基本格式是：</p>
+<pre><code>union union tap
+{    
+    标准的变量定义
+    标准的变量定义
+    ...
+}[one or more union variables]</code></pre><p>在使用共同体时候应注意不能一次性给多个变量赋值例如：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+union Data
+{
+   int i;
+   float f;
+   char  str[20];
+};
+
+int main( )
+{
+   union Data data;        
+
+   data.i = 10;
+   data.f = 220.5;
+   strcpy( data.str, &quot;C Programming&quot;);
+
+   printf( &quot;data.i : %d\n&quot;, data.i);
+   printf( &quot;data.f : %f\n&quot;, data.f);
+   printf( &quot;data.str : %s\n&quot;, data.str);
+
+   return 0;
+}</code></pre><p>会出现    </p>
+<pre><code>data.i : 1917853763
+data.f : 4122360580327794860452759994368.000000
+data.str : C Programming</code></pre><p>i和f的值均有损耗没事因为最后付给变量的值占用了内存位置，即str成员可以完好输出的原因。但是换种方法就可以输出完全例如：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+union Data
+{
+   int i;
+   float f;
+   char  str[20];
+};
+
+int main( )
+{
+   union Data data;        
+
+   data.i = 10;
+   printf( &quot;data.i : %d\n&quot;, data.i);
+
+   data.f = 220.5;
+   printf( &quot;data.f : %f\n&quot;, data.f);
+
+   strcpy( data.str, &quot;C Programming&quot;);
+   printf( &quot;data.str : %s\n&quot;, data.str);
+
+   return 0;
+}</code></pre><p>会输出</p>
+<pre><code>data.i : 10
+data.f : 220.500000
+data.str : C Programming</code></pre><h2 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h2><p>基本的定义语法是    </p>
+<pre><code>struct /* 冒号后面表示可识别的2进制位数 */
+{
+  unsigned int widthValidated ： ;
+  unsigned int heightValidated;
+} status ： ;</code></pre><p>例子：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct
+{
+  unsigned int age : 3;
+} Age;
+
+int main( )
+{
+   Age.age = 4;
+   printf( &quot;Sizeof( Age ) : %d\n&quot;, sizeof(Age) );
+   printf( &quot;Age.age : %d\n&quot;, Age.age );
+
+   Age.age = 7;
+   printf( &quot;Age.age : %d\n&quot;, Age.age );
+
+   Age.age = 8; // 二进制表示为 1000 有四位，超出
+   printf( &quot;Age.age : %d\n&quot;, Age.age );
+
+   return 0;
+}</code></pre><p>会输出</p>
+<pre><code>Sizeof( Age ) : 4
+Age.age : 4
+Age.age : 7
+Age.age : 0</code></pre><blockquote>
+<p>很明显，把10进制转化为二进制的时候超过了位域规定的位数，则会使数据直接损坏。</p>
+</blockquote>
+<h2 id="typedef-和-define-区别"><a href="#typedef-和-define-区别" class="headerlink" title="typedef 和 #define 区别"></a>typedef 和 #define 区别</h2><ol>
+<li>typedef只可以为类型定义字符名称，#define不仅可以定义字符名称，还可以为数值定义名称 即<code>#define True one</code> 也是可以的</li>
+<li>typedef 由编译器执行解释，#define语句由预编译器进行处理的。</li>
+</ol>
+<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ol>
+<li>int getchar(void)只会读取单一的字符。可以用循环的方法获取多个字符</li>
+<li>int putchar(int c)一次只会输出一个单一字符，亦可用循环获取。</li>
+<li>char * gets(char*s)函数是读取一行s到缓冲区，直到终止符或EOF；</li>
+<li>int puts(const char*s)函数吧字符串s和一个尾随的换行符写入stdout中。</li>
+</ol>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main( )
+{
+   char str[100];
+
+   printf( &quot;Enter a value :&quot;);
+   gets( str );
+
+   printf( &quot;\nYou entered: &quot;);
+   puts( str );
+   return 0;
+}</code></pre><p>如果输入 i love hxm<br>会弹出 i love hxm</p>
+<blockquote>
+<p>如果改变为str[1]，再输入以上语句，虽然会输出出结果，但是会报错！我也不知道为啥报错还能输出出来= =</p>
+</blockquote>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归指的是在函数的定义中使用函数自身的方法。一个简单的求阶乘的例子：</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+double factorial(unsigned int i)
+{
+   if(i &lt;= 1)
+   {
+      return 1;
+   }
+   return i * factorial(i - 1);
+}
+int  main()
+{
+    int i = 15;
+    printf(&quot;%d 的阶乘为 %f\n&quot;, i, factorial(i));
+    return 0;
+}</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2205,209 +2610,6 @@ my_dog.roll_over()</code></pre><p>就会调用方法里面的语句，并把my_d
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/MySQL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZWZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZWZ的博客嘻嘻">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/27/MySQL/" class="post-title-link" itemprop="url">MySQL</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-07 21:01:44" itemprop="dateModified" datetime="2021-02-07T21:01:44+08:00">2021-02-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="MySQL-从删库到跑路"><a href="#MySQL-从删库到跑路" class="headerlink" title="MySQL (从删库到跑路)"></a>MySQL (<s>从删库到跑路</s>)</h1><h2 id="为什么要学习数据库"><a href="#为什么要学习数据库" class="headerlink" title="为什么要学习数据库"></a>为什么要学习数据库</h2><ol>
-<li>持久化数据</li>
-<li>方便检索</li>
-<li>存储大量数据</li>
-<li>共享、安全</li>
-<li>通过组合分析，获取的数   </li>
-</ol>
-<h2 id="数据库的相关概念"><a href="#数据库的相关概念" class="headerlink" title="数据库的相关概念"></a>数据库的相关概念</h2><ol>
-<li>DB:database数据库，存储一些列有组织数据的容器</li>
-<li>DBMS:database Management System 数据库管理系统，使用DBMS管理DB；</li>
-<li>SQL:Structure Query Language 节后话查询语言，程序员用于和DBMS通信的语言</li>
-</ol>
-<h2 id="数据库存储数据的特点"><a href="#数据库存储数据的特点" class="headerlink" title="数据库存储数据的特点"></a>数据库存储数据的特点</h2><ol>
-<li>数据先放着表中，表再放在库中</li>
-<li>一个库可以有多张表，每张表都有自己唯一的标识名</li>
-<li>一张表的设计，类似于Java中类的设计<blockquote>
-<p>表中字段的设计，类似于属性的设计</p>
-</blockquote>
-</li>
-</ol>
-<p>orm：object relation mapping 对象关系映射</p>
-<h2 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h2><h3 id="MySQL产品介绍"><a href="#MySQL产品介绍" class="headerlink" title="MySQL产品介绍"></a>MySQL产品介绍</h3><p>MySQL前身属于瑞典的一家AB，2008年被sun公司收购，2009年sun被Oracle公司收购</p>
-<p>特点：</p>
-<ol>
-<li>体积小、安装比较方便</li>
-<li>开源、免费</li>
-<li>性能镐，稳定性好</li>
-<li>兼容性好</li>
-</ol>
-<h3 id="MySQL产品的安装"><a href="#MySQL产品的安装" class="headerlink" title="MySQL产品的安装"></a>MySQL产品的安装</h3><p>基于C/S架构的DBMS，需要安装服务端和客户端；</p>
-<h3 id="MySQL服务的启动和停止"><a href="#MySQL服务的启动和停止" class="headerlink" title="MySQL服务的启动和停止"></a>MySQL服务的启动和停止</h3><p>方式1：图形化的方式</br><br>右击–计算机–管理–MySQL服务</p>
-<p>方式2：通过管理员身份运行dos</br><br>net start 服务名</br><br>net stop 服务名</p>
-<h3 id="MySQL服务的登录和退出"><a href="#MySQL服务的登录和退出" class="headerlink" title="MySQL服务的登录和退出"></a>MySQL服务的登录和退出</h3><p>方式1：mysql -h 主机名 -P端口号 -u用户名 -p密码</br><br>注意：</br><br>如果是本机，则-h主机名可以省略</br><br>如果端口号是3306，则-p端口号可以省略</br></p>
-<p>方式2：通过图形化界面客户端</br><br>通过sqlyog，直接输入用户名、密码等链接进去即可</p>
-<h3 id="MySQL-的常见命令和语法规范"><a href="#MySQL-的常见命令和语法规范" class="headerlink" title="MySQL 的常见命令和语法规范"></a>MySQL 的常见命令和语法规范</h3><ul>
-<li><p>常用命令</p>
-<ul>
-<li><code>show databases</code> 显当前连接下所有数据库</li>
-<li><code>show tables</code> 显示当前库中所有表</li>
-<li><code>show tables from 库名</code> 显示指定库中所有表</li>
-<li><code>show columns from 表名</code> 显示指定表所有列</li>
-<li><code>use 库名</code> 打开/使用指定库名</li>
-</ul>
-</li>
-<li><p>语法规范</p>
-<ul>
-<li>不区分大小写</li>
-<li>每条命令结尾用粉好</li>
-</ul>
-</li>
-<li><p>注释</p>
-<ul>
-<li><h1 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h1></li>
-<li>– 单行注释</li>
-<li>/**/ 多行注释</li>
-</ul>
-</li>
-</ul>
-<h2 id="DQL语言的学习"><a href="#DQL语言的学习" class="headerlink" title="DQL语言的学习"></a>DQL语言的学习</h2><blockquote>
-<p>DQL：Data Query Language 数据查询语言</p>
-</blockquote>
-<h2 id="进阶1：基础查询"><a href="#进阶1：基础查询" class="headerlink" title="进阶1：基础查询"></a>进阶1：基础查询</h2><p>/* </p>
-<p>语法：<br>select：查询列表 from 表;</p>
-<p>类似于：<code>System.out.println()</code>;</p>
-<p>特点：</p>
-<ol>
-<li>查询列表可以是：表中的字段、常量值、表达式、函数</li>
-<li>查询的结果是一个虚拟的表格</li>
-</ol>
-<p>*/</p>
-<p><code>USE myemployees</code>;</p>
-<ul>
-<li><p>查询表中的单个字</p>
-<pre><code>SELECT last_name FROM employee;</code></pre></li>
-<li><p>查询表中的多个字段</p>
-<pre><code>SELECT last_name,salary,email FROM employees;</code></pre></li>
-<li><p>查询表中的所有字段</p>
-<pre><code>SELECT * FROM employees;</code></pre></li>
-<li><p>查询常量值</p>
-<pre><code>SELECT 100;
-
-SELECT &apos;john&apos;</code></pre></li>
-<li><p>查询表达式</p>
-</li>
-</ul>
-<p>`SELECT 100*98;</p>
-<ul>
-<li><p>查询函数</p>
-<pre><code>SELECT VERSION();</code></pre></li>
-<li><p>起别名 F12：对齐格式</p>
-</li>
-</ul>
-<p>/*</p>
-<p>  1.便于理解</p>
-<p>  2.如果要查询的字段有重名的情况，使用别名可以区分来</p>
-<p>*/</p>
-<ul>
-<li><p>方法一：使用as</p>
-<pre><code>SELECT 100%98 AS result;
-
-SELECT last_name AS 姓,first_name AS 名 FROM employees;</code></pre></li>
-<li><p>方法2：使用空格</p>
-<pre><code>SELECT last_name 姓,first_name 名 FROM employees; </code></pre></li>
-</ul>
-<p><strong>案例：查询salary，显示结果为out put</strong></p>
-<pre><code>SELECT salary AS &quot;out put&quot; FROM employees;</code></pre><p><strong>需求：查询first_name和last_name拼接成的全名，最终起别名为：姓 名</strong></p>
-<pre><code>方法一：
-
-`SELECT first_name+last_name AS &quot;姓 名&quot; FROM employees;`
-
-方法二：
-
-`SELECT CONCAT(first_name,last_name) AS &quot;姓 名&quot; FROM employees;`</code></pre><ul>
-<li>去重  distinct的使用</li>
-</ul>
-<p><strong>需求：查询员工涉及到的部门</strong></p>
-<pre><code>SELECT DISTINCT department_id FROM employees;</code></pre><p>9.查看表的结构</p>
-<pre><code>DESC employees;
-SHOW COLUMNS FROM employees;</code></pre><ul>
-<li><p>ifnull(表达式1,表达式2)(如果前面的为null 后面要求是什么就显示什么)</p>
-<pre><code>SELECT commission_pct,IFNULL(commission_pct,&apos;空&apos;) FROM employees;</code></pre></li>
-</ul>
-<p><strong><em>测试1-基本SQL-SELECT语句</em></strong></p>
-<ol>
-<li><p>下面的语句是否可以执行成功 （true）</br></p>
-<pre><code>SELECT lastn_name ,job_id,salary AS sal FROM employees;</code></pre></li>
-<li><p>下面的语句是否可以执行成功 （true）</br></p>
-<pre><code>SELECT * FROM employees;</code></pre></li>
-<li><p>找出下面语句中的错误 (false last_name，)</p>
-</li>
-<li><p>显示表 departments 的结构，并查询其中的全部数据</p>
-<pre><code>DESC deparments;
-SELECT * FROM departments;</code></pre></li>
-<li><p>显示出表 employees 中的全部 job_id （不能重复)</p>
-<pre><code>SELECT DISTINCT job_id FROM employees;</code></pre></li>
-<li><p>显示出表 employees 的全部列，各个列之间用逗号连接，列头显示成 OUT_PUT </br></p>
-<pre><code>SELECT CONCAT(employee_id,&apos;,&apos;,`first_name`,&quot;,&quot;,`last_name`,&quot;,&quot;,`email`,&quot;,&quot;,`phone_number`,&quot;,&quot;,`job_id`,&quot;,&quot;,`salary`,&quot;,&quot;,IFNULL(commission_pct,&apos; &apos;),&quot;,&quot;,IFNULL(manager_id,&apos; &apos;),&quot;,&quot;,`department_id`,&quot;,&quot;,`hiredate`)
-AS &quot;OUT_PUT&quot; FROM employees </code></pre></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2478,7 +2680,7 @@ AS &quot;OUT_PUT&quot; FROM employees </code></pre></li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
