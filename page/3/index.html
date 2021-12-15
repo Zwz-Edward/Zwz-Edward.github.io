@@ -165,6 +165,287 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/python/" class="post-title-link" itemprop="url">python</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-29 20:15:22" itemprop="dateModified" datetime="2020-03-29T20:15:22+08:00">2020-03-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><blockquote>
+<p>以下var全部是自定义变量</p>
+</blockquote>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>定义一个列表十分简单<code>var=[&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,.....]</code></br><br>修改列表里面的元素也很简单 <code>var[i]=&#39;...&#39;</code></br></p>
+<h4 id="增减元素"><a href="#增减元素" class="headerlink" title="增减元素"></a>增减元素</h4><ol>
+<li>给列表末尾增添元素 <code>var.append(&quot;...&quot;)</code></li>
+<li>在任意位置添加 <code>var.insert(i,&#39;...&#39;)</code></li>
+<li>使用del语句删除元素 <code>del var[i]</code></li>
+<li>使用pop()删除末尾元素 <code>var.pop()</code></li>
+<li>使用remove()删除元素 <code>remove(&#39;value&#39;)</code><blockquote>
+<p>del和pop的区别:如果你要从列表中删除一个元素，且不再以任何方式使用它，就使用del语句；如果你要在删除元素后还额能继续使用它，就使用方法pop()。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="组织列表"><a href="#组织列表" class="headerlink" title="组织列表"></a>组织列表</h4><ol>
+<li><p>使用sort()对列表进行 <strong>永久性</strong> 排序 <code>var.sort()</code> 倒序<code>var.sort(reverse=True)</code></p>
+</li>
+<li><p>使用sorted()对列表进行<strong>临时</strong>排序 <code>print(sorted(var))</code></p>
+<blockquote>
+<p>为什么sorted()和sort()的用法不同呢，原因是他们的作用时间不用，因为sort是永久排序的，因此可以单独.sort()之后再print，但sorted()只能直接print才能显示顺序排列.</p>
+</blockquote>
+</li>
+<li><p>使用reverse()进行倒序列表 <code>var.reverse()</code></p>
+</li>
+<li><p>使用len()可以显示列表长度 <code>len(var)</code></p>
+</li>
+</ol>
+<h4 id="操作列表"><a href="#操作列表" class="headerlink" title="操作列表"></a>操作列表</h4><ol>
+<li><p>遍历列表 <code>for i in var：</code>再print(i)出来就好拉。</p>
+<blockquote>
+<p>别忘了可爱的冒号喔，，</p>
+</blockquote>
+</li>
+<li><p>创建数字列表<code>var = list(range(1,6))</code>会输出[1,2,3,4,5].</p>
+</li>
+<li><p>range()还可以指定步长<code>var = list(range(2,11,2))</code> 会输出[2,4,6,8,10].</p>
+</li>
+<li><p>python的运算还很简单<code>min/max/sum(var)</code></p>
+</li>
+<li><p>切片<code>print(var[1,4])</code>会输出列表索引中的var[1,2,3]到第4为止，但不输出4. 还能遍历哟<code>for i in var[:3]:</code></p>
+</li>
+<li><p>复制列表<code>var1 = var2[:]</code>就这样copy了一份了</p>
+</li>
+</ol>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>意义：创建一系列不可修改的元素，元组可以满足这种需求。python讲不能修改的值称为不可变的，而不可变的列表称为元组</p>
+<ol>
+<li>定义元组 <code>var=(...,...)</code></li>
+<li>由意义可知 不允许修改元组里面的元素</li>
+<li>遍历元组跟列表一样</li>
+</ol>
+<blockquote>
+<p>相比于列表，元组是更简单的数据结构，如果需要储存的一组值在程序的整个生命周期内都不变，可使用元组。</p>
+</blockquote>
+<h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><ol>
+<li>在比较是否相等的时候要注意大小写<code>car=&#39;Audi&#39; car==&#39;audi&#39;</code>会输出false</li>
+<li>…没啥好讲的- -<blockquote>
+<p>在python里面的语法是”elif” 不是 “else if”</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>字典的基本表达式是<code>var = {&#39;键&#39;:值(字符串需要用&#39;&#39;来框住),...}</code> 打印键则会输出值来。 <code>print(var[&#39;键&#39;])</code>会输出 <code>值</code></p>
+<ol>
+<li>添加键-值对 <code>var[&#39;color&#39;:&#39;green&#39;]</code> <code>var[&#39;键&#39;]=值</code> 就可以为字典添加一对键值对</li>
+<li>可以直接创建一个空字典 <code>var={}</code> </li>
+<li>修改字典里面的值 <code>var[&#39;键&#39;]=值</code></li>
+<li>山粗字典里面的键值对 <code>del var[&#39;键&#39;]</code><blockquote>
+<p>删除的键值对就永远消失了</p>
+</blockquote>
+</li>
+<li>遍历字典<code>for var1,var2 in var.items():</code>var1,var2都是两个变量 var是一个字典</li>
+<li>遍历字典里面的所有键<code>for var1 in var.keys():</code>var1是变量 var是一个字典</li>
+<li>按顺序的遍历字典里的所有键 <code>for var1 in sorted(var.keys()):</code> var同上</li>
+<li>遍历字典里面的所有值 <code>for var1 in var.values():</code> …</li>
+</ol>
+<h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><ol>
+<li><p>字典列表</br><br> <code>var1={...}</code></br><br> <code>var2={...}</code></br><br> <code>var3={...}</code></br><br> <code>vars=[var1, var2,var3]</code></p>
+<blockquote>
+<p>经常要在列表中包含大量的字典，而其中每个字典都包含特定对象的众多信息。在这个列表中，所有字典的结构都相同，因此你可以遍历这个列表，并以相同的方式处理其中的每个字典</p>
+</blockquote>
+</li>
+<li><p>还能通过列表的索引去改存入列表中的字典 <code>for var in vars[0:3]</code>(改前三个)</p>
+<blockquote>
+<p>有时候，需要讲列表储存在字典中，而不是将字典存储在列表中。每当需要在字典中将一个键关联到多个值使，都可以在字典中嵌套一个列表。</p>
+</blockquote>
+</li>
+<li><p>字典中存列表<code>var = {&#39;var1&#39;:... , var2=[... , ...] }</code><br>一个小栗子：</br><br> <code>favourite_language={</code></br><br> <code>&#39;jen&#39;:[&#39;python&#39;,&#39;java&#39;,]</code></br><br> <code>sarah:[&#39;C&#39;]</code>,<br> <code>zwz:[&#39;java&#39;] }</code><br><code>for name,languages in favourite_language.items():</code></br><br> <code>print(&quot;\n&quot;+name.title()+&quot;&#39;s favourite language are:&quot;)</code></br></p>
+<pre><code>`for language in languages:`&lt;/br&gt;
+    `print(&quot;\t&quot; + language.title())`</code></pre></li>
+</ol>
+<blockquote>
+<p>这里先第一次用循环使langeguas得到了列表，第二次再通过循环使language得到了循环里面的字符串</p>
+</blockquote>
+<ol start="4">
+<li>字典里面储存字典<code>var={ var1:{ ... : ... ,... : ... },var2:{ ... : ... ,... : ... } }</code><blockquote>
+<p>一般不会字典里面嵌套字典会使代码看的比较复杂。注意！ 如果每个字典里面的键不同会使导出字典里面的值更麻烦。因此尽量少用字典嵌套字典。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><ol>
+<li>input()函数让程序暂停运行，等用户输入一些文本<code>var = input(&quot;&quot;)</code></li>
+<li>用int()来获取数值输入 如果用了input等待了用户输入的一个数字，得到的结果却是一个字符串因此我们要用<code>int(var)</code>来使得用户输出来的’数字’成为一个数字。</li>
+<li>使用break退出循环 continue也可以退出循环 但是二者不同，break是退出整个循环执行吓一条语句而continue是退出本次循环，倘若循环没有结束还要继续执行循环。</li>
+</ol>
+<blockquote>
+<p>如果进入死循环，则可以按Ctrl+C退出循环。</p>
+</blockquote>
+<ol start="4">
+<li>还能删除包含特定值的列表元素如<code>var = [1,2,3,4,5,6]</code> <code>while 2 in var</code> <code>var.remove(1)</code> <code>print(var)</code> 会输出<code>[1,3,4,5,6]</code></li>
+</ol>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><blockquote>
+<p>千万要记得定义函数后面要加冒号啊 <code>：</code></p>
+</blockquote>
+<pre><code>`def var():` 使用def来定义一个函数。在后面可以直接调用函数，`var()`即可。</code></pre><h4 id="向函数传递信息"><a href="#向函数传递信息" class="headerlink" title="向函数传递信息"></a>向函数传递信息</h4><pre><code>`def var(man):`
+`print(&quot;man+&apos;love Hxm&apos;&quot;)`
+`var(&apos;zwz&apos;)`</code></pre><p>会输出 zwz love Hxm</p>
+<blockquote>
+<p>可以在函数定义def var()的括号内添加一个东西 在调用函数的时候就可以给那个东西任何值，如上</p>
+</blockquote>
+<h4 id="实参和形参"><a href="#实参和形参" class="headerlink" title="实参和形参"></a>实参和形参</h4><blockquote>
+<p>在函数var()的定义中，变量man是一个形参——函数完成工作所需要的一项信息，在代码var(‘zwz’)中，值’zwz’是一个实参，实参是调用函数时传递给函数的信息。我们调用函数时，将要让函数使用的信息放在括号内。在var(‘zwz’)中，实参’zwz’传递给了函数var()，这个值被储存在形参man里面。</p>
+</blockquote>
+<h4 id="传递实参"><a href="#传递实参" class="headerlink" title="传递实参"></a>传递实参</h4><ul>
+<li>位置实参<ul>
+<li><code>def var(man,girl):</code></br><br><code>print(&quot;man+&#39;love&#39;+ girl&quot;)</code></br><br><code>var(&#39;zwz&#39;,&#39;hxm&#39;)</code></br><br>会输出zwz love hxm<blockquote>
+<p>所谓的位置实参就是对应位置一个形参对应一个实参，zwz会赋予man，hxm会赋予girl所以位置关系尤为重要，如果输入错了，那么可能会有很坏的后果wo~</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>关键字实参<ul>
+<li>前面定义与上一样。在调用实参的时候比如<code>var(man=&#39;zwz&#39;,girl=&#39;hxm&#39;)</code>或者可以<code>var(girl=&#39;hxm&#39;,man=&#39;zwz&#39;)</code></li>
+</ul>
+</li>
+<li>默认值<ul>
+<li>就是在定义函数的时候给形参一个实参比如说<code>var(man,girl=&#39;hxm&#39;)</code>在最后调用函数的时候可以只给man一个实参即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>-返回简单值</p>
+<pre><code>-`def name(first,last):`
+    `full_name=first+last`
+    `return full_name`
+`a = name(&apos;Edward&apos;,&apos;Erwin&apos;)`
+`print(a)`
+会输出Edward Erwin</code></pre><p>-让实参变得可选</p>
+<pre><code>`def get_formatted_name(first_name,middle_name,last_name):`
+    `if middle_name:`
+        `full_name = first_name + &apos;&apos; + middle_name + &apos;&apos; +last_name`
+    `else:`
+        `full_name = first_name + &apos;&apos; + last_name`
+    `return full.name.title()`
+`name = get_formatted_name(&apos;zwz&apos;,&apos;edward&apos;,&apos;erwin&apos;)`
+`print(name)`</code></pre><p>会输出 Zwz Edward Erwin</p>
+<pre><code>`name = get_formatted_name(&apos;zwz&apos;,&apos;erwin&apos;)`
+`print(name)`</code></pre><p>会输出Zwz Erwin</p>
+<blockquote>
+<p>在函数体中，我们检查是否提供中间名。Python将<strong>非空字符串</strong>读为True，因此如果函数调用中间的中间名，if middle_name将为True。这里判断你是否输入中间名而执行不同的语句。</p>
+</blockquote>
+<h4 id="返回字典"><a href="#返回字典" class="headerlink" title="返回字典"></a>返回字典</h4><pre><code>def name(first_name,last_name):
+    full_name={&apos;first&apos;:first_name,&apos;last&apos;:last_name}
+    return full_name
+a = name(&apos;Edward&apos;,&apos;Erwin&apos;)
+print(a)</code></pre><p>会输出</p>
+<pre><code>{&apos;first&apos;:&apos;Edward&apos;,&apos;last&apos;:&apos;Erwin&apos;}</code></pre><h4 id="传递任意数量的实参"><a href="#传递任意数量的实参" class="headerlink" title="传递任意数量的实参"></a>传递任意数量的实参</h4><pre><code>def make_pizza(*toppings):      //注意形参中有 * 号
+    print(toppings)
+
+make_pizza(&apos;pepperoni&apos;)
+make_pizza(&apos;mushrooms&apos;,&apos;green peppers&apos;,&apos;extra cheese&apos;)</code></pre><p>会输出</p>
+<pre><code>(&apos;pepperoni&apos;)
+(&apos;mushrooms&apos;,&apos;green peppers&apos;,&apos;extra cheese&apos;)</code></pre><blockquote>
+<p>形参名*toppings中的星号让Python创建一个名为toppings的空元组，并将收到的所有值都封装在这个元组中。</p>
+</blockquote>
+<ul>
+<li><p>使用任意数量的关键字实参</p>
+<blockquote>
+<p>有时候，需要接受任意数量的实参，但预先布置的传递给函数的是什么样的信息。此情况可以将函数编写成能够接受任意数量的键-值对</p>
+</blockquote>
+<p>  def build_profile(first,last,*<em>user_Info)    // *</em> 建立空字典</p>
+<pre><code>profile={}
+profile[&apos;first_name&apos;]=first                      ←←←
+profile[&apos;last_name&apos;]=last                         ←←←
+for key,value in user_Info.items():
+    profile[key]=value
+retuen profile</code></pre><p>  user_profile = bulid_profile(‘albert’,’einstein’,location=’princeton’,field=’physics’)<br>  print(user_profile)</p>
+</li>
+</ul>
+<p>会输出</p>
+<pre><code>&apos;first_name&apos;:&apos;albert&apos;
+&apos;last_name&apos;:&apos;einstein&apos;
+&apos;location&apos;:&apos;princeton&apos;
+&apos;field&apos;:&apos;physics&apos;</code></pre><blockquote>
+<p>在build_profile()的函数体内，我们创建了一个名为profile的空字典，用于储存用户简介。在←←←我们将名和姓加入到这个字典中。在循环中遍历字典中的键值对，并将每个键值对都加入字典profile中。</p>
+</blockquote>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类是表示一类事物共同具有的特征，比如狗狗来说一般都会打滚和坐下。因此我们可以创造一个类来储存他们的动作。就比如说：</p>
+<pre><code>class Dog(): 
+    def_init_(self,name,age):
+        self.name = name
+        self.age = age
+    def sit(self):
+        print(self.name + &quot;is sitting&quot;)
+    def roll(self):
+        print(self.name + &quot;is rolling&quot;)</code></pre><p>这样就创建了一个”狗狗”类，并且把两个狗狗通常都会的动作写进了里面。</p>
+<blockquote>
+<p>类中的函数叫方法，<code>_init_()</code>是一种特殊的方法，每当根据Dog()创建实例的时候就会调用它。</p>
+</blockquote>
+<blockquote>
+<p>在<code>_init_</code>里面包含了三个形参：self，name,age.在方法的定义中，形参self必不可少，还必须位于其他形参的前面。因为调用这个函数的方法来创建Dog()实例的时候，将自动传入实参self。每个与类相关联的方法调用都自动传递实参self，它是一个指向实例本身的引用，让实例可以访问类中的属性和方法。调用Dog()时只需要提供 name,age 即可self会自动传递。</p>
+</blockquote>
+<h4 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h4><pre><code>my_dog=Dog(&apos;hhh&apos;,6)
+print(&quot;my dog name:&quot;+my_dog.name)
+print(&quot;my dog age:&quot;+str(my_dog.age))</code></pre><p>会输出</p>
+<pre><code>my dog name hhh
+my dog age 6</code></pre><blockquote>
+<p>在这里我们用一个my_dog来储存我们提供的值储存在属性name和age。</p>
+</blockquote>
+<h4 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h4><pre><code>my_dog.sit()
+my_dog.roll_over()</code></pre><p>就会调用方法里面的语句，并把my_dog里面的参数赋予方法中</p>
+<h4 id="给属性指定的默认值"><a href="#给属性指定的默认值" class="headerlink" title="给属性指定的默认值"></a>给属性指定的默认值</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/MySQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -4193,649 +4474,6 @@ Changes to be committed:
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/File&%E9%80%92%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZWZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZWZ的博客嘻嘻">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/27/File&%E9%80%92%E5%BD%92/" class="post-title-link" itemprop="url">File&递归</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-03-27 12:30:13" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:13+08:00">2021-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-16 18:52:36" itemprop="dateModified" datetime="2020-07-16T18:52:36+08:00">2020-07-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="File类、递归"><a href="#File类、递归" class="headerlink" title="File类、递归"></a>File类、递归</h1><h2 id="File"><a href="#File" class="headerlink" title="File"></a>File</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><hr>
-<p><code>java.io.File</code>类是文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。</p>
-<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
-<li><code>public File(String pathname)</code>：通过将给定的<strong>路径名字符串</strong>转换为抽象路径名来创建新的File实例。</li>
-<li><code>public File(String parent, String child)</code>：从<strong>父路径名字符串和子路径名字符串</strong>创建新的File实例。</li>
-</ul>
-<p>举例子：</p>
-<pre><code>/*
-    路径：
-        绝对路径：完整的路径
-            以盘符(C:  D: ...)开始的路径
-                c:\\1.txt
-        相对路径：是一个简化的路径
-            相对指的是相对于当前项目的根目录
-            如果使用当前项目的根目录，路径可以简化书写
-
-        注意：
-            1.路径是不区分大小写
-            2.路径中的文件名称分隔符windows用反斜杠，反斜杠是转义字符。两个反斜杠代表一个反斜杠
-*/
-public class Demo02FilePath {
-    public static void main(String[] args) {
-        /*
-            File类的构造方法
-        */
-        show01();
-        show02(&quot;c:\\&quot;,&quot;a.txt&quot;);//c:\a.txt
-        show02(&quot;d:\\&quot;,&quot;a.txt&quot;);//d:\a.txt
-        show03();
-    }
-    /*
-        File(File parent, String child)根据parent抽象路径名和chile路径名字符串创建一个新File实例
-        参数：把路径分为两部部分
-            File parent:父路径
-            String child：子路径
-        好处：
-            父路径和子路径可以单独书写，使用起来非常灵活，父路径和子路径可以变化
-            父路径是File类型，可以使用File的方法对路径进行一些操作，再使用路径创建对象
-    */
-    private static void show03() {
-        File parent = new File(&quot;c:\\&quot;);
-        File file1 = new File(parent,&quot;hhh&quot;);
-        System.out.println(file1);
-    }
-
-    /*
-        File(String parent,String child) 根据parent 路径名字字符串和 child 路径名字符串创建一个新 File 实例
-        参数：把路径分成了两部分
-        String parent：父路径
-        String child：子路径
-        好处：
-            父路径和子路径可以单独书写，使用起来非常灵活，父路径和子路径可以变化
-    */
-    private static void show02(String parent,String child) {
-        File file = new File(parent,child);
-        System.out.println(file);//c:\a.txt
-    }
-
-    /*
-        File(String pathname)通过将给定路径名字符串转换为抽象路径名来创建一个新File实例
-        参数：
-            String pathname：字符串的路径名称
-            路径名称可以是以文件皆为，也可以是以文件夹结尾
-            路径可以是相对路径，也可以是绝对路径
-            路径可以存在，也可以是不存在
-            创建File对象，只是把字符串路径封装成File对象，不考虑路径的真假情况
-    */
-    private static void show01() {
-        File f1 = new File(&quot;C:\\java练习\\File\\a.txt&quot;);
-        System.out.println(f1);//重写了Object类的toString方法
-
-        File f2 = new File(&quot;b.txt&quot;);
-        System.out.println(f2);
-    }
-}</code></pre><h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="获取功能的方法"><a href="#获取功能的方法" class="headerlink" title="获取功能的方法"></a>获取功能的方法</h4><ul>
-<li><code>public String getAbsolutePath()</code>; 返回此File的绝对路径名字符串</li>
-<li><code>public String getPath()</code>; 将此File转换为路径名字符串</li>
-<li><code>public String getName()</code>; 返回由此File表示的文件或目录的名称。</li>
-<li><code>public long length()</code> ;返回由此File表示的文件的长度</li>
-</ul>
-<p>演示</p>
-<pre><code>public class Demo03FileMethods {
-    public static void main(String[] args) {
-        show01();
-        show02();
-        show03();
-        show04();
-    }
-    /*
-        public long length() ;返回由此File表示的文件的长度
-        获取的是构造方法指定的文件的大小，以字节为单位
-        注意：
-            文件夹是没有大小概念的，不能获取文件夹的大小
-            如果构造方法中给出的路径不存在，那么length方法返回0;
-    */
-    private static void show04() {
-        System.out.println(&quot;-----------------------&quot;);
-        File f1 = new File(&quot;C:\\1.jpg&quot;);
-        long length = f1.length();
-        System.out.println(length);
-    }
-
-    /*
-        public String getName(); 返回由此File表示的文件或目录的名称。
-        获取的就是构造方法传递路径结尾的部分(文件/文件夹)
-    */
-    private static void show03() {
-        System.out.println(&quot;-----------------------&quot;);
-        File f1 = new File(&quot;C:\\java练习\\File\\a.txt&quot;);
-        File f2 = new File(&quot;C:\\java练习\\File&quot;);
-        System.out.println(f1.getName());
-        System.out.println(f2.getName());
-    }
-
-    /*
-         public String getPath(); 将此File转换为路径名字符串
-         获取构造方法中的路径
-    */
-    private static void show02() {
-        System.out.println(&quot;-----------------------&quot;);
-        File f1 = new File(&quot;C:\\java练习\\File\\a.txt&quot;);
-        File f2 = new File(&quot;a.txt&quot;);
-        System.out.println(f1.getPath());
-        System.out.println(f2.getPath());
-
-        System.out.println(f1); //默认调用toString方法，toString方法调用getPath()方法
-    }
-
-    /*
-        public String getAbsolutePath(); 返回此File的绝对路径名字符串.
-        获取构造方法中传递的路径
-        无论路径是绝对的还是相对的,getAbsolutePath方法返回的都是绝对路径
-    */
-    private static void show01() {
-        File f1 = new File(&quot;C:\\java练习\\File\\a.txt&quot;);
-        String absolutePath1 = f1.getAbsolutePath();
-        System.out.println(absolutePath1);
-
-        File f2 = new File(&quot;a.txt&quot;);
-        System.out.println(f2.getAbsolutePath());
-    }
-}</code></pre><p>输出结果</p>
-<pre><code>C:\java练习\File\a.txt
-C:\java练习\File\a.txt
------------------------
-C:\java练习\File\a.txt
-a.txt
-C:\java练习\File\a.txt
------------------------
-a.txt
-File
------------------------
-3149546</code></pre><blockquote>
-<p>API中说明:length(),表示文件的长度。但是File对象表示目录，则返回值未指定。</p>
-</blockquote>
-<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ul>
-<li><strong>绝对路径</strong>：从盘符开始的路径，这是一个完整的路径。</li>
-<li><strong>相对路径</strong>：相对于项目目录的路径，这是一个便携的路径，开发常用。</li>
-</ul>
-<hr>
-<pre><code>public class FilePath{
-    public static void main(String[] args){
-        //D盘下的bbb.java文件
-        File f = new File(&quot;D:\\bbb.java&quot;);
-        System.out.println(f.getAbsolutePath());
-
-        //项目下的bbb.java文件
-        File f2 = new File(&quot;bbb.java&quot;);
-        System.out.println(f.getAbsolutePath());
-    }
-}
-
-输出结果：
-D:\bbb.java
-D:\C:\java练习\File\bbb.java</code></pre><h3 id="判断功能的方法"><a href="#判断功能的方法" class="headerlink" title="判断功能的方法"></a>判断功能的方法</h3><ul>
-<li>public boolean exists():此File类表示的文件或目录是否实际存在。</li>
-<li>public boolean isDirectory():此File表示的是否为目录。</li>
-<li>public boolean isFile():此File表示的是否为文件。</li>
-</ul>
-<p>方法演示。</p>
-<pre><code>public class Demo04FileExists {
-    public static void main(String[] args) {
-        show01();
-        show02();
-    }
-    /*
-        public boolean isDirectory() : 此File表示的是否为目录
-            用于判断构造方法中给定的路径是否以文件夹结尾
-                是：true
-                否：false
-        public boolean isFile():此File表示的是否为文件。
-            用于判断构造方法中给定的路径是否以文件结尾
-                是：true
-                否：false
-        注意：
-            电脑的硬盘中只有文件或者文件夹，两个方法是互斥的
-            这两个方法使用前提，路径必须存在，否则都返回false
-    */
-    private static void show02() {
-        System.out.println(&quot;-------------show02----------------&quot;);
-        File f1 = new File(&quot;C:\\java练习\\File\\src\\Demo01\\File&quot;);
-        System.out.println(f1.isDirectory());
-        System.out.println(f1.isFile());
-    }
-
-    /*
-        public boolean exists():此File类表示的文件或目录是否实际存在。
-        用于判断构造方法中的路径是否存在
-            存在:true
-            不存在：false
-    */
-    private static void show01() {
-        System.out.println(&quot;-------------show01----------------&quot;);
-        File f1 = new File(&quot;C:\\&quot;);
-        System.out.println(f1.exists());
-
-        File f2 = new File(&quot;f:\\&quot;);
-        System.out.println(f2.exists());
-
-        File f3 = new File(&quot;a.txt&quot;);
-        System.out.println(f3.exists());
-    }
-}</code></pre><h3 id="创建删除功能的方法"><a href="#创建删除功能的方法" class="headerlink" title="创建删除功能的方法"></a>创建删除功能的方法</h3><ul>
-<li>public boolean createNewFile()：当且仅当具有该名称的文件尚不存在时候，创建一个新的空文件。</li>
-<li>public boolean delete():删除由此File表示的文件或目录。</li>
-<li>public boolean mkdir():创建由此File表示的目录。</li>
-<li>public boolean mkdirs():创建由此File表示的目录，包括任何必须但不存在的父目录。</li>
-</ul>
-<p>方法演示</p>
-<pre><code>public class Demo05FileCreateAndDelete {
-    public static void main(String[] args) throws IOException{
-        show01();
-        show02();
-        show03();
-    }
-    /*
-         public boolean delete():删除由此File表示的文件或目录。
-         此方法，可以删除构造方法路径中给出的文件/文件夹
-         返回值：布尔值
-            true：文件/文件夹删除成功 返回true
-            false：文件夹中有内容，不会删除 返回false；构造方法中路径不存在false
-         注意：
-            delete方法是直接在硬盘删除文件和文件夹，不走回收站，删除须谨慎
-
-    */
-    private static void show03() {
-        System.out.println(&quot;-------------show03-------------&quot;);
-        File f2 = new File(&quot;C:\\java练习\\File\\11\\22\\33\\4.txt&quot;);
-        boolean b1 = f2.delete();
-        System.out.println(b1);
-    }
-
-    /*
-        public boolean mkdir():创建单级文件夹
-        public boolean mkdirs():既可以创建单级也可以创建多级
-        返回值:布尔值
-            true：文件夹不存在，创建文件夹，返回true
-            false：文件夹不存在，不会创建，返回false；构造方法中给出的路径不存在返回false
-        注意：
-            1.此方法只能创建文件，不能创建文件夹
-            2.创建文件的路径必须存在，否则会抛出异常
-    */
-    private static void show02() {
-        System.out.println(&quot;-------------show02-------------&quot;);
-        File f1 = new File(&quot;aaa.txt&quot;);
-        boolean b1 = f1.mkdir();
-        System.out.println(b1);
-
-        File f2 = new File(&quot;11\\22\\33\\4.txt&quot;);
-        boolean b2 = f2.mkdirs();
-        System.out.println(b2);
-    }
-
-    /*
-        public boolean createNewFile()：当且仅当具有该名称的文件尚不存在时候，创建一个新的空文件。
-        创建文件的路径和名称在构造方法中给出(构造方法的参数)
-        返回值:布尔值
-            true：文件不存在，创建文件，返回true
-            false：文件存在，不会创建，返回false
-        注意：
-            1.此方法只能创建文件，不能创建文件夹
-            2.创建文件的路径必须存在，否则会抛出异常
-
-        public boolean createNewFile() throws IOException
-        该方法会抛出异常
-    */
-    private static void show01() throws IOException {
-        System.out.println(&quot;-------------show01-------------&quot;);
-        File f1 = new File(&quot;1.txt&quot;);
-        boolean b1 = f1.createNewFile();
-        System.out.println(b1);
-    }
-}</code></pre><blockquote>
-<p>API中说明:delete方法，如果此File表示目录，则目录必须为空才能删除。</p>
-</blockquote>
-<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><ul>
-<li>public String[] List():返回一个String数组，表示该File目录中的所有子文件或目录</li>
-<li>public File[] listFiles():返回一个File数组，表示该File目录中的所有的子文件或目录。</li>
-</ul>
-<p>方法</p>
-<pre><code>/*
-注意：
-    List方法和listFiles方法遍历的是构造方法中给出的目录
-    如果构造方法中给出的目录的路径不存在，会抛出空指针异常
-    如果构造方法中给出的路径不是一个目录，也会抛出空指针异常
-*/
-public class Demo06FileList {
-    public static void main(String[] args) {
-        Show01();
-        Show02();
-    }
-    /*
-        - public File[] listFiles():返回一个File数组，表示该File目录中的所有的子文件或目录。
-        遍历构造方法中给出的目录，会获得目录中所有文件/文件夹的名称,把文件/文件夹封装成File对象，多个File对象存储到File数组中
-    */
-    private static void Show02() {
-        File file = new File(&quot;C:\\java练习\\File&quot;);
-        File[] files = file.listFiles();
-        for (File f : files){
-            System.out.println(f);
-        }
-    }
-
-    /*
-        - public String[] List():返回一个String数组，表示该File目录中的所有子文件或目录
-        遍历构造方法中给出的目录，会获得目录中所有文件/文件夹的名称，把多个名称存储到一个字符串String类型的数组
-
-    */
-    private static void Show01() {
-        File file = new File(&quot;C:\\java练习\\File&quot;);
-        String[] list = file.list();
-        for (String s : list){
-            System.out.println(s);
-        }
-
-    }
-}</code></pre><blockquote>
-<p>调用listFiles方法的File对象，表示的必须是实际存在的目录，否则返回null，无法进行遍历哦。</p>
-</blockquote>
-<p>#递归</p>
-<h2 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h2><p>递归：方法自己调用自己</p>
-<ul>
-<li><p>递归分类：</p>
-<pre><code>- 直接递归成为方法自己调用自己
-- 间接递归可以A方法屌用B方法，B方法调用C方法，C方法调用A方法</code></pre></li>
-<li><p>注意事项：</p>
-<pre><code>- 递归一定要有条件限定，保证递归能够停止下来，否则会发生栈内存溢出。</code></pre><ul>
-<li>递归虽然有限制条件，但是递归次数不能太多，不然也会发撒哼栈内存溢出</li>
-<li>构造方法禁止递归！</li>
-</ul>
-</li>
-<li><p>递归的使用前提：当调用方法的时候，方法的主体不变，每次调用方法的参数不同，可以使用递归</p>
-<pre><code>public class Recursive {
-    public static void main(String[] args) {
-    a(1);
-}
-
-private static void a(int i) {
-    System.out.println(i);
-    if (i==20000){
-        return;
-    }
-    a(++i);
-}</code></pre><p>  }</p>
-</li>
-</ul>
-<blockquote>
-<p>运行该代码会使栈空间爆满，以至于抛出栈溢出异常</p>
-</blockquote>
-<h2 id="递归累加求和"><a href="#递归累加求和" class="headerlink" title="递归累加求和"></a>递归累加求和</h2><pre><code>/*
-    练习：
-        使用递归计算1-n之间的和
-*/
-public class Demo02Recursive {
-    public static void main(String[] args) {
-        int s =sum(3);
-        System.out.println(s);
-    }
-    /*
-        定义一个方法，使用递归计算1-n之间的和
-        1+2+3+...+n
-        n + (n-1) + (n-2)+...+1
-        已知：
-            最大值：n
-            最小值：1
-        使用递归必须明确：
-            1，递归的结束条件
-                获取到1的时候结束
-            2.递归的目的
-                获取下一个被加的数字(n-1)
-    */
-    private static int sum(int n) {
-
-        if (n==1){
-            return 1;
-        }
-        //获取下一个被加的数字(n-1)
-        return n+sum(n-1);
-    }
-}</code></pre><p><img src="https://i.loli.net/2020/07/15/SoduBbYEKMtrwqA.png" alt="1594785660_1_.jpg"></p>
-<blockquote>
-<p>该图是计算1加到3的算法 </p>
-<p>一开始调用方法入栈，然后递归继续入栈，接着当条件符合的时候弹栈输出结果，即，sum(3-1)是2 sum(2-1)是1</p>
-</blockquote>
-<h2 id="递归求阶乘"><a href="#递归求阶乘" class="headerlink" title="递归求阶乘"></a>递归求阶乘</h2><pre><code>/*
-    练习：
-        使用递归计算阶乘
-        n的阶乘：n! = n*(n-1)*(n-2)*...*3*2*1
-        5的阶乘：5! = 5*(5-1)*(5-2)*...*(5-4)
-*/
-public class Demo03Recursive {
-    public static void main(String[] args) {
-        int a = fact(-10);
-        System.out.println(a);
-    }
-    /*
-        定义方法使用递归计算阶乘
-        5的阶乘：5! = 5*(5-1)*(5-2)*...*(5-4)
-    */
-    private static int fact(int n) {
-        if (n == 1){
-            return 1;
-        }
-        else if (n &lt; 0){
-            System.out.println(&quot;fail&quot;);
-            return -1;
-        }
-        else
-            return n*fact(n-1);
-    }
-}</code></pre><h2 id="打印多级目录"><a href="#打印多级目录" class="headerlink" title="打印多级目录"></a>打印多级目录</h2><pre><code>/*
-    练习：
-        递归打印多级目录
-    需求：
-        遍历c:\\java练习文件夹，及其子文件夹
-*/
-public class Demo04Recursive {
-    public static void main(String[] args) {
-        File f = new File(&quot;c:\\java练习&quot;);
-        getAllFile(f);
-    }
-
-    /*
-        定义一个方法，参数传递File类型的目录
-        方法中对目录进行遍历
-
-    */
-    public static void getAllFile(File dir){
-        System.out.println(dir);
-        File[] files = dir.listFiles();
-        for (File f : files){
-            //对遍历得到的File对象f进行判断，判断是否为文件夹
-            if (f.isDirectory()){
-                //f是文件夹，则继续遍历这个文件夹
-                //我们发现gatAllFile方法就是传递文件夹，遍历文件的方法
-                //所以直接调用getAllFile方法即可，自己调用自己
-                getAllFile(f);
-            }else
-                //f是一个文件，直接打印
-                System.out.println(f);
-        }
-    }
-}    </code></pre><p><img src="https://i.loli.net/2020/07/15/Y2GSzAmCjlcD71w.png" alt="1594791605_1_.jpg"></p>
-<blockquote>
-<p>图与代码不太相符，原理一样</p>
-</blockquote>
-<p>#综合案例</p>
-<h2 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h2><pre><code>/*
-    练习：
-        递归打印多级目录
-    需求：
-        遍历c:\\java练习文件夹，及其子文件夹
-        只要.java结尾的文件
-*/
-public class Demo05Recursive {
-    public static void main(String[] args) {
-        File f = new File(&quot;c:\\java练习&quot;);
-        getAllFile(f);
-    }
-
-    /*
-        定义一个方法，参数传递File类型的目录
-        方法中对目录进行遍历
-
-    */
-    public static void getAllFile(File dir){
-        //System.out.println(dir);
-        File[] files = dir.listFiles();
-        for (File f : files){
-            //对遍历得到的File对象f进行判断，判断是否为文件夹
-            if (f.isDirectory()){
-                //f是文件夹，则继续遍历这个文件夹
-                //我们发现gatAllFile方法就是传递文件夹，遍历文件的方法
-                //所以直接调用getAllFile方法即可，自己调用自己
-                getAllFile(f);
-            }else{
-                /*
-                //f是一个文件，直接打印
-                *//*
-                    只要.java结尾的文件
-                    1.把File对象f转换为字符串对象
-                *//*
-                //String name = f.getName();//转换为字符串
-                //String path = f.getPath();
-                String string = f.toString();
-
-                //把字符串，转换为小写
-                s = string.toLowerCase();
-
-                //  2.调用String类中的方法endWith判断字符串是否是以.java结尾
-                boolean b = string.endsWith(&quot;.java&quot;);
-
-                //  3.如果是以.java结尾的文件，则输出就行
-                if (b == true){
-                System.out.println(f);
-                */
-                if (f.getName().toLowerCase().endsWith(&quot;.java&quot;)){
-                    System.out.println(f);
-                }
-            }
-        }
-    }
-}</code></pre><blockquote>
-<p><code>/**/</code>在这里面的代码是最原始，正常人的思想，后面简版是改进后的</p>
-</blockquote>
-<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p><code>java.io.FileFilter</code>是一个接口，是File的过滤器。该接口的对象可以传递给File类的<code>listFiles(FileFilter)</code>作为参数，接口中只有一个方法。</p>
-<p><code>boolean accept(File pathname)</code>：测试pathname是否应该包含当前File目录中，符合返回true，过滤掉则返回false，保留规则：</p>
-<ol>
-<li>要么是.java文件。</li>
-<li>要么是目录用于继续遍历。</li>
-</ol>
-<p>通过过滤器的作用，listFiles(FileFilter)返回的数组元素中，子文件对象都是符合条件的，可以直接打印</p>
-<p><img src="https://i.loli.net/2020/07/16/MPAh5sxQuVvwFU8.png" alt="1594872854_1_.jpg"></p>
-<p>实现代码</p>
-<pre><code>public class Demo02Filter {
-    public static void main(String[] args) {
-        File f = new File(&quot;c:\\java练习&quot;);
-        getAllFile(f);
-    }
-
-    public static void getAllFile(File dir) {
-        //传递过滤器对象 使用匿名内部类 FileFilter方法
-        /*File[] files = dir.listFiles(new FileFilter() {
-
-            @Override
-            public boolean accept(File pathname) {
-                //过滤规则，pathname是文件夹，或是.java结尾的文件返回true
-                return pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(&quot;.java&quot;);
-            }
-        });*/
-
-        /*File [] files = dir.listFiles(new FilenameFilter() {
-            //传递过滤器对象 使用匿名内部类 FileFilter方法 FilenameFilter方法
-            @Override
-            public boolean accept(File dir, String name) {
-                return new File(dir,name).isDirectory() || name.toLowerCase().endsWith(&quot;.java&quot;);
-            }
-        });*/
-
-        //传递过滤器对象 使用匿名内部类 FileFilter方法 Lambda表达式
-        File [] files = dir.listFiles((dir1, name) -&gt; new File(dir1,name).isDirectory() || name.toLowerCase().endsWith(&quot;.java&quot;));
-
-        for (File f : files) {
-            //对遍历得到的File对象f进行判断，判断是否为文件夹
-            if (f.isDirectory()) {
-                //f是文件夹，则继续遍历这个文件夹
-                //我们发现gatAllFile方法就是传递文件夹，遍历文件的方法
-                //所以直接调用getAllFile方法即可，自己调用自己
-                getAllFile(f);
-            } else {
-                if (f.getName().toLowerCase().endsWith(&quot;.java&quot;)) {
-                    System.out.println(f);
-                }
-            }
-        }
-    }
-}</code></pre><blockquote>
-<p>ps：IDEA里面写了匿名内部类的方法可以变成Lambda表达式不用自己写hhh</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -4906,7 +4544,7 @@ public class Demo05Recursive {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
