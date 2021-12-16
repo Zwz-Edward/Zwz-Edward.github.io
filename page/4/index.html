@@ -165,6 +165,225 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/Git/" class="post-title-link" itemprop="url">Git</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:13" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:13+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-12 21:52:26" itemprop="dateModified" datetime="2020-04-12T21:52:26+08:00">2020-04-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><blockquote>
+<p>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+</blockquote>
+<blockquote>
+<p>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</p>
+</blockquote>
+<blockquote>
+<p>Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。</p>
+</blockquote>
+<h3 id="版本控制工具的功能"><a href="#版本控制工具的功能" class="headerlink" title="版本控制工具的功能"></a>版本控制工具的功能</h3><ul>
+<li>协同修改<ul>
+<li>多人并行不悖的修改服务端的同一个文件</li>
+</ul>
+</li>
+<li>数据备份<ul>
+<li>不仅保存目录和文件的当前状态，还能够保存每一个提交的历史状态。</li>
+</ul>
+</li>
+<li>版本管理<ul>
+<li>在保存每一个版本文件信息的时候要做到不保存重复数据，以节约存储空间，提高运行效率。在这方面SVN采用的是增量式管理的方式，而Git采取了文件系统快照的方式</li>
+</ul>
+</li>
+<li>权限控制<ul>
+<li>对团队中参与开发的人员进行权限控制。</li>
+<li>对团队外开发贡献的代码进行审核 ——Git独有</li>
+</ul>
+</li>
+<li>历史记录<ul>
+<li>查看修改人，修改时间，修改内容，日志信息。</li>
+<li>将本地文件恢复到某一个历史状态。</li>
+</ul>
+</li>
+<li>分支管理<ul>
+<li>允许开发团队在文件过程中多条生产线同时推进任务，进一步提高效率。<h3 id="Git优点"><a href="#Git优点" class="headerlink" title="Git优点"></a>Git优点</h3></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>大部分操作在本地完成，不需要联网。</li>
+<li>完整性保证。</li>
+<li>尽可能添加数据而不是删除或修改数据</li>
+<li>分支操作非常快捷</li>
+<li>与Linux命令全面兼容</li>
+</ol>
+<h3 id="Git-工作流程"><a href="#Git-工作流程" class="headerlink" title="Git 工作流程"></a>Git 工作流程</h3><p>一般流程如下：</p>
+<ul>
+<li>克隆Git资源为工作目录。</li>
+<li>在克隆的资源上添加或修改文件</li>
+<li>如果其他人修改了，你可以更新资源</li>
+<li>在提交前查看修改</li>
+<li>提交修改</li>
+<li>在修改完成后发现错，可以撤回提交并再次修改并提交。<br><img src="https://www.runoob.com/wp-content/uploads/2015/02/git-process.png" alt=""></li>
+</ul>
+<h3 id="Git工作区、暂存区和版本库"><a href="#Git工作区、暂存区和版本库" class="headerlink" title="Git工作区、暂存区和版本库"></a>Git工作区、暂存区和版本库</h3><p>工作区：就是你在电脑里面可以看到的目录。<br>暂存区：英文名叫stage或者index。一般存放在 .git 目录下的index文件(.git/index)中，所以我们把暂存区有时也叫做索引(index)。<br>版本库：工作区有个隐藏目录 .git，这个不算工作区，耳式Git的版本库。<br><img src="https://www.runoob.com/wp-content/uploads/2015/02/1352126739_7909.jpg" alt=""></p>
+<h4 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h4><p>是多功能命令，根据目标文件的状态不同，命令效果也不同</br><br>1）. 可以用它跟踪新文件</br><br>2）. 把已经跟踪的文件放进暂存区</br><br>3）. 还能用于合并时把有冲突的文件标记为已解决状态等</br><br>如图：add把工作区的文件加入了暂存区。</p>
+<h4 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h4><p>git commit主要是将在暂存区里的改动提交到本地的版本库。每次使用git commit都会产生40位的哈希值，这个哈希值也叫commit-id.</br><br>commit-id在版本回退时候很有用搭配reset可以进行版本的进退。</p>
+<h4 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h4><p>git reset [选项] [commit-id]有三个选项可以选择 –soft、–mixed、–hard</p>
+<ol>
+<li>git reset –soft仅将head指针指向历史版本。</li>
+<li>git reset –mixed将head指针指向历史版本，且用历史版本的暂存区覆盖当前的暂存区</li>
+<li>git reset –hard将head指针指向历史版本，同时覆盖工作区和暂存区的内容(比较危险，慎用)</li>
+</ol>
+<h4 id="git-checkout-git-checkout-lt-file-gt"><a href="#git-checkout-git-checkout-lt-file-gt" class="headerlink" title="git checkout / git checkout &lt;-file&gt;"></a>git checkout / git checkout &lt;-file&gt;</h4><p>git checkout或checkout – <file> 会将暂存区全部或指定的文件替换工作区的文件，这个操作很危险，会清除工作区中未添加到暂存区的改动。</p>
+<h4 id="git-rm-–cached"><a href="#git-rm-–cached" class="headerlink" title="git rm –cached"></a>git rm –cached</h4><p>执行<code>git rm --cached</code>命令的时候会直接从暂存区删除文件，工作区则不会做出改变。</p>
+<h4 id="git-checkout-HEAD-git-checkout-HEAD"><a href="#git-checkout-HEAD-git-checkout-HEAD" class="headerlink" title="git checkout HEAD / git checkout HEAD "></a>git checkout HEAD / git checkout HEAD <file></h4><p>当执行<code>git checkout HEAD</code>或者<code>git checkout Head &lt;file&gt;</code>时候，会用HEAD指向master分支中的全部或部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区未提交的改动。</p>
+<h3 id="Git创建仓库"><a href="#Git创建仓库" class="headerlink" title="Git创建仓库"></a>Git创建仓库</h3><ol>
+<li><p><strong>git init</strong>来初始化一个仓库，Git的很多指令都需要在Git的仓库中运行，所以git init是使用Git的第一个命令。执行完git init后会出现一个<code>.git</code>隐藏目录。在当前目录下git bash 输入<code>ls lA</code>(Linux通用)即可出现。</p>
+</li>
+<li><p><strong>git clone</strong>可以从现有Git仓库中拷贝项目</br><br>格式一般为git clone <repo> <directory></p>
+<ul>
+<li><p>repo:Git 仓库。</p>
+</li>
+<li><p>directory:本地目录。<br>例子：比如克隆Ruby语言的Git代码仓库Grit，使用以下命令</p>
+<p><code>git clone git://github.com/schacon/grit.git</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>执行该命令后，会在当前目录下创建一个名为grit的目录，其中包含一个 .git 的目录，用于保存下载下来的所有版本记录。</br><br>如果要自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字：</p>
+<pre><code>`git clone git://github.com schacon/grit.git mygrit`</code></pre><h3 id="Git基本操作"><a href="#Git基本操作" class="headerlink" title="Git基本操作"></a>Git基本操作</h3><h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h4><p>可以查看在上次提交之后是否有修改。</p>
+<pre><code>$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   README
+    new file:   hello.php</code></pre><h4 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h4><p>执行git diff来查看执行git status的结果的详细信息<br>git diff命令显示已写入缓存与已修改但未写入缓存的改动的区别。git diff有两个主要的应用场景</p>
+<ul>
+<li>尚未缓存的改动：<strong>git diff</strong></li>
+<li>查看已缓存的改动：<strong>git diff –cached</strong></li>
+<li>查看已缓存的与未缓存的所有改动：<strong>git diff HEAD</strong></li>
+<li>显示摘要而非整个diff：<strong>git diff –stat</strong></li>
+</ul>
+<h4 id="git-mv"><a href="#git-mv" class="headerlink" title="git mv"></a>git mv</h4><p>git mv命令用于移动或者重命名一个文件、目录、软连接。<br>例如重命名：$ git mv [原文件名] [修改后文件名]</p>
+<h3 id="Git-分支管理"><a href="#Git-分支管理" class="headerlink" title="Git 分支管理"></a>Git 分支管理</h3><p>几乎每一个版本控制系统都以某种形式支持分支。使用分支就意味着可以从开发主线上分离开，不影响主线继续工作。创建分支：</p>
+<pre><code>`git branch (branchname)`</code></pre><p>切换分支命令：</p>
+<pre><code>`git checkout (branchname)`</code></pre><p>当切换分支的时候，Git会用该分支最后提交的快照替换你的工作目录内容，所有多个分支不需要多个目录。</p>
+<p>合并分支命令：</p>
+<pre><code>`git merge`</code></pre><p>你可以多次合并到一分支，也可以选择在合并之后直接删除被并入的分支。</p>
+<h3 id="Git-分支管理-1"><a href="#Git-分支管理-1" class="headerlink" title="Git 分支管理"></a>Git 分支管理</h3><h4 id="列出分支"><a href="#列出分支" class="headerlink" title="列出分支"></a>列出分支</h4><p>列出分支基本命令:</p>
+<pre><code>`git branch`</code></pre><p>没有参数时，git branch会列出你在本地的分支。</p>
+<pre><code>$ git branch
+* master</code></pre><p>这里是说我们有个叫做master的分支，并且该分支还是当前分支。在git init之后会默认创建master分支。</br><br>我们通过git checkout(branch)修改到我们需要切换的分支</p>
+<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><p>删除分支命令：</p>
+<pre><code>`git branch -d (branchname)`</code></pre><h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4><p>分支合并命令：</p>
+<pre><code>`git merge`</code></pre><h3 id="Git-查看提交历史"><a href="#Git-查看提交历史" class="headerlink" title="Git 查看提交历史"></a>Git 查看提交历史</h3><p>在使用Git提交若干更新之后，又或者克隆了某个项目，想回顾一下提交历史，我们可以使用git log命令查看。</p>
+<ul>
+<li>git log –oneline可以看历史记录的简介版本</li>
+<li>还可以用 –graph 选项，查看历史中什么时候出现了分支、合并。以下为相同的命令，开启了拓扑图选项</li>
+<li>可以用 –reverse 参数来逆向显示所有日志</li>
+<li>如果只想查找指定用户的提交日志可以使用命令：git log –author , 例如，比方说我们要找 Git 源码中 Linus 提交的部分</li>
+<li>如果你要指定日期，可以执行几个选项：–since 和 –before，但是你也可以用 –until 和 –after。</li>
+</ul>
+<h3 id="Git-查看提交历史-1"><a href="#Git-查看提交历史-1" class="headerlink" title="Git 查看提交历史"></a>Git 查看提交历史</h3><p>在使用了Git提交若干更新后，或克隆了某个项目，想回顾下提交历史，我们可以用git log命令查看</p>
+<pre><code>git log</code></pre><p>可以回顾历史版本</p>
+<pre><code>git log --oneline</code></pre><p>可以来查看历史记录的简介的版本。</p>
+<pre><code>git log --reverse</code></pre><p>可以用 –reverse参数来逆向显示所有日志。</p>
+<pre><code>git log --author</code></pre><p>可以查找指定用户的提交日志例如</p>
+<pre><code>git log --author=zwz --oneline</code></pre><p>可以查找zwz提交的简单版本的日志。</p>
+<p>如果要指定日期，还可以执行几个选项<code>--since</code>和<code>--before</code>,也可以用<code>--until</code>和<code>--after</code>。</p>
+<pre><code>git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges</code></pre><p>可以看三周前且在四月十八日之后的所有提交。</p>
+<p>###Git 标签<br>如果达到了一个重要的阶段，并希望永远记住那个特别的快照，你可以使用git tag给它打上标签。比如说，我们想为项目发布一个版本”1.0”版本。于是可以使用git tag -a v1.0命令给最新一个提交打上(HEAD)”v1.0”的标签</p>
+<p>-a选项一样为创建一个带注解的标签.不用-a选项也可以执行的，但他不会记录这标签什么时候打的，谁打的，也不会让你添加个标签的注解</p>
+<pre><code>git tag -a v1.0</code></pre><p>当执行git tag -a命令时，Git会打开你的编辑器，让你写一句标签注解，就像你给提交写注解一样，当我们执行<code>git log --decorate</code>时就可以看到我们的标签了。</p>
+<p>如果忘记给某个提交打标签了，又将他发布了，我们可以给它追加标签。</p>
+<pre><code>git tag -a v0.9 hash_id</code></pre><p>指定标签信息命令：</p>
+<pre><code>git tag -a &lt;tagname&gt; -m &quot;runoob.com标签&quot;</code></pre><p>PGP签名标签命令：</p>
+<pre><code>git tag -s &lt;tagname&gt; -m &quot;runoob.com标签&quot;</code></pre><h3 id="Git-amp-Github"><a href="#Git-amp-Github" class="headerlink" title="Git&amp;Github"></a>Git&amp;Github</h3><h4 id="为创建远程库地址别名"><a href="#为创建远程库地址别名" class="headerlink" title="为创建远程库地址别名"></a>为创建远程库地址别名</h4><pre><code>git remote -v</code></pre><p>可以查看当前所有远程地址的别名</p>
+<pre><code>git remote add [别名] [远程地址(就是GitHub的地址)]</code></pre><h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><pre><code>git push [别名] [分支名]</code></pre><h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><pre><code>git clone [远程地址]</code></pre><h4 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h4><ul>
+<li>pull =fetch+merge </li>
+<li>git fetch [远程库地址别名] [远程分支名]</li>
+<li>git merge [远程库地址别名/远程分支名]</li>
+<li>git pull [远程库地址别名] [远程分支名]</li>
+</ul>
+<h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><p>要点</p>
+<ol>
+<li>如果不是基于GitHub远程库的最新版本所作的修改，不能推送，必须先拉取</li>
+<li>拉取下来后如果进入冲突状态,则按照分支冲突解决操作即可</li>
+</ol>
+<h4 id="跨团队协作"><a href="#跨团队协作" class="headerlink" title="跨团队协作"></a>跨团队协作</h4><p>在GitHub里面别人的项目右上角点击fork</p>
+<h4 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h4><ol>
+<li>机内当前用户的目录<code>$ cd~</code></li>
+<li>删除.ssh目录 <code>$ rm -rvf .ssh</code></li>
+<li>运行命令生成.ssh密钥目录 <code>$ ssh-keygen -t rsa -C 595488485@qq.com</code></li>
+<li>进入.ssh目录查看文件列表<code>$ cd .ssh</code> <code>$ls -lF</code></li>
+<li>查看id_rsa.pub文件内容<code>$ cat id_rsa.pub</code></li>
+<li>复制id_rsa.pub文件内容，登录GitHub，点击头像用户→Setting→SSH and GPG keys</li>
+<li>New SSH Key</li>
+<li>输入复制的密钥信息</li>
+<li>回到Git bush 创建远程地址别名<code>git remote add origin_ssh [地址在SSH里面clone]</code></li>
+<li>推送文件测试.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/File&%E9%80%92%E5%BD%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1086,7 +1305,7 @@ int powerzwz(int x,int n)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

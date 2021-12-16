@@ -165,6 +165,180 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/03/%E8%AE%A1%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/03/%E8%AE%A1%E7%BB%84/" class="post-title-link" itemprop="url">计组</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-03 17:38:33" itemprop="dateCreated datePublished" datetime="2021-07-03T17:38:33+08:00">2021-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-04 14:47:19" itemprop="dateModified" datetime="2021-07-04T14:47:19+08:00">2021-07-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="计算机中各个硬件部分"><a href="#计算机中各个硬件部分" class="headerlink" title="计算机中各个硬件部分"></a>计算机中各个硬件部分</h2><h3 id="冯诺依曼计算机的特点"><a href="#冯诺依曼计算机的特点" class="headerlink" title="冯诺依曼计算机的特点"></a>冯诺依曼计算机的特点</h3><ol>
+<li>计算机由五大部件组成：输出设备、输入设备、存储器、运算器、控制器。</li>
+<li>指令和数据以同等地位存储于存储器，可以按地址寻访</li>
+<li>指令和数据都是用二进制表示的</li>
+<li>指令由操作码和地址码组成的</li>
+<li>存储程序（会提前把指令和数据提前存储到存储器当中）</li>
+<li><strong>以运算器为中心</strong><br><a href="https://www.s2tu.com/image/G84WRC" target="_blank" rel="noopener"><img src="https://www.s2tu.com/images/2021/07/03/G84WRC.png" alt="G84WRC.png"></a></li>
+</ol>
+<h3 id="现代计算机的特点"><a href="#现代计算机的特点" class="headerlink" title="现代计算机的特点"></a>现代计算机的特点</h3><ol>
+<li>以存储器为中心</li>
+</ol>
+<blockquote>
+<p>CPU = 运算器+控制器<br>主机 = CPU+主存(运行内存)<br>IO设备 = 输入输出设备+辅存<br>硬件等于 = 主机+IO设备<br><img src="https://www.s2tu.com/images/2021/07/03/G8bffd.png" alt="G8bffd.png"></p>
+</blockquote>
+<h3 id="主存储器的基本组成"><a href="#主存储器的基本组成" class="headerlink" title="主存储器的基本组成"></a>主存储器的基本组成</h3><p>主存储器 = 存储体+MAR+MDR<BR><br>MAR = Memory Address Register (存储地址寄存器)<br>MDR = Memory Data Register （存储数据寄存器）</p>
+<h3 id="运算器的基本组成"><a href="#运算器的基本组成" class="headerlink" title="运算器的基本组成"></a>运算器的基本组成</h3><p>运算器：用于实现算术运算(如：加减乘除)、逻辑运算(如：与或非)</br></p>
+<ul>
+<li>ACC(Accumulator)：累加器，用于存放操作数，或运算结果</li>
+<li>MQ(Multiple-Quotient Register)：乘商寄存器，在算乘、除运算时，用于存放操作数或运算结果</li>
+<li>X：通用的操作数寄存器，用于存放操作数</li>
+<li><strong>ALU</strong> (Arithmetic and Logic Unit)：算术逻辑单元，通过内部复杂的电路实现算数运算、逻辑运算。</li>
+</ul>
+<h3 id="控制器的基本组成"><a href="#控制器的基本组成" class="headerlink" title="控制器的基本组成"></a>控制器的基本组成</h3><ul>
+<li><strong>CU</strong>(Control Unit)：控制单元，分析指令，给出控制信号</li>
+<li>IR(Instruction Register)：指令寄存器，存放当前执行的指令</li>
+<li>PC(Program Counter)：程序计数器，存放下一条指令的地址，有自动加一的功能</li>
+</ul>
+<h3 id="计算机工作过程"><a href="#计算机工作过程" class="headerlink" title="计算机工作过程"></a>计算机工作过程</h3><ul>
+<li><p>第一条指令的过程(把a取到ACC中)<br><img src="https://www.s2tu.com/images/2021/07/03/G82Q5C.png" alt="G82Q5C.png"></p>
+</li>
+<li><p>第二条指令(乘b得ab，存到ACC中)<br><img src="https://www.s2tu.com/images/2021/07/03/G8pI4v.png" alt="G8pI4v.png"></p>
+</li>
+</ul>
+<h4 id="取数指令的执行："><a href="#取数指令的执行：" class="headerlink" title="取数指令的执行："></a>取数指令的执行：</h4><blockquote>
+<p>从主存中指定地址处取数</p>
+</blockquote>
+<p>(PC) -&gt; MAR </br><br>M(MAR) -&gt; MDR </br><br>(MDR) -&gt; IR </br></p>
+<p>取指令结束 (PC)+1 -&gt; PC </br><br>OP(IR) -&gt; CU </br></p>
+<blockquote>
+<p>以上步骤都是必须经历的</p>
+</blockquote>
+<p>分析指令结束<br>Ad(IR) -&gt; MAR </br><br>M(MAR) -&gt; MDR </br><br>(MDR) -&gt; ACC </br><br>执行指令结束</p>
+<h2 id="计算机系统的层次结构"><a href="#计算机系统的层次结构" class="headerlink" title="计算机系统的层次结构"></a>计算机系统的层次结构</h2><ul>
+<li>首先是微程序机器(微指令系统)</li>
+<li>传统机器(用机器语言)</li>
+<li>操作系统机器</li>
+<li>汇编语言机器</li>
+<li>高级语言机器</li>
+</ul>
+<p>上层的机器是下层的基础，下层的机器是上层的拓展</p>
+<h3 id="三种级别的语言"><a href="#三种级别的语言" class="headerlink" title="三种级别的语言"></a>三种级别的语言</h3><ol>
+<li>机器语言(二进制代码)</li>
+<li>汇编语言(助记符)</li>
+<li>高级语言</li>
+</ol>
+<p>首先高级语言要通过编译程序(即编译器)转换为汇编语言，接着汇编语言要通过汇编程序(即汇编器)转换为机器语言。</br></p>
+<p>于是有了编译汇编连接三部程序</p>
+<p>有的源程序可以直接通过解释程序(即解释器)转化为机器语言 (比如python，JavaScript，shell等)</p>
+<blockquote>
+<p>编译程序：将高级语言编写的程序<strong>全部</strong>语句<strong>一次全部</strong>翻译成机器语言程序，后在执行机器语言程序(只需翻译一次)</p>
+</blockquote>
+<blockquote>
+<p>解释程序：将源程序的<strong>一条</strong>语句翻译成对应于机器语言的语句，并立即执行。紧接着在翻译下一句(每次执行都要翻译)</p>
+</blockquote>
+<h2 id="计算机的性能指标"><a href="#计算机的性能指标" class="headerlink" title="计算机的性能指标"></a>计算机的性能指标</h2><h3 id="存储器的容量"><a href="#存储器的容量" class="headerlink" title="存储器的容量"></a>存储器的容量</h3><ul>
+<li>1B = 8bit 1K = 1024B 1M = 1024K 1G = 1024MB 1T = 1024G</li>
+</ul>
+<p>越大表示存储器越大</p>
+<h3 id="CPU的性能指标"><a href="#CPU的性能指标" class="headerlink" title="CPU的性能指标"></a>CPU的性能指标</h3><p>XXXGHz代表了CPU的主频：CPU内数字脉冲信号震荡的频率</p>
+<ul>
+<li><p><strong>CPU主频</strong>(时钟频率) = 1/cpu时钟周期（1/λ）</p>
+</li>
+<li><p><strong>CPI</strong>(Clock cycle Per Instruction):执行一条指令所需的时钟周期数</p>
+</li>
+<li><p><strong>执行一条指令的耗时</strong> = CPI x CPU时钟周期</p>
+<blockquote>
+<p>不同的指令、CPI不同，甚至相同的指<br>令，CPI也有可能有变化</p>
+</blockquote>
+</li>
+</ul>
+<p>Eg:某CPU的主频是1000Hz，某程序包含100条指令，平均来看指令的CPI=3.该程序在该CPU上执行需要多久？</p>
+<p>100 * 3 *（1/1000）= 0.3s</p>
+<ul>
+<li><p><strong>CPU执行时间</strong>(整个程序的耗时) = CPU时钟周期数/主频 = (指令条数*CPI)/主频</p>
+</li>
+<li><p><strong>IPS</strong>(Instruction Per Second):每秒执行多少条指令</p>
+</li>
+<li><p><strong>FLOPS</strong>(Floating-point Operations Per Second):每秒执行多少次浮点运算</p>
+</li>
+</ul>
+<h3 id="系统整体的性能指标"><a href="#系统整体的性能指标" class="headerlink" title="系统整体的性能指标"></a>系统整体的性能指标</h3><p><strong>数据通路带宽</strong>：数据总线一次所能并行传送信息的位数(各硬件部分通过数据总线传输数据)</p>
+<p><strong>吞吐量：</strong>指系统在单位时间内处理请求数量。</p>
+<p><strong>响应时间</strong>：指从用户向计算机发送一个请求到计算器做出相应并获得他所需要的结果的等待时间</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li><p>主频高的CPU一定比主频低的CPU快吗</p>
+<ul>
+<li>不一定，如果两个CPU，A的主频为2GHz，平均CPI = 10，B的主频为1GHz，平均CPI = 1，则A的执行时间是 0.2 而B的时间是1</li>
+</ul>
+</li>
+<li><p>若A、B两个的CPU的平均CPI相同，那么A一定快吗</p>
+<ul>
+<li>不一定，还得看指令系统，如果A不支持乘法指令，只能多次用加法实现，而B支持乘法指令，同样也是B快</li>
+</ul>
+</li>
+<li><p>基准程序执行的越快则说明机器性能越好吗？</p>
+<ul>
+<li>基准程序中的语句存在频度差异，运行结果不能完全说明问题</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2499,73 +2673,6 @@ public class Node {
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/sizeof%E7%9A%84%E7%94%A8%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZWZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZWZ的博客嘻嘻">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/27/sizeof%E7%9A%84%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">sizeof的用法</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-05 21:06:38" itemprop="dateModified" datetime="2020-04-05T21:06:38+08:00">2020-04-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="sizeof的用法"><a href="#sizeof的用法" class="headerlink" title="sizeof的用法"></a>sizeof的用法</h1><p><img src="https://img-blog.csdn.net/201804291534473" alt=""><br><img src="https://img-blog.csdn.net/2018042915351990" alt=""><br><img src="https://img-blog.csdn.net/20180429153532932" alt=""></p>
-<p>均转载，以便复习以及加上一些注解</p>
-<p>相对应的数据类型的字节数<br><img src="https://www.runoob.com/wp-content/uploads/2014/09/32-64.jpg" alt=""></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2636,7 +2743,7 @@ public class Node {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

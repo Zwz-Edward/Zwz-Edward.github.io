@@ -165,6 +165,68 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/16/Morris/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/16/Morris/" class="post-title-link" itemprop="url">Morris</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-12-16 19:42:37 / Modified: 19:44:47" itemprop="dateCreated datePublished" datetime="2021-12-16T19:42:37+08:00">2021-12-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Morris"><a href="#Morris" class="headerlink" title="Morris"></a>Morris</h1><blockquote>
+<p> morris遍历是二叉树遍历的进阶算法，时间复杂度为O(n) 空间复杂度O(1)</p>
+</blockquote>
+<p><a href="https://www.helloimg.com/image/GW8Cnz" target="_blank" rel="noopener">​<img src="https://www.helloimg.com/images/2021/12/16/GW8Cnz.jpg" alt="GW8Cnz.jpg"></a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/09/Leetcode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -196,7 +258,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-15 20:02:44" itemprop="dateModified" datetime="2021-12-15T20:02:44+08:00">2021-12-15</time>
+                <time title="Modified: 2021-12-16 20:23:39" itemprop="dateModified" datetime="2021-12-16T20:23:39+08:00">2021-12-16</time>
               </span>
 
           
@@ -275,6 +337,34 @@
 </blockquote>
 <blockquote>
 <p>我的思路 两个数相加先变成10进制，然后再通过10进制转换为2进制   ， 实现不出来有bug</p>
+</blockquote>
+<h2 id="Day4"><a href="#Day4" class="headerlink" title="Day4"></a>Day4</h2><h3 id="PascalTriangle"><a href="#PascalTriangle" class="headerlink" title="PascalTriangle"></a>PascalTriangle</h3><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">    示例 1:</span></span><br><span class="line"><span class="comment">    输入: numRows = 5</span></span><br><span class="line"><span class="comment">    输出: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    示例 2</span></span><br><span class="line"><span class="comment">    输入: numRows = 1</span></span><br><span class="line"><span class="comment">    输出: [[1]]</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalTriangle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Solution solution = <span class="keyword">new</span> Solution();</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; generate = solution.generate(<span class="number">5</span>);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; list : generate) &#123;</span><br><span class="line">            System.out.println(list);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;             <span class="comment">//[[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]  i代表  第一个[1]  第二个[1,1] ....</span></span><br><span class="line">            List&lt;Integer&gt; row = <span class="keyword">new</span> ArrayList&lt;&gt;();      <span class="comment">//这个是List&lt;&gt;中的泛型List&lt;Integer&gt; 代表List&lt;&gt;中的每一个元素</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j&lt;=i; ++j)&#123;                 <span class="comment">//因为i是从0开始的，所以j要&lt;=i 否则第一列无法赋值</span></span><br><span class="line">                <span class="keyword">if</span> (j==<span class="number">0</span>||j==i) &#123;</span><br><span class="line">                    row.add(<span class="number">1</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span></span><br><span class="line">                    row.add(list.get(i-<span class="number">1</span>).get(j)+list.get(i-<span class="number">1</span>).get(j-<span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            list.add(row);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">            1</span></span><br><span class="line"><span class="comment">          1   1</span></span><br><span class="line"><span class="comment">        1   2   1</span></span><br><span class="line"><span class="comment">      1   3   3   1</span></span><br><span class="line"><span class="comment">    1   4   6   4   1</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为返回类型是List&lt; List<Integer> &gt;   所以要定义一个该类型的 list集合    </p>
+<p>而 泛型为List<Integer> 所以还要定义一个 该类型的 row集合 来作为 list集合里面的元素</p>
+<p>[[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</p>
+<p>杨辉三角最基本的算法很简单</p>
+</blockquote>
+<h3 id="inorderTraversal"><a href="#inorderTraversal" class="headerlink" title="inorderTraversal"></a>inorderTraversal</h3><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> val;</span><br><span class="line"></span><br><span class="line">    TreeNode(<span class="keyword">int</span> val) &#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> TreeNode right;</span><br><span class="line">    <span class="keyword">public</span> TreeNode left;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title">getTreeNode</span><span class="params">(Integer[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode head = <span class="keyword">new</span> TreeNode(nums[<span class="number">0</span>]);</span><br><span class="line">        LinkedList&lt;TreeNode&gt; subTree = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        subTree.push(head);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!subTree.isEmpty()) &#123;</span><br><span class="line">                TreeNode cur = subTree.pop();</span><br><span class="line">                <span class="keyword">if</span> (nums[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    cur.left = <span class="keyword">new</span> TreeNode(nums[i]);</span><br><span class="line">                    subTree.add(cur.left);</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= nums.length) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    cur.right = <span class="keyword">new</span> TreeNode(nums[i]);</span><br><span class="line">                    subTree.add(cur.right);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入：root &#x3D; [1,null,2,3]</span><br><span class="line">输出：[1,3,2]</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：root &#x3D; []</span><br><span class="line">输出：[]</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">输入：root &#x3D; [1]</span><br><span class="line">输出：[1]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> inorderTraversal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.rmi.CORBA.Util;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">inorderTraversal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Solution s = <span class="keyword">new</span> Solution();</span><br><span class="line">        Integer []list = <span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>,<span class="keyword">null</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">        Utils.TreeNode treeNode = Utils.TreeNode.getTreeNode(list);</span><br><span class="line">        <span class="comment">//System.out.println(s.inorderTraversal(treeNode));</span></span><br><span class="line"></span><br><span class="line">        Solution3 s3 = <span class="keyword">new</span> Solution3();</span><br><span class="line">        System.out.println(s3.inorderTraversal(treeNode));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    递归法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(Utils.TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        inorder(root,list);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(Utils.TreeNode root,List&lt;Integer&gt; list)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        inorder(root.left,list);</span><br><span class="line">        list.add(root.val);</span><br><span class="line">        inorder(root.right,list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    迭代法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution2</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*  Morris 算法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution3</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(Utils.TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Utils.TreeNode cur = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">while</span> (root!=<span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                cur = root.left;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//当cur有左子树，则找到最右的一个节点使它指向cur</span></span><br><span class="line">                <span class="keyword">while</span> (cur.right != <span class="keyword">null</span> &amp;&amp; cur.right != root) &#123;</span><br><span class="line">                    cur = cur.right;        <span class="comment">//一直往右走</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//让cur指针指向root，继续遍历左子树</span></span><br><span class="line">                <span class="keyword">if</span> (cur.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    cur.right = root;</span><br><span class="line">                    <span class="comment">//使root往左移动一位 ，随之 cur也会移动</span></span><br><span class="line">                    root = root.left;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//代表左子树以及遍历完成</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    list.add(root.val);</span><br><span class="line">                    cur.right = <span class="keyword">null</span>;</span><br><span class="line">                    root = root.right;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//遍历右子树</span></span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                list.add(root.val);</span><br><span class="line">                root = root.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>递归不多说</p>
+</blockquote>
+<blockquote>
+<p>迭代：</p>
+</blockquote>
+<blockquote>
+<p>morris : 时间复杂度为O(n) 空间复杂度为O(1)  具体看另一个博客 Morris</p>
 </blockquote>
 
       
@@ -1879,180 +1969,6 @@ registerListeners();</code></pre><hr>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/03/%E8%AE%A1%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZWZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZWZ的博客嘻嘻">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/03/%E8%AE%A1%E7%BB%84/" class="post-title-link" itemprop="url">计组</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-03 17:38:33" itemprop="dateCreated datePublished" datetime="2021-07-03T17:38:33+08:00">2021-07-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 14:47:19" itemprop="dateModified" datetime="2021-07-04T14:47:19+08:00">2021-07-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="计算机中各个硬件部分"><a href="#计算机中各个硬件部分" class="headerlink" title="计算机中各个硬件部分"></a>计算机中各个硬件部分</h2><h3 id="冯诺依曼计算机的特点"><a href="#冯诺依曼计算机的特点" class="headerlink" title="冯诺依曼计算机的特点"></a>冯诺依曼计算机的特点</h3><ol>
-<li>计算机由五大部件组成：输出设备、输入设备、存储器、运算器、控制器。</li>
-<li>指令和数据以同等地位存储于存储器，可以按地址寻访</li>
-<li>指令和数据都是用二进制表示的</li>
-<li>指令由操作码和地址码组成的</li>
-<li>存储程序（会提前把指令和数据提前存储到存储器当中）</li>
-<li><strong>以运算器为中心</strong><br><a href="https://www.s2tu.com/image/G84WRC" target="_blank" rel="noopener"><img src="https://www.s2tu.com/images/2021/07/03/G84WRC.png" alt="G84WRC.png"></a></li>
-</ol>
-<h3 id="现代计算机的特点"><a href="#现代计算机的特点" class="headerlink" title="现代计算机的特点"></a>现代计算机的特点</h3><ol>
-<li>以存储器为中心</li>
-</ol>
-<blockquote>
-<p>CPU = 运算器+控制器<br>主机 = CPU+主存(运行内存)<br>IO设备 = 输入输出设备+辅存<br>硬件等于 = 主机+IO设备<br><img src="https://www.s2tu.com/images/2021/07/03/G8bffd.png" alt="G8bffd.png"></p>
-</blockquote>
-<h3 id="主存储器的基本组成"><a href="#主存储器的基本组成" class="headerlink" title="主存储器的基本组成"></a>主存储器的基本组成</h3><p>主存储器 = 存储体+MAR+MDR<BR><br>MAR = Memory Address Register (存储地址寄存器)<br>MDR = Memory Data Register （存储数据寄存器）</p>
-<h3 id="运算器的基本组成"><a href="#运算器的基本组成" class="headerlink" title="运算器的基本组成"></a>运算器的基本组成</h3><p>运算器：用于实现算术运算(如：加减乘除)、逻辑运算(如：与或非)</br></p>
-<ul>
-<li>ACC(Accumulator)：累加器，用于存放操作数，或运算结果</li>
-<li>MQ(Multiple-Quotient Register)：乘商寄存器，在算乘、除运算时，用于存放操作数或运算结果</li>
-<li>X：通用的操作数寄存器，用于存放操作数</li>
-<li><strong>ALU</strong> (Arithmetic and Logic Unit)：算术逻辑单元，通过内部复杂的电路实现算数运算、逻辑运算。</li>
-</ul>
-<h3 id="控制器的基本组成"><a href="#控制器的基本组成" class="headerlink" title="控制器的基本组成"></a>控制器的基本组成</h3><ul>
-<li><strong>CU</strong>(Control Unit)：控制单元，分析指令，给出控制信号</li>
-<li>IR(Instruction Register)：指令寄存器，存放当前执行的指令</li>
-<li>PC(Program Counter)：程序计数器，存放下一条指令的地址，有自动加一的功能</li>
-</ul>
-<h3 id="计算机工作过程"><a href="#计算机工作过程" class="headerlink" title="计算机工作过程"></a>计算机工作过程</h3><ul>
-<li><p>第一条指令的过程(把a取到ACC中)<br><img src="https://www.s2tu.com/images/2021/07/03/G82Q5C.png" alt="G82Q5C.png"></p>
-</li>
-<li><p>第二条指令(乘b得ab，存到ACC中)<br><img src="https://www.s2tu.com/images/2021/07/03/G8pI4v.png" alt="G8pI4v.png"></p>
-</li>
-</ul>
-<h4 id="取数指令的执行："><a href="#取数指令的执行：" class="headerlink" title="取数指令的执行："></a>取数指令的执行：</h4><blockquote>
-<p>从主存中指定地址处取数</p>
-</blockquote>
-<p>(PC) -&gt; MAR </br><br>M(MAR) -&gt; MDR </br><br>(MDR) -&gt; IR </br></p>
-<p>取指令结束 (PC)+1 -&gt; PC </br><br>OP(IR) -&gt; CU </br></p>
-<blockquote>
-<p>以上步骤都是必须经历的</p>
-</blockquote>
-<p>分析指令结束<br>Ad(IR) -&gt; MAR </br><br>M(MAR) -&gt; MDR </br><br>(MDR) -&gt; ACC </br><br>执行指令结束</p>
-<h2 id="计算机系统的层次结构"><a href="#计算机系统的层次结构" class="headerlink" title="计算机系统的层次结构"></a>计算机系统的层次结构</h2><ul>
-<li>首先是微程序机器(微指令系统)</li>
-<li>传统机器(用机器语言)</li>
-<li>操作系统机器</li>
-<li>汇编语言机器</li>
-<li>高级语言机器</li>
-</ul>
-<p>上层的机器是下层的基础，下层的机器是上层的拓展</p>
-<h3 id="三种级别的语言"><a href="#三种级别的语言" class="headerlink" title="三种级别的语言"></a>三种级别的语言</h3><ol>
-<li>机器语言(二进制代码)</li>
-<li>汇编语言(助记符)</li>
-<li>高级语言</li>
-</ol>
-<p>首先高级语言要通过编译程序(即编译器)转换为汇编语言，接着汇编语言要通过汇编程序(即汇编器)转换为机器语言。</br></p>
-<p>于是有了编译汇编连接三部程序</p>
-<p>有的源程序可以直接通过解释程序(即解释器)转化为机器语言 (比如python，JavaScript，shell等)</p>
-<blockquote>
-<p>编译程序：将高级语言编写的程序<strong>全部</strong>语句<strong>一次全部</strong>翻译成机器语言程序，后在执行机器语言程序(只需翻译一次)</p>
-</blockquote>
-<blockquote>
-<p>解释程序：将源程序的<strong>一条</strong>语句翻译成对应于机器语言的语句，并立即执行。紧接着在翻译下一句(每次执行都要翻译)</p>
-</blockquote>
-<h2 id="计算机的性能指标"><a href="#计算机的性能指标" class="headerlink" title="计算机的性能指标"></a>计算机的性能指标</h2><h3 id="存储器的容量"><a href="#存储器的容量" class="headerlink" title="存储器的容量"></a>存储器的容量</h3><ul>
-<li>1B = 8bit 1K = 1024B 1M = 1024K 1G = 1024MB 1T = 1024G</li>
-</ul>
-<p>越大表示存储器越大</p>
-<h3 id="CPU的性能指标"><a href="#CPU的性能指标" class="headerlink" title="CPU的性能指标"></a>CPU的性能指标</h3><p>XXXGHz代表了CPU的主频：CPU内数字脉冲信号震荡的频率</p>
-<ul>
-<li><p><strong>CPU主频</strong>(时钟频率) = 1/cpu时钟周期（1/λ）</p>
-</li>
-<li><p><strong>CPI</strong>(Clock cycle Per Instruction):执行一条指令所需的时钟周期数</p>
-</li>
-<li><p><strong>执行一条指令的耗时</strong> = CPI x CPU时钟周期</p>
-<blockquote>
-<p>不同的指令、CPI不同，甚至相同的指<br>令，CPI也有可能有变化</p>
-</blockquote>
-</li>
-</ul>
-<p>Eg:某CPU的主频是1000Hz，某程序包含100条指令，平均来看指令的CPI=3.该程序在该CPU上执行需要多久？</p>
-<p>100 * 3 *（1/1000）= 0.3s</p>
-<ul>
-<li><p><strong>CPU执行时间</strong>(整个程序的耗时) = CPU时钟周期数/主频 = (指令条数*CPI)/主频</p>
-</li>
-<li><p><strong>IPS</strong>(Instruction Per Second):每秒执行多少条指令</p>
-</li>
-<li><p><strong>FLOPS</strong>(Floating-point Operations Per Second):每秒执行多少次浮点运算</p>
-</li>
-</ul>
-<h3 id="系统整体的性能指标"><a href="#系统整体的性能指标" class="headerlink" title="系统整体的性能指标"></a>系统整体的性能指标</h3><p><strong>数据通路带宽</strong>：数据总线一次所能并行传送信息的位数(各硬件部分通过数据总线传输数据)</p>
-<p><strong>吞吐量：</strong>指系统在单位时间内处理请求数量。</p>
-<p><strong>响应时间</strong>：指从用户向计算机发送一个请求到计算器做出相应并获得他所需要的结果的等待时间</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
-<li><p>主频高的CPU一定比主频低的CPU快吗</p>
-<ul>
-<li>不一定，如果两个CPU，A的主频为2GHz，平均CPI = 10，B的主频为1GHz，平均CPI = 1，则A的执行时间是 0.2 而B的时间是1</li>
-</ul>
-</li>
-<li><p>若A、B两个的CPU的平均CPI相同，那么A一定快吗</p>
-<ul>
-<li>不一定，还得看指令系统，如果A不支持乘法指令，只能多次用加法实现，而B支持乘法指令，同样也是B快</li>
-</ul>
-</li>
-<li><p>基准程序执行的越快则说明机器性能越好吗？</p>
-<ul>
-<li>基准程序中的语句存在频度差异，运行结果不能完全说明问题</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -2123,7 +2039,7 @@ registerListeners();</code></pre><hr>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
