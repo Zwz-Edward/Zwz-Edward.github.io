@@ -165,6 +165,2300 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/Java/" class="post-title-link" itemprop="url">Java</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-17 14:58:56" itemprop="dateModified" datetime="2020-06-17T14:58:56+08:00">2020-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Java-从入门到入土"><a href="#Java-从入门到入土" class="headerlink" title="Java (从入门到入土)"></a>Java (从入门到入土)</h1><p>Java 的固定的书写格式：<code>public static void main(String[] args){...}</code></p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ul>
+<li>Java虚拟机的内存可以分为三个区域，栈stack、堆heap、方法区method area。<ul>
+<li><ol>
+<li>栈：栈描述的是方法执行的内存模型，每个方法被调用都会创建一个栈帧（存储局部变量、操作数、方法出口等）</li>
+<li>JVM为每个线程创建了一个栈，用于存放该线程执行方法的信息（实际参数、局部变量等）</li>
+<li>栈属于线程私有，不能实现线程间的共享</li>
+<li>栈的储存特性是：先进后出，后进先出</li>
+<li>栈是由系统自动分配，速度快！栈是一个连续的内存空间。 </li>
+</ol>
+<ul>
+<li><ol>
+<li>堆用于存储创建好的对象和数组（数组也是对象）</li>
+<li>JVM只有一个堆，被所有线程共享</li>
+<li>堆是一个不连续的内存空间，分配灵活，速度慢。</li>
+</ol>
+</li>
+<li>1.方法区（又叫静态区）特点：JVM只有一个方法区，被所有线程共享！<ol start="2">
+<li>方法区实际也是堆，只是用于存储类、常量相关的信息！</li>
+<li>用于存放程序中永远是不变的唯一的内容。(类信息[class对象]、静态变量、字符串常量等)</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归是一种常见解决问题的方法，即把问题逐渐简单化。递归的基本思想就是”自己低矮哦用自己”，一个使用递归技术的方法将会直接或间接的调用自己 .</p>
+<ul>
+<li>递归体</br><br>例如：输出在a里面调用自己的时候<br>没有递归体和递归头则会陷入死循环</li>
+</ul>
+<p><code>static int count = 0;</code></p>
+<pre><code>static void a() {
+    System.out.println(&quot;a&quot;);
+    count++;
+    if (count &lt; 10) {
+        a();
+    } else {
+        return;
+    }</code></pre><blockquote>
+<p>if-else 语句可以完美结果问题.</p>
+</blockquote>
+<p>但是递归体耗时耗力很影响内存，因此能不用递归的地方就不用递归，能用递归一般能用迭代来完成。</p>
+<h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><p>Java作为一种面向对象语言支持</p>
+<ul>
+<li>多态</li>
+<li>继承</li>
+<li>封装</li>
+<li>抽象</li>
+<li>类</li>
+<li>对象</li>
+<li>实例</li>
+<li>方法</li>
+<li>重载</li>
+</ul>
+<ol>
+<li>对象：对象是类的一个实例，比如一条狗(python也是拿狗做例子- -)它有状态：颜色、名字、品种；有行为：摇尾巴、吃、叫等。</li>
+</ol>
+<p>很简单的例子，比如你是个男的，你想要女朋友女朋友就是一个类（class），你可以选很多人比如：石原里美，新垣结衣等等这些就是对象（object）</p>
+<p>相比于软件，软件也有状态和行为。软件的对象的状态就是属性，行为通过方法体现。同样的，方法操作对象内部状态的改变，对象的互相调用也是通过方法来完成的。</p>
+<ol start="2">
+<li>类：类是一个模板，它描述一类对象的行为和状态 看例子：</li>
+</ol>
+<pre><code>public class Dog{
+  String breed;
+  int age;
+  String color;
+  void barking(){
+  }
+
+  void hungry(){
+  }
+
+  void sleeping(){
+  }
+}</code></pre><p>一个类可以包含以下类型变量：</p>
+<ul>
+<li>局部变量：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li>成员变量：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li>类变量：类变量也声明在类中，方法体之外，但必须声明为static类型。</li>
+</ul>
+<p>一个类可以拥有多个方法，在上面的例子中：barking()、hungry()和sleeping()都是Dog类的方法。</p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>每个类都有构造方法。如果没有显式地为类定义构造方法，Java编译器将会为该类提供一个默认构造方法。例子：</p>
+<pre><code>Public class Puppy{
+public Puppy(){
+}
+
+public Puppy(String name){
+    // 这个构造器仅有一个参数：name
+    }
+}    </code></pre><h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>对象是根据类创建的。在Java中，使用关键字new来创建一个新的对象。</p>
+<ol>
+<li>声明：声明一个对象，包括对象名称和类型。</li>
+<li>实例化：使用关键字new来创建一个对象。</li>
+<li>初始化：使用new创建对象时，调用构造方法对象</li>
+</ol>
+<pre><code>public class Puppy{
+       public Puppy(String name){
+      //这个构造器仅有一个参数：name
+      System.out.println(&quot;小狗的名字是 : &quot; + name ); 
+   }
+   public static void main(String[] args){
+      // 下面的语句将创建一个Puppy对象
+      Puppy myPuppy = new Puppy( &quot;tommy&quot; );
+   }
+}</code></pre><h4 id="源代码的声明规则："><a href="#源代码的声明规则：" class="headerlink" title="源代码的声明规则："></a>源代码的声明规则：</h4><ol>
+<li>一个源代码只能有一个Public类但可以有多个非Public类</li>
+<li>源文件名应该与Public类名保持一致。</li>
+<li>类如果在一个包内，package语句应该位于首行。</li>
+<li>import语句位于package和Public类之间。</li>
+<li>import语句和package语句对源文件中定义的所有类都有效。在同一源文件中，不能给不同的类不同的包声明。</li>
+</ol>
+<h5 id="Java包"><a href="#Java包" class="headerlink" title="Java包"></a>Java包</h5><p>包主要用于对类和接口分类。</p>
+<h5 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h5><p>在Java中，如果给出一个完整的限定名，包括包名和类名，则Java编译器就可以很容易的定位源代码或类。</p>
+<pre><code>import java.io.*; //从java.io中导入 .* 所有的类</code></pre><h3 id="Java基本数据类型"><a href="#Java基本数据类型" class="headerlink" title="Java基本数据类型"></a>Java基本数据类型</h3><ol>
+<li>byte 数据类型是8位，有符号，以二进制补码来表示的整数Min值为-128 Max值为127</li>
+<li>short 数据类型16位有符号二进制补码表示的整数 Min：-32768 Max:32767</li>
+<li>int 数据类型是32位、有符号的以二进制补码表示的整数 Min：-2^31 Max:2^31-1</li>
+<li>long 数据类型是 64 位、有符号的以二进制补码表示的整数 Min:-2^63 Max:2^63-1 </li>
+<li>float 数据类型是单精度、32位、符合IEEE 754标准的浮点数</li>
+<li>double 数据类型是双精度、64 位、符合IEEE 754标准的浮点数</li>
+<li>boolean 数据类型表示一位的信息 只有True和False两个值</li>
+<li>char 类型是一个单一的 16 位 Unicode 字符</li>
+</ol>
+<h4 id="Java常量"><a href="#Java常量" class="headerlink" title="Java常量"></a>Java常量</h4><p>Java常量用final声明 <code>final double PI = 3.1415926</code></p>
+<h3 id="Java变量类型"><a href="#Java变量类型" class="headerlink" title="Java变量类型"></a>Java变量类型</h3><ul>
+<li>类变量:独立于方法之外的变量，用static修饰</li>
+<li>实例变量:独立于方法之外的变量，不过没用static修饰</li>
+<li>局部变量:类的方法中的变量</li>
+</ul>
+<pre><code>public class Variable{
+    static int allClicks=0;    // 类变量
+
+    String str=&quot;hello world&quot;;  // 实例变量
+
+    public void method(){
+
+        int i =0;  // 局部变量
+
+    }
+}</code></pre><h3 id="Java修饰符"><a href="#Java修饰符" class="headerlink" title="Java修饰符"></a>Java修饰符</h3><p>主要分为两类</p>
+<ol>
+<li>访问修饰符</li>
+<li>非访问修饰符<br>修饰符用来定义类、方法或变量，通常放在语句的最前端。例如</li>
+</ol>
+<pre><code>public class ClassName {
+       // ...
+}
+private boolean myFlag;
+static final double weeks = 9.5;
+protected static final int BOXWIDTH = 42;
+public static void main(String[] arguments) {
+   // 方法体
+}</code></pre><h4 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h4><ul>
+<li>default(默认，啥都不写)：同一包内可见，不使用任何修饰符。</li>
+<li>private：在同一类内可见。使用对象：变量、方法。注意：不能修饰类(外部类)</li>
+<li>public：对所有类可见，使用对象：类、接口、变量、方法</li>
+<li>protect：对同一包内的类和所有子类可见。使用对象：变量、方法。注意不能修饰类（外部类）</li>
+</ul>
+<p><strong>private</strong></br><br>私有访问修饰符是最严格的访问级别，所有被声明为private的方法、变量和构造方法只能被所属类访问，并且类和接口不能声明为<br>private。</br><br>声明为私有访问类型的变量只能通过类中公共的getter方法被外部类访问。</br><br>Private 访问修饰符的使用主要用来隐藏类的实现细节和保护类的数据例子：</p>
+<pre><code>public class Logger{
+    private String format;
+    public String getFormat(){
+        return format;
+    }
+    public void setFormat(String format){
+        this.format=format;
+    }
+}</code></pre><p>实例中Logger类中的format变量为私有变量，所以其他类不能直接得到和设置该变量的值。为了使其他类可以访问private定义的变量，我们构造了两个public的方法来获取<code>getFormat()</code>和设置format<code>setFormat(String)</code>的值.</p>
+<p><strong>public</strong></br><br>被声明为public的类，方法，构造方法和接口可以被其他类访问。其中类的所有公有方法和变量都能被子类继承。</p>
+<p><strong>protected</strong></br><br>protected需要从以下两个点来分析说明：</p>
+<ul>
+<li>子类和基类在同一包内:被声明为protected的变量、方法和构造器能被同一个包中的任何其他类访问；</li>
+<li>子类与基类不在同一个包内：那么子类中，子类实例可以访问其从基类继承而来的protected方法，而不能访问基类实例的protected方法。</li>
+</ul>
+<blockquote>
+<p>在面向对象设计中，被定义为包含所有实体共性的class类型，被称为“基类”。</p>
+</blockquote>
+<p>protected 可以修饰数据成员，构造方法，方法成员，不能修饰类(内部类除外).</br><br>接口及接口的成员变量和成员方法不能声明为 protected。<br><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-protected.gif" alt=""></p>
+<blockquote>
+<p>以我的理解，应该是包内所有类可访问，但包外的子类继承之后才能用。</p>
+</blockquote>
+<h4 id="需要注意的继承规则"><a href="#需要注意的继承规则" class="headerlink" title="需要注意的继承规则"></a>需要注意的继承规则</h4><ul>
+<li>父类中声明为public的方法在子类中也必须要是public</li>
+<li>父类中声明为protected的方法在子类中要么声明为protected要么声明为private。</li>
+<li>父类中声明为private的方法，不能被继承。</li>
+</ul>
+<h4 id="非访问修饰符"><a href="#非访问修饰符" class="headerlink" title="非访问修饰符"></a>非访问修饰符</h4><ol>
+<li>static修饰符，用来修饰类方法和类变量</li>
+<li>final 修饰符，用来修饰类、方法和变量，final修饰的类不能被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。</li>
+<li>abstract修饰符，用来创建抽象类和抽象方法。</li>
+<li>synchronized和volatile修饰符，主要用于线程的编程。</li>
+</ol>
+<h3 id="Java-String-类"><a href="#Java-String-类" class="headerlink" title="Java String 类"></a>Java String 类</h3><h4 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h4><pre><code>`String greeting = &quot;zwz&quot;;`</code></pre><p>在遇到字符串常量时，这里的值是”zwz”，编译器会使用该值创建一个String对象。与其他对象一样，可以使用关键字的构造方法来创建String对象。例如</p>
+<pre><code>public class StringDemo{
+   public static void main(String args[]){
+      char[] helloArray = { &apos;r&apos;, &apos;u&apos;, &apos;n&apos;, &apos;o&apos;, &apos;o&apos;, &apos;b&apos;};
+      String helloString = new String(helloArray);  
+      System.out.println( helloString );
+   }
+}</code></pre><p>编译结果是 <code>runoob</code></p>
+<blockquote>
+<p>注意String类是用final修饰的，所以不可以修改，一旦创建了String对象，那他的值就无法改变了</p>
+</blockquote>
+<h4 id="StringBuffer-amp-StringBuilder"><a href="#StringBuffer-amp-StringBuilder" class="headerlink" title="StringBuffer &amp; StringBuilder"></a>StringBuffer &amp; StringBuilder</h4><p>如果想对值进行修改，那么需要用这俩类。</p>
+<p>与String类不同的是，StringBuffer 和 StringBuilder类的对象能够被多次修改，并且不产生新的未被使用的对象。</p>
+<p>StringBuilder与StringBuffer之间最大的区别就说前者不是线程安全的(不能同步访问)<br>但是前者的速度比后者大，所以多数情况用前者类。但是在要求线程安全的情况下，必须使用后者类。小栗子：</p>
+<pre><code>public class Test{
+  public static void main(String args[]){
+    StringBuffer sBuffer = new StringBuffer(&quot;菜鸟教程官网：&quot;);
+    sBuffer.append(&quot;www&quot;);
+    sBuffer.append(&quot;.runoob&quot;);
+    sBuffer.append(&quot;.com&quot;);
+    System.out.println(sBuffer);  
+  }
+}</code></pre><h5 id="常用的用法-和python很像"><a href="#常用的用法-和python很像" class="headerlink" title="常用的用法(和python很像)"></a>常用的用法(和python很像)</h5><table>
+        <tr>
+            <th>1</th>
+            <th>public StringBuffer append(String s)
+    将指定的字符串追加到此字符序列。</th>
+        </tr>
+        <tr>
+            <th>2</th>
+            <th>public StringBuffer reverse()
+     将此字符序列用其反转形式取代。</th>
+        </tr>
+        <tr>
+            <th>3</th>
+            <th>public delete(int start, int end)
+移除此序列的子字符串中的字符。</th>
+        </tr>
+        <tr>
+            <th>4</th>
+            <th>ublic insert(int offset, int i)
+将 int 参数的字符串表示形式插入此序列中。</th> 
+        </tr>
+        <tr>
+            <th>5</th>
+            <th>replace(int start, int end, String str)
+使用给定 String 中的字符替换此序列的子字符串中的字符。</th>
+        </tr>
+</table>
+
+<h3 id="Java-时间日期"><a href="#Java-时间日期" class="headerlink" title="Java 时间日期"></a>Java 时间日期</h3><p>Java.util 包提供了Date类来封装当前的日期和时间。Date类提供两个构造函数来实例化Date对象。</p>
+<p>第一个构造函数使用当前日期和时间来初始化对象。</p>
+<pre><code>`Date()`</code></pre><p>第二个构造函数接收一个参数，参数是从1970年1月1日起的毫秒数。</p>
+<pre><code>`Date(long millisec)`</code></pre><h4 id="获取当前的日期和时间"><a href="#获取当前的日期和时间" class="headerlink" title="获取当前的日期和时间"></a>获取当前的日期和时间</h4><p>使用Date对象的toString()方法来打印当前日期和时间</p>
+<pre><code>import java.util.Date;
+public static void main(String arg[]){
+    //初始化Date 对象
+    Date date = new Date();
+
+    //使用toString()显示日期时间
+    System.out.println(date.toString());
+}    </code></pre><p>结果会显示(当前的日期)：<code>Thu Apr 30 10:23:01 CST 2020</code></p>
+<h4 id="比较日期"><a href="#比较日期" class="headerlink" title="比较日期"></a>比较日期</h4><p>Java使用以下2种方法来比较两个日期：</p>
+<ul>
+<li>使用getTime()方法获取两个日期(1970.1.1到现在的毫秒数)，然后比较这两个值。</li>
+<li>使用方法before(),after(),equals()。比如new Date(99,2,12).before(new Date(99,2,18))返回True;</li>
+</ul>
+<h4 id="使用SimpleDateFormat格式化日期"><a href="#使用SimpleDateFormat格式化日期" class="headerlink" title="使用SimpleDateFormat格式化日期"></a>使用SimpleDateFormat格式化日期</h4><p>SimpleDateFormat是一个以语言环境敏感的方式来格式化和分析日期的类。SimpleDateFormat允许你选择任何用户自定义日期格式来运行。例如</p>
+<pre><code>import  java.util.*;
+import java.text.*;
+
+public class DateDemo {
+   public static void main(String args[]) {
+
+      Date dNow = new Date( );
+      SimpleDateFormat ft = new SimpleDateFormat (&quot;yyyy-MM-dd hh:mm:ss&quot;);
+
+      System.out.println(&quot;当前时间为: &quot; + ft.format(dNow));
+   }
+}</code></pre><p>会输出<code>2020-04-30 05:17:50</code><br>其中<code>SimpleDateFormat ft = new SimpleDateFormat (&quot;yyyy-MM-dd hh:mm:ss&quot;);</code>这条语句确立了转换格式，其中yyyy是完整的公元年，MM是月份，dd是日期，HH：mm:ss是小时、分钟、秒。</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态是同一个行为具有多个不同表现形式或形态的能力。<br>多态就是同一个接口，使用不同的实例而执行不同操作。</p>
+<h4 id="多态的优点"><a href="#多态的优点" class="headerlink" title="多态的优点"></a>多态的优点</h4><ol>
+<li>消除类型之间的耦合关系</li>
+<li>可替换性</li>
+<li>可扩充性</li>
+<li>接口性</li>
+<li>灵活性</li>
+<li>简化性</li>
+</ol>
+<h4 id="多态存在的三个必要条件"><a href="#多态存在的三个必要条件" class="headerlink" title="多态存在的三个必要条件"></a>多态存在的三个必要条件</h4><ol>
+<li>继承</li>
+<li>重写</li>
+<li>父类引用指向子类对象</li>
+</ol>
+<h3 id="Java正则表达式-对不起暂时看不懂"><a href="#Java正则表达式-对不起暂时看不懂" class="headerlink" title="Java正则表达式(对不起暂时看不懂)"></a>Java正则表达式(对不起暂时看不懂)</h3><ol>
+<li>正则表达式定义了字符串的模式。</li>
+<li>正则表达式可以用来搜索、编辑或处理文本。</li>
+<li>正则表达式并不仅限某一种语言，但是在每一种语言中有细微的差别。</li>
+</ol>
+<h3 id="Java方法与构造方法-见另一博客-方法与构造方法"><a href="#Java方法与构造方法-见另一博客-方法与构造方法" class="headerlink" title="Java方法与构造方法(见另一博客-方法与构造方法)"></a>Java方法与构造方法(见另一博客-方法与构造方法)</h3><h3 id="数组的拷贝，扩容和删除"><a href="#数组的拷贝，扩容和删除" class="headerlink" title="数组的拷贝，扩容和删除"></a>数组的拷贝，扩容和删除</h3><pre><code>public class TestArrayCopy {
+    public static void main(String[] args) {
+     String[] str = {&quot;阿里&quot;,&quot;京东&quot;,&quot;尚学堂&quot;,&quot;百度&quot;,&quot;亚马逊&quot;};
+
+     removeElement(str,1);
+
+     str = extendRange(str);
+
+    }
+
+    public static void testBasicCopy(){
+        String[] s1 = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;,&quot;ee&quot;};
+        String[] s2 = new String[10];
+        System.arraycopy(s1,2,s2,6,3);
+        for (int i = 0 ;i&lt;s2.length;i++) {
+            System.out.println(i+&quot;-- &quot;+s2[i]);
+        }
+    }
+
+    //测试从数组中删除某个元素（本质上还是数组的拷贝）
+    public static void testBasicCopy2(){
+        String[] s1 = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;,&quot;ee&quot;};
+        //String[] s2 = new String[5];
+
+        System.arraycopy(s1,3,s1,3-1,s1.length-3);
+
+
+        s1[s1.length-1] = null;
+        for (int i = 0 ;i&lt;s1.length;i++) {
+            System.out.println(i + &quot;-- &quot; + s1[i]);
+        }
+    }
+
+    //测试删除数组中指定索引位置的元素，并返回
+    public static String[] removeElement(String[] s,int index){
+
+
+        System.arraycopy(s,index+1,s,index,s.length-index-1);
+
+
+        s[s.length-1] = null;
+        for (int i = 0 ;i&lt;s.length;i++) {
+            System.out.println(i + &quot;-- &quot; + s[i]);
+
+        }
+        return s;
+    }
+
+    //数组的扩容(本质是：先定义一个更大的数组，然后讲原数组内容原封不动拷贝到新数组里)
+    public static String[] extendRange(String[] s1){
+    //String[] s1 = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;};
+
+    String[] s2 = new  String[s1.length+10];
+
+    System.arraycopy(s1,0,s2,0,s1.length);
+    for (String temp:s2){
+        System.out.println(temp);
+    }
+        return s2;
+    }
+
+}</code></pre><p>作用为删除的会输出：</br><br>0– 阿里 1–尚学堂 2– 百度 3–亚马逊 4– null (删除了京东)</p>
+<p>作用为扩容的会输出：</br><br>阿里 尚学堂 百度 亚马逊 null null null null null null null null null null null</p>
+<p>由于先调用了remove所以京东不见了。</p>
+<h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p>对于包装类来说，这些类的用途主要包含两种：</p>
+<ol>
+<li>作为和基本数据类型对应的类型存在，方便涉及到对象的操作，如Object[]、集合等的操作。</li>
+<li>包含每种基本数据类型的相关属性如最大值、最小值等，以及相关的操作方法(这些操作方法的作用是在基本数据类型、包装类对象、字符串之间提供相互之间的转化!)。</li>
+</ol>
+<p>例子：</p>
+<pre><code>/*
+Integer类的使用。其他包装类用法类似，课下自己学
+*/
+public class TestWrappedClass {
+    public static void main(String[] args) {
+        //基本数据类型转换成包装类对象
+        Integer b = Integer.valueOf(30);
+        Integer a = new Integer(3);
+
+        //把包装类对象转成基本数据类型
+        int c = b.intValue();
+        double d = b.intValue();
+
+        //把字符串转换成包装类对象
+        Integer e = new Integer(&quot;999&quot;);
+        Integer f = Integer.parseInt(&quot;9999988&quot;);
+
+        //把包装类对象转换成字符串
+        String str = f.toString();
+
+        //常见的常量
+        System.out.println(&quot;int类型最大的整数：&quot;+Integer.MAX_VALUE);
+    }
+}</code></pre><p>会输出Int型Max值：2147483647</p>
+<h3 id="自动装箱与拆箱"><a href="#自动装箱与拆箱" class="headerlink" title="自动装箱与拆箱"></a>自动装箱与拆箱</h3><p>在JDK1.5以后提供了自动装箱和拆箱什么意思呢？之前<code>Interge i =100</code>这段代码是错误的，但是现在是对的；</p>
+<pre><code>Integer i = 100;//这就是自动装箱
+相当于编译器自动执行了一下代码
+Integer i = Integer.valueOf(100).</code></pre><p>自动拆箱：</p>
+<pre><code>Integer i = 100;
+int j = i;//自动拆箱
+//相当于编译器自动为您作以下的语法编译：
+int j = i.intValue();</code></pre><p>但是要注意空指针异常问题例如：</p>
+<pre><code>public class Test1 {
+    public static void main(String[] args) {
+        Integer i = null;
+        int j = i;
+    }
+}</code></pre><p>这里会报空指针错；因为null表示i没有指向任何对象的实体，但作为对象名称是合法的。</p>
+<h4 id="包装类缓存问题"><a href="#包装类缓存问题" class="headerlink" title="包装类缓存问题"></a>包装类缓存问题</h4><p>整型、char型所对应的包装类，在自动装箱时，对于-128~127之间的值会进行缓存处理，其目的是提高效率。<br>比如：</p>
+<pre><code>public class Test3 {
+    public static void main(String[] args) {
+        Integer in1 = -128;
+        Integer in2 = -128;
+        System.out.println(in1 == in2);//true 因为123在缓存范围内
+        System.out.println(in1.equals(in2));//true
+        Integer in3 = 1234;
+        Integer in4 = 1234;
+        System.out.println(in3 == in4);//false 因为1234不在缓存范围内
+        System.out.println(in3.equals(in4));//true
+    }
+}</code></pre><p>结果是:</br><br>true</br><br>true</br><br>false</br><br>true</br></p>
+<p>运行的效果图为<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495596432165735.png" alt=""></p>
+<blockquote>
+<p>意思就是当年应用在缓存区内的数字可以直接调用缓存区中的对象，所以  123==123(在缓存中调用的是同一个对象)为True 但是in3 1234== in4 1234 是不同的对象所以为False 因此以后比较大小的时候用<code>equals</code>比较同一个对象是不是一个则用<code>==</code></p>
+</blockquote>
+<h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><h4 id="文件的创建"><a href="#文件的创建" class="headerlink" title="文件的创建"></a>文件的创建</h4><p>以pathname为路径创建File对象，如果pathname是相对路径，则默认的当前路径在系统属性user.dir中储存，如</p>
+<pre><code>import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+/*
+测试File类
+*/
+public class TestFile {
+    public static void main(String[] args) throws IOException {
+        File f = new File(&quot;d:/a.txt&quot;); //绝对路径：在d盘目录下创建a.txt
+        System.out.println(f);
+        f.renameTo(new File(&quot;d:/b.txt&quot;));// 改名字
+
+        System.out.println(System.getProperty(&quot;user.dir&quot;));
+
+        File f2 = new File(&quot;gg.txt&quot;);  // 相对路径：默认放到user.dir目录下(即这里是面向对象目录下)
+        f2.createNewFile();
+    }
+}</code></pre><p>在此，user.dir就是本项目的目录，如我在面向对象目录中创建了个 gg.txt 文件.而我又在D盘根下创建了一个a.txt改名为了b.txt。</p>
+<p><strong>通过File对象可以访问文件的属性：</strong></p>
+<p><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495611382530451.png" alt=""></p>
+<h4 id="测试File类访问属性的基本用法"><a href="#测试File类访问属性的基本用法" class="headerlink" title="测试File类访问属性的基本用法"></a>测试File类访问属性的基本用法</h4><pre><code>System.out.println(f2.exists());
+System.out.println(f2.isDirectory());
+System.out.println(f2.isFile());
+System.out.println(new Date(f2.lastModified()));
+System.out.println(f2.getName());
+System.out.println(f2.getPath());</code></pre><p>结果</p>
+<pre><code>true
+false
+true
+Tue May 05 21:18:22 CST 2020
+gg.txt
+gg.txt</code></pre><p><strong>通过File对象创建空文件或目录(在该对象所指的文件或目录不存在的情况下)</strong><br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495611400819053.png" alt=""></p>
+<h4 id="使用mkdir创建目录"><a href="#使用mkdir创建目录" class="headerlink" title="使用mkdir创建目录"></a>使用mkdir创建目录</h4><pre><code>import java.io.File;
+public class TestFile3 {
+    public static void main(String[] args) throws Exception {
+        File f = new File(&quot;d:/c.txt&quot;);
+        f.createNewFile(); // 会在d盘下面生成c.txt文件
+        f.delete(); // 将该文件或目录从硬盘上删除
+        File f2 = new File(&quot;d:/电影/华语/大陆&quot;);
+        boolean flag = f2.mkdir(); //目录结构中有一个不存在，则不会创建整个目录树
+        System.out.println(flag);//创建失败
+        boolean flag1 = f3.mkdirs();//目录结构中有一个不存在也没关系；创建整个目录树
+        System.out.println(flag1);//创建成功
+    }
+}</code></pre><p>结果</p>
+<pre><code>false
+true</code></pre><h4 id="递归遍历目录结构和树状展现"><a href="#递归遍历目录结构和树状展现" class="headerlink" title="递归遍历目录结构和树状展现"></a>递归遍历目录结构和树状展现</h4><pre><code>import java.io.File;
+
+public class PrintFileTree {
+    public static void main(String[] args) {
+        File f = new File(&quot;E:\\Desktop&quot;);
+
+        printFile(f,0);
+    }
+
+
+    static void printFile(File file,int level){
+
+        //输出层数
+        for(int i = 0;i&lt;level;i++){
+            System.out.println(&quot;-&quot;);
+        }
+
+        System.out.println(file.getName());
+        if (file.isDirectory()){
+            File[] files = file.listFiles();
+
+            for (File temp:files){
+            printFile(temp,level+1);
+            }    //强化for语句
+        }
+    }
+}</code></pre><p>会输出</p>
+<pre><code>Desktop
+-
+720P_4000K_178868721.mp4
+-
+Kaede cosplay.mp4</code></pre><h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><pre><code>/*
+测试枚举*/
+public class TestEnum {
+    public static void main(String[] args) {
+        System.out.println(Season.SPRING);
+
+        Season a = Season.AUTUMN;
+
+        switch (a){
+            case SPRING:
+                System.out.println(&quot;春天来啦，播种的季节&quot;);
+                break;
+            case SUMMER:
+                System.out.println(&quot;夏天来了游泳的季节&quot;);
+                break;
+            case AUTUMN:
+                System.out.println(&quot;秋天来了收获的季节&quot;);
+                break;
+            case WINTER:
+                System.out.println(&quot;冬天来了冬眠的季节&quot;);
+                break;
+        }
+
+   }
+}
+
+enum Season{
+    SPRING,SUMMER,AUTUMN,WINTER
+}
+enum Weak{
+    星期一,星期二,星期三,星期四,星期五,星期六,星期天
+}</code></pre><p>挺简单的= =</p>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p><strong>引子：</strong>在工作中，可能会遇到很多异常的情况比如：写某个模块，用户输入的不符合你的要求，你的程序要打开某个文件，这个文件不存在或者格式不对，你要读取数据库的数，数据为空，程序运行的时候内存或硬盘满了等等…</p>
+<p>这些问题我们称之为异常，英文名为Exception，就是意料之外的意思。</p>
+<p>异常机制本质就是当程序出现错误，程序安全退出的机制。</p>
+<p>Java是采用面向对象的方式来处理异常的。处理过程：</p>
+<ol>
+<li>抛出异常：在执行一个方法时，如果发生异常，则这个方法生成代表该异常的一个对象，停止当前执行路径，并把异常对象提交给JRE。</li>
+<li>捕获异常：JRE得到该异常后，寻找相应的代码来处理该异常。JRE在方法的调用栈中查找，从生成异常的方法开始回溯，直到找到相应的异常处理代码为止。</li>
+</ol>
+<p>比如：</p>
+<pre><code>public static void main(String[] args){
+    int i=1/0; //除数为0
+    System.out.println(i);
+}</code></pre><p>运行结果会是</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero;</code></pre><p>Exception是程序本身能够处理的异常，如：空指针异常(NullPointerException)、数组下标越界异常(ArrayIndexOutOfBoundsException)、类型转换异常(ClassCastException)、算术异常(ArithmeticException)等。</p>
+<p>Exception类是所有异常类的父类，其子类对应了各种各样可能出现的异常事件。 通常Java的异常可分为：</p>
+<ol>
+<li>RuntimeException 运行时异常</li>
+<li>CheckedException 已检查异常</li>
+</ol>
+<h4 id="异常分类"><a href="#异常分类" class="headerlink" title="异常分类"></a>异常分类</h4><p>JDK 中定义了很多异常类，这些类对应了各种各样可能出现的异常事件，所有异常对象都是派生于Throwable类的一个实例。如果内置的异常类不能够满足需要，还可以创建自己的异常类。</p>
+<p>Java对异常进行了分类，不同类型的异常分别用不同的Java类表示，所有异常的根类为java.lang.Throwable，Throwable下面又派生了两个子类：Error和Exception。Java异常类的层次结构如图6-2所示。<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170520/1495272017528669.png" alt=""></p>
+<h4 id="RuntimeException运行时异常"><a href="#RuntimeException运行时异常" class="headerlink" title="RuntimeException运行时异常"></a>RuntimeException运行时异常</h4><pre><code>    public class TestException {
+    public static void main(String[] args) {
+        int a = 0;
+        int b = 1;
+        if (a!=0) {
+            System.out.println(b / a);
+        }
+
+        String str = null;
+        if (str != null) {
+            str.length();
+        }
+
+        Animal d = new Dog();
+        if (d instanceof Cat) {
+            Cat c = (Cat) d;
+        }
+    }
+}
+class Animal{
+
+}
+class Dog extends Animal{
+
+}
+class Cat extends Animal{
+
+}</code></pre><p>里面有 <code>/0</code>异常 有空指针异常，还有类型转换异常</p>
+<blockquote>
+<p>if里面都是解决异常的方法。</p>
+</blockquote>
+<h4 id="CheackedException"><a href="#CheackedException" class="headerlink" title="CheackedException"></a>CheackedException</h4><p>所有不是RuntimeException的异常，统称为Checked Exception，又被称为“已检查异常”，如IOException、SQLException等以及用户自定义的Exception异常。 这类异常在编译时就必须做出处理，否则无法通过编译。<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170520/1495273524104532.png" alt=""></p>
+<h4 id="异常的捕获"><a href="#异常的捕获" class="headerlink" title="异常的捕获"></a>异常的捕获</h4><p>捕获异常是通过3个关键词来实现的：try–catch–finally。用try执行一段程序，如果出现异常，系统抛出一个异常，可以通过它的类型来捕捉(catch)并处理它，最后一步是通过finally语句为异常处理提供一个统一的出口，finally所指定的代码都要被执行(catch语句可以又多条；finally语句最多只有一条，根据自己的需要可有可无)<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170520/1495273755315926.png" alt=""></p>
+<p><strong>1.try:</strong></br><br>try语句指定了一段代码，该段代码就是异常捕获并处理的范围。在执行过程中，当任意一条语句产生异常时，就会跳过该条语句中后面的代码，代码中可以产生并抛出一种或几种类型的异常对象，它后面的catch语句要分别对这些异常作相应的处理。</p>
+<blockquote>
+<p>一个try语句必须带有至少一个catch语句块或finally语句块。</p>
+</blockquote>
+<p><strong>ps.</strong>异常处理的代码执行结束后不会回到try语句去执行未执行的代码。</p>
+<p><strong>2.catch:</strong></br><br>n-每个try语句块可以伴随一个或多个catch语句，用于处理可能产生的不同类型的异常对象。</p>
+<p>n-常用方法，这些方法均继承自Throwable类 。</p>
+<p>u-toString ()方法，显示异常的类名和产生异常的原因</p>
+<p>u-getMessage()方法，只显示产生异常的原因，但不显示类名。</p>
+<p>u-printStackTrace()方法，用来跟踪异常事件发生时堆栈的内容。</p>
+<p>n-catch捕获异常时的捕获顺序：</p>
+<p>u-如果异常类之间有继承关系，在顺序安排上需注意。越是顶层的类，越放在下面，再不然就直接把多余的catch省略掉。 也就是先捕获子类异常再捕获父类异常。</p>
+<p><strong>3.finally:</strong></br><br>n-有些语句，不管是否发生了异常，都必须要执行，那么就可以把这样的语句放到finally语句块中。</p>
+<p>n-通常在finally中关闭程序块已打开的资源，比如：关闭文件流、释放数据库连接等。</p>
+<p>综合以上的三点可得：</p>
+<pre><code>try{
+  // 程序代码
+}catch(异常类型1 异常的变量名1){
+  // 程序代码
+}catch(异常类型2 异常的变量名2){
+  // 程序代码
+}finally{
+  // 程序代码
+}</code></pre><p>try-catch-finally语句块的执行过程： 程序首先执行可能发生异常的try语句块。如果try语句没有出现异常则执行完后跳至finally语句块执行。如果try语句出现异常，则中断执行并根据发生的异常类型跳至相应的catch语句执行处理。catch语句块可以有多个，分别捕获不同类型的异常。catch语句执行完之后程序会继续执行finally语句块，finally语句块是可选的    ，如果有，无论是否发生异常都会执行finally语句。</p>
+<p>pss.</p>
+<ol>
+<li>即使try和catch里面有return，也会执行finally语句。执行完再return退出。</li>
+<li>finally语句块只有一种情况是不会执行的，那就是在执行finally之前遇到System.exit(0)；结束程序运行。</li>
+</ol>
+<p>实例：</p>
+<pre><code>/*
+使用try catch来处理异常
+*/
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class TestExpection02 {
+    public static void main(String[] args) {
+        readMyFile();
+    }
+
+    public static void readMyFile(){
+        FileReader reader = null;
+        try
+        {
+            reader = new FileReader(&quot;d:/c.txt&quot;);
+            char c1 = (char)reader.read();
+            System.out.println(c1);
+
+        } catch(FileNotFoundException e)  //子类异常在父类异常前面
+        {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try{
+                if (reader != null){
+                    reader.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+}</code></pre><p>结果是：</p>
+<pre><code>java.io.FileNotFoundException: d:\c.txt (系统找不到指定的文件。)
+at java.io.FileInputStream.open0(Native Method)
+at java.io.FileInputStream.open(FileInputStream.java:195)
+at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:138)
+at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:93)
+at java.io.FileReader.&lt;init&gt;(FileReader.java:58)
+at cn.sxt.test.TestExpection02.readMyFile(TestExpection02.java:17)
+at cn.sxt.test.TestExpection02.main(TestExpection02.java:10)</code></pre><h4 id="异常处理方法2：throws"><a href="#异常处理方法2：throws" class="headerlink" title="异常处理方法2：throws"></a>异常处理方法2：throws</h4><p>当CheckedException产生时，不一定立刻处理它，可以把异常throws(扔出去)出去.在某些情况下不需要处理法伤的异常，而是向上传递给调用它的方法处理。</p>
+<p>如果一个方法中产生某种异常但是并不确定如何处理这种异常，则应该根据异常规范在方法的部首声明该方法可能抛出的异常例子(我不太会)</p>
+<pre><code>import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Test9 {
+    public static void main(String[] args) {
+        try {
+            readFile(&quot;joke.txt&quot;);
+        } catch (FileNotFoundException e) {
+            System.out.println(&quot;所需文件不存在！&quot;);
+        } catch (IOException e) {
+            System.out.println(&quot;文件读写错误！&quot;);
+        }
+    }  
+    public static void readFile(String fileName) throws FileNotFoundException,          
+    IOException {
+        FileReader in = new FileReader(fileName);
+        int tem = 0;
+        try {
+            tem = in.read();
+            while (tem != -1) {
+                System.out.print((char) tem);
+                tem = in.read();
+            }
+        } finally {
+            in.close();
+        }
+    }
+}</code></pre><p>注意：方法重写中声明异常原则：子类重写父类方法时，如果父类方法有声明异常，那么子类声明的异常范围不可超过父类的声明范围。</p>
+<h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><ol>
+<li><p>我们在程序中，可能会遇到JDK提供的任何标准异常类都无法充分描述清楚我们想要表达的问题，这种情况下可以创建自己的异常类。即自定义异常类。</p>
+</li>
+<li><p>自定义异常类只需要从Exception类或它的子类派生一个子类即可。</p>
+</li>
+<li><p>自定义异常类如果继承Exception类，则为受检查异常，必须对其进行处理；若干不想处理,可以让自定义异常类继承运行时异常RuntimeExcepion类。</p>
+</li>
+<li><p>习惯上，自定义异常类应该包含2个构造器：默认的构造器，另一个是带有详细信息的构造器。</p>
+<pre><code>public class TestException03 {
+public static void main(String[] args) {
+    Person p = new Person();
+    p.setAge(-10);
+    }
+}    
+
+class Person{
+private int age;
+
+public int getAge() {
+    return age;
+}
+
+public void setAge(int age) {
+    if(age&lt;0){
+        throw new IllegalAgeException(&quot;年龄不可以为负数&quot;);
+        }
+    this.age = age;
+    }
+}
+class IllegalAgeException extends RuntimeException{
+public IllegalAgeException(){
+
+}
+public IllegalAgeException(String msg){
+    super(msg);//引用父类的方法
+    }
+}</code></pre><p>输出结果</p>
+<p> Exception in thread “main” cn.sxt.test.IllegalAgeException: 年龄不可以为负数<br> at cn.sxt.test.Person.setAge(TestException03.java:18)<br> at cn.sxt.test.TestException03.main(TestException03.java:6)</p>
+<h4 id="学会百度！"><a href="#学会百度！" class="headerlink" title="学会百度！"></a>学会百度！</h4><p>众所周知，百度是万能的。一般我们遇到的异常别人都遇到过，cv过去就好了。</p>
+</li>
+</ol>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
+<li><p>Error与Exception都继承自Throwable类</p>
+</li>
+<li><p>Error类层次描述了Java运行时系统内部错误和资源耗尽错误。</p>
+</li>
+<li><p>Exception类是所有异常类的父类，其子类对应了各种各样可能出现的异常事件。</p>
+</li>
+<li><p>常见的异常类型</p>
+</li>
+</ol>
+<ul>
+<li><p>ArithmeticException </p>
+<blockquote>
+<p>算术异常</p>
+</blockquote>
+</li>
+<li><p>NullPointerException</p>
+<blockquote>
+<p>空指针异常</p>
+</blockquote>
+</li>
+<li><p>ClassCastException</p>
+<blockquote>
+<p>类型转换异常</p>
+</blockquote>
+</li>
+<li><p>ArrayIndexOutOfBoundsException</p>
+<blockquote>
+<p>数组下标异常</p>
+</blockquote>
+</li>
+<li><p>NumberFormatException</p>
+<blockquote>
+<p>数字格式化异常</p>
+</blockquote>
+</li>
+</ul>
+<ol start="5">
+<li><p>方法重写中声明异常原则：子类声明的异常范围不能超过父类声明的范围</p>
+</li>
+<li><p>异常处理的三种方式</p>
+</li>
+</ol>
+<ul>
+<li><p>捕获异常:try-catch-finally</p>
+</li>
+<li><p>声明异常:throws</p>
+</li>
+</ul>
+<ol start="7">
+<li>自定义异常类只需从Exception类或者它的子类派生一个子类即可。</li>
+</ol>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p>开发和学习中时刻需要和数据打交道，如何组织这些数据是我们编程中重要的内容。我们一般通过”容器”来容纳和管理数据，那什么是”容器”呢？ 生活中能容纳东西的，程序中也有类似功能，就是用来容纳和管理数据的。</p>
+<p>数组也是一种容易。但是相对于容器来说不方便。</br><br><strong>数组的劣势：</strong>不灵活。需要事先定义容量，不能随着需求的变化而扩容。比如:我们在一个用户管理系统中，要把今天注册的所有用户取出来，这样用户有多少我们事先是不知道的。所以在这里不能使用数组。<br><strong>数组的优势：</strong>是一种简单的线性序列，可以快速访问数组元素，效率高。如果从效果和类型检查角度讲。数组是最好的。</p>
+<p>基于我们对数组的不满意因此引出了容器，也叫集合(Collection)，一下是容器的接口层次结构图：<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495613220648265.png" alt=""><br>要学容器我们先学泛型。</p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><ol>
+<li>添加</li>
+</ol>
+<ul>
+<li>add 有两种用法<br>第一种是直接add对象，把对象加在最后面</li>
+<li>第二种是在指定位置加对象</li>
+</ul>
+<ol start="2">
+<li>判断是否存在</li>
+</ol>
+<ul>
+<li>通过方法contains 判断一个对象是否在容器中。判断标准： 是否是同一个对象，而不是name是否相同</li>
+</ul>
+<ol start="3">
+<li>获得指定位置的对象</li>
+</ol>
+<ul>
+<li>通过get获取指定位置的对象，如果输入的下标越界，一样会报错</li>
+</ul>
+<ol start="4">
+<li>获取对象所处的位置</li>
+</ol>
+<ul>
+<li>indexOf用于判断一个对象在ArrayList中所处的位置。与contains一样，判断标准是对象是否相同，而非对象的name值是否相等</li>
+</ul>
+<ol start="5">
+<li>删除元素</li>
+</ol>
+<ul>
+<li>remove用于把对象从ArrayList中删除<br>remove可以根据下标删除ArrayList的元素<br>。也可以根据对象删除</li>
+</ul>
+<ol start="6">
+<li>替换</li>
+</ol>
+<ul>
+<li>set用于替换指定位置的元素</li>
+</ul>
+<ol start="7">
+<li>获取大小</li>
+</ol>
+<ul>
+<li>size 用于获取ArrayList的大小</li>
+</ul>
+<ol start="8">
+<li>转换为数组</li>
+</ol>
+<ul>
+<li>toArray可以把一个ArrayList对象转换为数组。<br>需要注意的是，如果要转换为一个Hero数组，那么需要传递一个Hero数组类型的对象给toArray()，这样toArray方法才知道，你希望转换为哪种类型的数组，否则只能转换为Object数组</li>
+</ul>
+<ol start="9">
+<li>把另一个容器的对象都加进来</li>
+</ol>
+<ul>
+<li>addAll 把另一个容器所有对象都加进来</li>
+</ul>
+<ol start="10">
+<li>清空一个容器</li>
+</ol>
+<ul>
+<li>clear 清空一个ArrayList</li>
+</ul>
+<pre><code>package ArrayList;
+
+import Basic.Hero;
+import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_OUTPeer;
+
+import java.util.ArrayList;
+
+public class practiceCommonMethods {
+    public static void main(String[] args) {
+        ArrayList heros = new ArrayList();
+
+        //初始化5个对象
+        for(int i = 0;i &lt; 5;i++){
+            heros.add(new Hero(&quot;hero &quot; + i));
+        }
+        Hero spe = new Hero(&quot;special hero&quot;);
+        heros.add(spe);
+
+        System.out.println(heros + &quot; &quot;);
+
+        //判断一个对象是否在容器里面
+        //判断标准：是否是同一个对象，而不是name是否相同；
+        System.out.print(&quot;虽然一个新的对象名字叫hero 1，但是contains的返回是：&quot;);
+        System.out.println(heros.contains(new Hero(&quot;hero 1&quot;)));
+        System.out.print(&quot;然而对于spe，contains的返回是：&quot;);
+        System.out.println(heros.contains(spe));
+
+        //通过get获取指定索引的元素
+        System.out.println(heros.get(5));
+        //越界会报错
+        //System.out.println(heros.get(8));
+        System.out.println(&quot;special hero的位置是&quot;+heros.indexOf(spe));
+        System.out.println(heros.size());
+
+        //remove用于把对象从ArrayList中删除
+        //remover可以根据下标删除ArrayList的元素
+        //remove下标为2的对象
+        heros.remove(2);
+        System.out.print(heros+&quot; &quot;);
+
+        //set用于替换指定位置的元素
+        //把下标为4的元素替换成hero 5；
+        System.out.println();
+        heros.set(4,new Hero(&quot;hero 5&quot;));
+        System.out.print(heros + &quot; &quot;);
+        System.out.println();
+
+        //用toArray的方法把ArrayList变成Array，并增强for循环输出
+        Hero []hs = (Hero[]) heros.toArray(new Hero []{});
+        for (Hero temp : hs)
+            System.out.print(temp + &quot; &quot;);
+
+        //清空ArrayList里面的所有元素
+        System.out.println();
+        heros.clear();
+        System.out.print(heros);
+    }
+}</code></pre><p>会输出</p>
+<pre><code>[hero 0, hero 1, hero 2, hero 3, hero 4, special hero] 
+虽然一个新的对象名字叫hero 1，但是contains的返回是：false
+然而对于spe，contains的返回是：true
+special hero
+special hero的位置是5
+6
+[hero 0, hero 1, hero 3, hero 4, special hero] 
+[hero 0, hero 1, hero 3, hero 4, hero 5] 
+[]</code></pre><h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><pre><code>package ArrayList;
+
+import Basic.Hero;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+/*
+集合框架的遍历
+*/
+
+public class practiceErgodic {
+    public static void main(String[] args) {
+        List&lt;Hero&gt; heros = new ArrayList&lt;&gt;();
+
+        //放5个Hero进入容器
+        for (int i = 0; i &lt; 5; i++) {
+            heros.add(new Hero(&quot;hero name&quot; + i));
+        }
+
+        //第一种遍历for循环
+        System.out.println(&quot;------------for 循环---------------&quot;);
+        for (int i = 0; i &lt; heros.size(); i++) {
+            Hero h = heros.get(i);
+            System.out.println(h);
+        }
+
+        //◀第二种迭代器遍历
+        System.out.println(&quot;---------- while的iterator遍历 ---------------&quot;);
+        Iterator&lt;Hero&gt; it = heros.iterator();
+        //从最开始的位置判断&quot;下一个&quot;位置是否有数据
+        //如果有就通过next取出来，并把指针向下移动
+        //知道&quot;下一个&quot;位置没有数据了
+        /*(1) 使用方法iterator()要求容器返回一个Iterator。
+        第一次调用Iterator的next()方法时，它返回序列的第一个元素。
+        注意：iterator()方法是java.lang.Iterable接口,被Collection继承。
+　　      (2) 使用next()获得序列中的下一个元素。
+　　      (3) 使用hasNext()检查序列中是否还有元素。
+　　      (4) 使用remove()将迭代器新返回的元素删除。*/
+        while (it.hasNext()) {
+            Hero h1 = it.next();
+            System.out.println(h1);
+        }
+        System.out.println(&quot;---------- for的iterator遍历 --------------&quot;);
+        for (Iterator&lt;Hero&gt; iterator = heros.iterator(); iterator.hasNext(); ) {
+            Hero hero = iterator.next();
+            System.out.println(hero);
+        }
+        //增强for循环遍历
+        System.out.println(&quot;---------- 增强for循环遍历 --------------&quot;);
+        for (Hero h2 : heros) {
+            System.out.println(h2);
+        }
+
+        //练习输出非八倍数的元素
+        System.out.println(&quot;练习--------------------------------------------------&quot;);
+        List&lt;Hero&gt; heros1 = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 100; i++) {
+            if (i%8 != 0 )
+                heros1.add(new Hero(&quot;hero&quot; + i));
+        }
+        for(Hero h3 : heros1){
+            System.out.print(h3 + &quot; &quot;);
+        }
+    }
+}</code></pre><p>会输出</p>
+<pre><code>    ------------for 循环---------------
+hero name0
+hero name1
+hero name2
+hero name3
+hero name4
+---------- while的iterator遍历 ---------------
+hero name0
+hero name1
+hero name2
+hero name3
+hero name4
+---------- for的iterator遍历 --------------
+hero name0
+hero name1
+hero name2
+hero name3
+hero name4
+---------- 增强for循环遍历 --------------
+hero name0
+hero name1
+hero name2
+hero name3
+hero name4
+练习--------------------------------------------------
+hero1 hero2 hero3 hero4 hero5 hero6 hero7 hero9 hero10 hero11 hero12 hero13 hero14 hero15 hero17 hero18 hero19 hero20 hero21 hero22 hero23 hero25 hero26 hero27 hero28 hero29 hero30 hero31 hero33 hero34 hero35 hero36 hero37 hero38 hero39 hero41 hero42 hero43 hero44 hero45 hero46 hero47 hero49 hero50 hero51 hero52 hero53 hero54 hero55 hero57 hero58 hero59 hero60 hero61 hero62 hero63 hero65 hero66 hero67 hero68 hero69 hero70 hero71 hero73 hero74 hero75 hero76 hero77 hero78 hero79 hero81 hero82 hero83 hero84 hero85 hero86 hero87 hero89 hero90 hero91 hero92 hero93 hero94 hero95 hero97 hero98 hero99 </code></pre><h4 id="集合框架LinkedList"><a href="#集合框架LinkedList" class="headerlink" title="集合框架LinkedList"></a>集合框架LinkedList</h4><p>序列分先进先出FIFO,先进后出FILO</br><br>FIFO在Java中又叫Queue 队列</br><br>FILO在Java中又叫Stack 栈</br><br>测试LinkedList的特有的方法</p>
+<pre><code>package ArrayList;
+
+import Basic.Hero;
+
+import java.util.LinkedList;
+
+/*
+与ArrayList一样，LinkedList也实现了List接口，诸如add,remove,contains等等方法。
+
+除了实现了List接口外，LinkedList还实现了双向链表结构Deque，可以很方便的在头尾插入删除数据
+什么是链表结构: 与数组结构相比较，数组结构，就好像是电影院，每个位置都有标示，
+每个位置之间的间隔都是一样的。 而链表就相当于佛珠，每个珠子，只连接前一个和后一个，
+不用关心除此之外的其他佛珠在哪里。
+*/
+public class practiceLinkedList {
+    public static void main(String[] args) {
+        //LinkedList是一个双向链表结构的list
+        LinkedList&lt;Hero&gt; ll = new LinkedList&lt;&gt;();
+
+        //所以可以很方便的在头部和尾部插入数据
+        //在遭遇过i有插入新的英雄
+        ll.addLast(new Hero(&quot;hero1&quot;));
+        ll.addLast(new Hero(&quot;hero2&quot;));
+        ll.addLast(new Hero(&quot;hero3&quot;));
+        System.out.println(ll);
+
+        //在最前面插入新的英雄
+        ll.addFirst(new Hero(&quot;heroX&quot;));
+        System.out.println(&quot;添加完元素后的List：&quot;+ll);
+
+        //查看最前面的英雄
+        System.out.println(&quot;查看最前的元素：&quot;+ll.getFirst());
+        //查看最后面的英雄
+        System.out.println(&quot;查看最后的元素：&quot;+ll.getLast());
+
+        //查看不会导致英雄被删除
+        System.out.println(&quot;查看后的List：&quot;+ll);
+
+        //取出最前面的英雄
+        System.out.println(&quot;取出最头的元素：&quot;+ll.removeFirst());
+
+        //取出最后的英雄
+        System.out.println(&quot;取出最后的元素：&quot;+ll.removeLast());
+
+        //取出会导致英雄被删除
+        System.out.println(&quot;取出元素之后的List：&quot; + ll);
+    }
+}</code></pre><p>会输出</p>
+<pre><code>[hero1, hero2, hero3]
+添加完元素后的List：[heroX, hero1, hero2, hero3]
+查看最前的元素：heroX
+查看最后的元素：hero3
+查看后的List：[heroX, hero1, hero2, hero3]
+取出最头的元素：heroX
+取出最后的元素：hero3
+取出元素之后的List：[hero1, hero2]</code></pre><h4 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h4><p>Queue是FIFO的</p>
+<pre><code>package ArrayList;
+
+import Basic.Hero;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class practiceQueue {
+    public static void main(String[] args) {
+        //和ArrayList一样，LinkedList也实现了List接口
+        List ll = new LinkedList&lt;Hero&gt;();
+
+        //所不同的是LinkedList还实现了Deque，进而又实现了Queue这个接口
+        //Queue代表FIFO先进先出的队列
+        Queue&lt;Hero&gt; q = new LinkedList&lt;&gt;();
+        System.out.print(&quot;初始化队列：\t&quot;);
+        q.offer(new Hero(&quot;hero 1&quot;));
+        q.offer(new Hero(&quot;hero 2&quot;));
+        q.offer(new Hero(&quot;hero 3&quot;));
+        q.offer(new Hero(&quot;hero 4&quot;));
+        System.out.println(q);
+
+        System.out.println(&quot;把第一个元素poll()出来：\t&quot;);
+        //取出第一个Hero，FIFO先进先出
+        System.out.println(q.poll());
+
+        System.out.println(&quot;取出第一个元素后的队列：\t&quot;);
+        System.out.println(q);
+
+        //把第一个拿出来看看，单不取出来
+        System.out.println(&quot;查看peek()第一个元素：\t&quot; + q.peek());
+        System.out.println(q);
+    }
+}</code></pre><p>会输出</p>
+<pre><code>初始化队列：    [hero 1, hero 2, hero 3, hero 4]
+把第一个元素poll()出来：    
+hero 1
+取出第一个元素后的队列：    
+[hero 2, hero 3, hero 4]
+查看peek()第一个元素：    hero 2
+[hero 2, hero 3, hero 4]</code></pre><h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>Vector底层是用数组实现的List，相关的方法都加了同步检查，因此“线程安全,效率低”。 比如，indexOf方法就增加了synchronized同步标记。</br></p>
+<p>如何选用ArrayList、LinkedList、Vector?</p>
+<ol>
+<li>需要线程安全时，用Vector。</li>
+<li>不存在线程安全问题时，并且查找较多用ArrayList(一般使用它)。</li>
+<li>不存在线程安全问题时，增加或删除元素较多用LinkedList。</li>
+<li><h3 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h3>Map的储存方式是以键(key)-值(value)对的方式储存的,储存的”键值对”通过键来标识，所以”键对象”不能重复</li>
+</ol>
+<p>Map接口实现类有HashMap、TreeMap、HashTable、Properties等<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495617463792119.png" alt=""></p>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>HashMap采用哈希算法实现，是Map接口最常用的实现类。由于底层采用了Hash表储存数据，我们要求键不能重复，如果发生重复，新的键值会替换旧的键值对。HashMap在查找、删除、修改方面都有非常高的效率。</p>
+<pre><code>package ArrayList;
+
+import Basic.Hero;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class practiceHashMap {
+    public static void main(String[] args) {
+        HashMap&lt;String, String&gt; dictionary = new HashMap&lt;&gt;();
+        dictionary.put(&quot;adc&quot;,&quot;物理英雄&quot;);
+        dictionary.put(&quot;apc&quot;,&quot;法术英雄&quot;);
+        dictionary.put(&quot;t&quot;,&quot;坦克&quot;);
+
+        System.out.println(dictionary.get(&quot;t&quot;));
+
+        HashMap&lt;String,Hero&gt; heroHashMap = new HashMap&lt;&gt;();
+
+        heroHashMap.put(&quot;gareen&quot;,new Hero(&quot;gareen1&quot;));
+        System.out.println(heroHashMap);
+
+        //key为gareen已经有value了，再以gareen作为key放入数据，会导致原英雄被覆盖
+        //不会增加新的元素到Map里
+        heroHashMap.put(&quot;gareen&quot;,new Hero(&quot;gareen2&quot;));
+        System.out.println(heroHashMap);
+
+        //清空map
+        heroHashMap.clear();
+        Hero hero = new Hero(&quot;gareen&quot;);
+
+        //同一个对象可以作为值插入到map中，只要对应的key不一样
+        heroHashMap.put(&quot;gareen1&quot;,hero);
+        heroHashMap.put(&quot;gareen2&quot;,hero);
+        System.out.println(heroHashMap.values());
+    }
+}</code></pre><p>会输出</p>
+<pre><code>坦克
+{gareen=gareen1}
+{gareen=gareen2}
+{gareen2=gareen, gareen1=gareen}</code></pre><blockquote>
+<p>一个获取键值的好方法</p>
+</blockquote>
+<pre><code>import java.util.HashMap;
+import java.util.Map;
+
+public class TestMap {
+    public static void main(String[] args) {
+        Employee e1 = new Employee(1001,&quot;zwz&quot;,50000);
+        Employee e2 = new Employee(1002,&quot;hxm&quot;,40000);
+        Employee e3 = new Employee(1003,&quot;haha&quot;,5000);
+        Employee e4 = new Employee(1004,&quot;xixi&quot;,6000);
+        //WEmployee e5 = new Employee(1001,&quot;6&quot;,6000);
+
+        Map&lt;Integer,Employee&gt; map = new HashMap&lt;&gt;();
+        map.put(1001,e1);
+        map.put(1002,e2);
+        map.put(1003,e3);
+        map.put(1004,e4);
+        //map.put(1001,e5);
+
+        Employee emp = map.get(1001);
+
+        System.out.println(emp.getSalary());
+        //System.out.println(map);
+    }
+}
+
+//雇员信息
+class Employee{
+    private int id;
+    private  String name;
+    private double salary;
+
+    @Override
+    public String toString() {
+        return &quot;id= &quot; + id + &quot;name= &quot; + name + &quot;薪水= &quot;+salary;
+    }
+
+    public Employee(int id, String name, double salary) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+}</code></pre><blockquote>
+<p>不妨把class Employee 看成一个结构体。Map定义的泛型是&lt;Interge，Employee&gt; 用对象把Employee信息包起来然后放进了HashMap的value里面。等于保存了多个信息。再用get方法即可看到雇员的信息了。</p>
+</blockquote>
+<h4 id="HashMap与HashTable的区别"><a href="#HashMap与HashTable的区别" class="headerlink" title="HashMap与HashTable的区别"></a>HashMap与HashTable的区别</h4><ol>
+<li>HashMap：线程不安全，效率高。允许key或value为null；</li>
+<li>HashTable：线程安全，效率低，不允许key或value为null；</li>
+</ol>
+<h4 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h4><pre><code>import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class practiceCollections {
+    public static void main(String[] args) {
+        //初始化集合numbers
+        List&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
+
+        for (int i = 0; i &lt; 10; i++) {
+            numbers.add(i);
+        }
+        System.out.println(&quot;集合中的所有元素&quot;);
+        System.out.println(numbers);
+
+        Collections.reverse(numbers);
+
+        System.out.println(&quot;反转集合中的所有元素&quot;);
+        System.out.println(numbers);
+
+        Collections.shuffle(numbers);
+        System.out.println(&quot;混淆List数据中的顺序&quot;);
+        System.out.println(numbers);
+
+        Collections.sort(numbers);
+        System.out.println(&quot;顺序排列集合中的元素&quot;);
+        System.out.println(numbers);
+
+        Collections.swap(numbers,0,5);
+        System.out.println(&quot;交换第一个和第六个数子厚的集合&quot;);
+        System.out.println(numbers);
+
+        Collections.rotate(numbers,8);
+        System.out.println(&quot;向右滚动8个集合&quot;);
+        System.out.println(numbers);
+
+        // ---------------------------------------------------
+        /*首先初始化一个List,长度是10，值是0-9。
+            然后不断的shuffle，直到前3位出现
+            3 1 4
+            shuffle 1000,000 次，统计出现的概率*/
+        List&lt;Integer&gt; number2 = new ArrayList&lt;&gt;();
+        int count = 0 ;
+        for (int i = 0;i &lt; 10;i++){
+            number2.add(i);
+        }
+        for (int i = 0;i &lt; 1000000; i++){
+            Collections.shuffle(number2);
+            if (number2.get(0)==3 &amp;&amp; number2.get(1)==1 &amp;&amp; number2.get(2)==4) {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}</code></pre><p>会输出</p>
+<pre><code>集合中的所有元素
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+反转集合中的所有元素
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+混淆List数据中的顺序
+[6, 1, 9, 2, 7, 0, 5, 8, 4, 3]
+顺序排列集合中的元素
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+交换第一个和第六个数子厚的集合
+[5, 1, 2, 3, 4, 0, 6, 7, 8, 9]
+向右滚动8个集合
+[2, 3, 4, 0, 6, 7, 8, 9, 5, 1]
+1312    </code></pre><h3 id="泛型（Generics）"><a href="#泛型（Generics）" class="headerlink" title="泛型（Generics）"></a>泛型（Generics）</h3><p><strong>泛型：</strong>它可以帮助我们建立类型安全的集合，遍历时不用强制类型转换，提高了可读性以及安全性。</br><br>泛型本质就是：”数据类型的参数化”。我们可以把”泛型”理解为数据类型的一个占位符(形参)，即高数编译器，在调用泛型时必须传入实际类型。</p>
+<blockquote>
+<p>说白了就是避免转型</p>
+</blockquote>
+<h2 id="I-O看我的另一篇吧"><a href="#I-O看我的另一篇吧" class="headerlink" title="I/O看我的另一篇吧"></a>I/O看我的另一篇吧</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/IO%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/IO%E6%B5%81/" class="post-title-link" itemprop="url">IO流</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-27 16:54:42" itemprop="dateModified" datetime="2020-06-27T16:54:42+08:00">2020-06-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="I-O流-input-output"><a href="#I-O流-input-output" class="headerlink" title="I/O流(input/output)"></a>I/O流(input/output)</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们把数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分别为<code>输入input</code>和<code>输出output</code></p>
+<ul>
+<li>即流向内存是输入流</li>
+<li>流出内存的输出流</li>
+</ul>
+<p>Java中I/O操作主要是指使用Java.io包下的内容，进行输入、输出操作。</p>
+<ul>
+<li>输入也叫做读取数据</li>
+<li>输出也叫做写出数据</li>
+</ul>
+<p>根据数据的流向分为 输入流和输出流。</br></p>
+<ul>
+<li>输入流：把数据从<strong>其他设备</strong>上读取到<strong>内存</strong>中的流。</li>
+<li>输出流：把数据从<strong>内存</strong>中写出到<strong>其他设备</strong>上的流。</li>
+</ul>
+<p>格局数据的类型分为：<strong>字节流</strong>和<strong>字符流</strong>。</p>
+<ul>
+<li>字节流：以字节为单位，读写数据的流</li>
+<li>字符流：以字符为单位，读写数据的流。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/06/17/OtcnW52hIbA9gH1.png" alt="1592404932_1_.jpg"></p>
+<h1 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h1><hr>
+<h2 id="一切皆为字节"><a href="#一切皆为字节" class="headerlink" title="一切皆为字节"></a>一切皆为字节</h2><p>一切文件数据(文本、图片、视频等)在存储时，都是以二进制数字的形式保存，都一个一个字节，那么传输亦是如此。所以，字节流可以传输任意文件数据。在操作流的时候，我们要时刻明确，无论使用上面样的流对象，底层传输的始终为二进制数据</p>
+<h2 id="字节输出流-OutputStream"><a href="#字节输出流-OutputStream" class="headerlink" title="字节输出流[OutputStream]"></a>字节输出流[OutputStream]</h2><p>java.io.OutputStream抽象类是表示字节输出流的所以类的超类(父类),将指定的字节信息写出到目的地。它定义了字节输出流的基本共性功能方法。</p>
+<ul>
+<li><code>public void close()</code>:关闭此输出流并释放与此流相关联的系统资源。</li>
+<li><code>public void flush()</code>：刷新此输出流，并强制任何缓冲的输出字节被写出。</li>
+<li><code>public void write(byte[] b)</code>：将b.length字节从指定的字节数组写入此输出流。</li>
+<li><code>public void write(byte[] b,int off, int len)</code>:从指定的字节数组写入len字节，从偏移量off开始输出到此输出流。</li>
+<li><code>public abstract void write(int b)</code>：将指定的字节输出流。</li>
+</ul>
+<blockquote>
+<p>使用流之后必须close关闭资源。</p>
+</blockquote>
+<h2 id="FileOutputStream类"><a href="#FileOutputStream类" class="headerlink" title="FileOutputStream类"></a>FileOutputStream类</h2><p><code>OutputStream</code>很多子类，这是其中之一。<br><code>java.io.FileOutputStream</code>类是文件输出流，用于将数据写出到文件。</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li><code>public FileOutputStream(File file)</code>:创建文件输出流以写入由指定的File对象表示的文件。</li>
+<li><code>public FileOutputStream(String name)</code>：创建文件输出流以指定的名称写入文件。</li>
+</ul>
+<p>当年创建一个流对象时，必须传入一个文件路径。该路径下，如果没有这个文件，就会创建该文件，如果由，会清空这个文件的数据。</p>
+<p>例子：</p>
+<pre><code>public class testOutputStream {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream(&quot;a.txt&quot;);
+        fos.write(97);
+        fos.close();
+
+        //一次写多个字节的方法、
+        FileOutputStream fos1 = new FileOutputStream(new File(&quot;b.txt&quot;));
+        byte []bytes = {65,66,67,68,69};  //ABCDE
+        fos1.write(bytes,2,3);
+
+        //写入字符串
+        byte[] bytes1 = &quot;你好&quot;.getBytes();
+        System.out.println(Arrays.toString(bytes1));//[-28, -67, -96, -27, -91, -67]
+        fos1.write(bytes1);
+        fos1.close();
+    }
+}</code></pre><p>会输入<code>CDE你好</code> 进入b.txt文件中</p>
+<blockquote>
+<p>输入中文的话可以用字节数组 <code>byte []b = &quot;中文字符串&quot;.getbytes()</code>; 接着.write(b)即可。</p>
+</blockquote>
+<h3 id="数据的追加续写"><a href="#数据的追加续写" class="headerlink" title="数据的追加续写"></a>数据的追加续写</h3><p>每次运行以上的代码都会创建输出流对象，都会清空目标文件中的数据，通过</p>
+<ul>
+<li>public FileOutputStream(File file,boolean append):创建文件输出流以写入由指定的File对象表示的文件。</li>
+<li>public FileOutputStream(String name,boolean append)：创建文件输出流以指定的名称写入文件。</li>
+</ul>
+<p>这俩方法都需要放入一个布尔类型的值即<code>true</code> / <code>false</code></p>
+<pre><code>public class TestOutputStream02 {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream(&quot;c.txt&quot;,true);
+        for (int i = 1;i&lt;=10;i++){
+            fos.write(&quot;你好&quot;.getBytes());
+            fos.write(&quot;\r\n&quot;.getBytes());
+        }
+
+        fos.close();
+    }
+}</code></pre><p>会输出 10行你好</p>
+<blockquote>
+<p>回车符<code>\r</code>换行符<code>\n</code>：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>回车符：回到一行的开头。</li>
+<li>换行符：下一行。</li>
+</ul>
+</blockquote>
+<h2 id="字节输入流-InputStream"><a href="#字节输入流-InputStream" class="headerlink" title="字节输入流[InputStream]"></a>字节输入流[InputStream]</h2><p><code>java.io.InputStream</code>抽象类表示字节输入流的所有类的超类，可以读取字节信息到内存中，它定义了字节输入流的基本共性方法。</p>
+<ul>
+<li><code>public void close()</code>：关闭输入流及其关联的系统资源</li>
+<li><code>public abstract int read()</code>：从输入流读取数据的下一个字节。</li>
+<li><code>public int read(byte []b)</code>：从输入读取一些字节数，并将他们存储到字节数组b中。</br><br>小例子：</li>
+</ul>
+<pre><code>    public classTestInputStream {
+    public static void main(String[] args) throws IOException {
+        FileInputStream fis = new FileInputStream(&quot;a.txt&quot;);
+        //每次读取完指针都会往后移动一位
+        /*System.out.println(fis.read());
+        System.out.println(fis.read());
+        System.out.println(fis.read());*/
+
+        /*
+            (len = fis.read())!=-1
+                1.fis.read();读取一个字节
+                2.len = fis.read();把读取到的字节赋值给变量len
+                3.len != -1 的时候进入循环
+         */
+        int len = 0;
+        while ((len = fis.read())!=-1){
+            System.out.print((char) len + &quot; &quot;);
+        }
+
+        //如果变成
+        /*while(fis.read()!=-1){
+            System.out.print(len + &quot; &quot;);
+        }
+
+        则会输出 98 -1；
+        因为在判断的时候已经读了一位了，打印的时候往后挪一位，因此打印不出97和99
+        */
+        fis.close();
+        /*byte []b =
+        System.out.println(fis.read(b));*/
+    }
+}</code></pre><p>会输出文件中的 a b c</p>
+<p>优化循环版</p>
+<pre><code>byte []bytes = new byte[1024];
+    int len = 0;
+    while ((len = fis.read(bytes)) != -1) {
+    // 每次读取后,把数组的有效字节部分，变成字符串打印
+        System.out.println(new String(bytes,0,len));//len 每次读取的有效字节个数
+    }
+    fis.close();
+}</code></pre><h3 id="练习文件复制"><a href="#练习文件复制" class="headerlink" title="练习文件复制"></a>练习文件复制</h3><pre><code>public class TestCopyFile {
+    public static void main(String[] args) throws IOException {
+        //1.创建一个字节输入流对象，构造方法中绑定要读取的数据流
+        FileInputStream fis = new FileInputStream(&quot;C:\\1.jpg&quot;);
+        //2，创建一个字节输出流，构造方法中绑定要写入的目的地
+        FileOutputStream fos = new FileOutputStream(&quot;d:\\1.jpg&quot;);
+        //使用数组缓冲读取多个字节，写入多个字节
+        byte []bytes  = new  byte[1024];
+        int len = 0;
+        while ((len = fis.read(bytes))!=-1){
+            fos.write(bytes,0,len);
+        }
+        fos.close();
+        fis.close();
+    }
+}</code></pre><blockquote>
+<p>Tips：流先开后关，后开先关</p>
+</blockquote>
+<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><h2 id="Reader-字符输入流"><a href="#Reader-字符输入流" class="headerlink" title="Reader [字符输入流]"></a>Reader [字符输入流]</h2><h3 id="FileReader类"><a href="#FileReader类" class="headerlink" title="FileReader类"></a>FileReader类</h3><pre><code>java.io.Reader:字符输入流，是字符输入流的最顶层的父类，
+    定义了一些共性的成员方法，是一个抽象类
+
+    共性成员方法：
+        int read() 读取一个字符并返回；
+        int read(char []c) 一次读取多个字符，将字符读入数组
+        close() 关闭字符输入流的资源
+
+    java.io.FileReader extends InputStreamReader extends Reader
+    FileReader：文件字符输入流
+    作用：把硬盘的文件的数据以字符的方式读取到内存中
+
+    构造方法:
+        FileReader(String fileName)
+        FileReader(File file)
+        参数：读取文件的数据源
+            String fileName:文件的路径
+            File file:一个文件
+        FileReader构造方法的作用：
+            1.创建一个FileReader对象
+            2.把FileReader对象指向要读取的文件
+
+
+public class TestReader {
+    public static void main(String[] args) throws IOException {
+        //1.创建FileReader对象，构造方法中绑定要读取的数据源
+        FileReader fr = new FileReader(&quot;b.txt&quot;);
+        //2.使用FileReader对象中的方法read读取文件
+        //int read()读取单个字符
+        /*int len = 0;
+        while ((len = fr.read())!= -1){
+            System.out.print((char)len);
+        }*/
+        //一次多个字符
+        char[] chars = new char[1024];
+        int len = 0;
+        while ((len = fr.read(chars))!= -1){
+            System.out.println(new String(chars,0,len));
+        }
+        fr.close();
+    }
+}</code></pre><h2 id="Writer-字符输出流"><a href="#Writer-字符输出流" class="headerlink" title="Writer [字符输出流]"></a>Writer [字符输出流]</h2><h3 id="FileWriter类"><a href="#FileWriter类" class="headerlink" title="FileWriter类"></a>FileWriter类</h3><pre><code>/*
+    java.io.Writer:字符输出流，是所有字符输出流的最顶层的父类，是一个抽象类
+
+    共性的成员方法：
+        void write(int c) 写入单个字符。
+        void write(char [] c) 写入字符数组
+        abstract void write (char []c,int off,int len)写入字符数组的某一部分，off数组的开始索引。len写的字符个数。
+        void write(String str)写入字符串
+        void write(String str,int off, int len)写入字符串的某一部分,off,len与上同理
+        void flush()刷新该流的缓冲。
+        void close()关闭流。
+
+    java.io.FileWriter extends OutputStreamWriter extends Writer
+*/
+public class TestWriter {
+    public static void main(String[] args) throws IOException {
+
+        //1.创建FileWriter对象，构造方法中绑定要写入数据的目的地
+        FileWriter fw = new FileWriter(&quot;d.txt&quot;);
+        //2.使用FileWriter中的方法write，-&gt;把数据写入到内存的缓冲区中&lt;-(字符转换为字节的过程)
+        fw.write(97);
+        //3.使用fileWrite中的flush方法，把内存缓冲区的数据，刷新到文件中
+        fw.flush();
+        //4.释放资源
+        fw.close();
+    }
+}</code></pre><p>我们也可以用一个数组批量的写入数据</p>
+<pre><code>public class TestWriter02 {
+    public static void main(String[] args) throws IOException {
+        FileWriter fw2 = new  FileWriter(&quot;f.txt&quot;);
+        char []cs = {&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;};
+        fw2.write(cs);
+        fw2.close();
+    }
+}</code></pre><p>在<code>f.txt</code>中会有abcde</p>
+<h2 id="IO-异常处理"><a href="#IO-异常处理" class="headerlink" title="IO 异常处理"></a>IO 异常处理</h2><blockquote>
+<p><strong>JDK7</strong>以前的处理方法</p>
+</blockquote>
+<pre><code>/*
+    jdk1.7之前，try catch finally处理流中的异常
+    格式：
+        try{
+            可能回产出异常的代码
+        }catch(异常类变量 文件名){
+            异常的处理逻辑
+        }finally{
+            一定会指定的代码
+            资源释放
+        }
+*/
+public class TestTryCatch {
+    public static void main(String[] args){
+        //提高变量fw的作用域
+        FileWriter fw = null;
+        try{
+            //可能会产生异常的代码
+            fw = new FileWriter(&quot;w:/g.txt&quot;,true);
+            for (int i = 0; i &lt; 10;i++){
+                fw.write(&quot;Hello World&quot;+ i +&quot;\r\n&quot;);
+            }
+            fw.close();
+        }catch (IOException e){
+            //异常的处理逻辑
+            System.out.println(e);
+        }finally {
+            //一定会执行的代码
+            //创建对象失败了，fw的默认值是null，null是不能调用方法的，会抛出NullPointerException，需要增加一个判断，不是null在把资源释放掉
+            if (fw != null) {
+                try {
+                    //fw.close()方法声明抛出了IOException异常对象，所以我们就处理这个异常对象，要么throws要么try/catch
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}</code></pre><blockquote>
+<p>然鹅在<strong>JDK9</strong>的改进可以在try中创建对象被传入的对象无需手动close</p>
+</blockquote>
+<pre><code>改进前格式：
+public class HandleException2 {
+    public static void main(String[] args) {
+    // 创建流对象
+    try ( FileWriter fw = new FileWriter(&quot;fw.txt&quot;); ) {
+    // 写出数据
+    fw.write(&quot;黑马程序员&quot;); //黑马程序员
+    } catch (IOException e) {
+    e.printStackTrace();
+        }
+    }
+}
+
+改进后
+// 被final修饰的对象
+final Resource resource1 = new Resource(&quot;resource1&quot;);
+// 普通对象
+Resource resource2 = new Resource(&quot;resource2&quot;);
+// 引入方式：直接引入
+try (resource1; resource2) {
+// 使用对象
+}</code></pre><h2 id="属性集"><a href="#属性集" class="headerlink" title="属性集"></a>属性集</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p><code>java.io.Properties</code>继承于<code>Hashtable</code>,来表示一个持久的属性集。它使用键值对结构储存数据，每个键及其对应的字符串都是一个字符串(那就不用写泛型了hhhh)。该类经常被Java类使用，比如获取系统属性时，<code>System.getProperties</code>方法就是返回一个<code>Properties</code>对象。</p>
+<h3 id="Properties类"><a href="#Properties类" class="headerlink" title="Properties类"></a>Properties类</h3><h4 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h4><ul>
+<li><code>public properties()</code>:创建一个空的属性列表</li>
+</ul>
+<h4 id="基本储存方法"><a href="#基本储存方法" class="headerlink" title="基本储存方法"></a>基本储存方法</h4><ul>
+<li><p><code>public Object setProperty(String key ,String value)</code>：保存一对属性。</p>
+</li>
+<li><p><code>public String getProperty(String key)</code>：使用此属性列表中指定的键搜索属性值。</p>
+</li>
+<li><p><code>public Set&lt;String&gt; stringPropertyNames()</code>:所有键的名称的集合。</p>
+<p>  public class TestProperties {</p>
+<pre><code>public static void main(String[] args) {
+    show01();
+}
+
+private static void show01(){
+    //创建Properties集合对象
+    Properties prop = new Properties();
+    //使用setProperty往里面添加元素
+    prop.setProperty(&quot;zwz&quot;,&quot;175&quot;);
+    prop.setProperty(&quot;hxm&quot;,&quot;147&quot;);
+    prop.setProperty(&quot;yhx&quot;,&quot;160&quot;);
+
+    //使用StringPropertyName把Properties集合中的键取出，存放在set集合中;
+    Set&lt;String&gt; set = prop.stringPropertyNames();
+    //遍历set集合，取出Properties集合的每一个键
+    for (String key : set){
+        //使用getProperty王法通过key获取value
+        String value = prop.getProperty(key);
+        System.out.println(key + &quot;=&quot;+ value);
+    }
+}</code></pre><p>  }</p>
+</li>
+</ul>
+<p>输出结果会是</p>
+<pre><code>hxm=147
+zwz=175
+yhx=160</code></pre><h4 id="在Property集合中于流相关的操作"><a href="#在Property集合中于流相关的操作" class="headerlink" title="在Property集合中于流相关的操作"></a>在Property集合中于流相关的操作</h4><p><code>public void load(InputStream inStream)</code>：从字节输入流中读取键值对</p>
+<pre><code>public class TestProperties03 {
+    public static void main(String[] args) throws IOException {
+        show03();
+    }
+    /*
+        可以使用Properties集合中的load方法，把硬盘中保存的文件(键值对)，读取到集合中使用
+        void load(InputStream inStream)
+        void load(Reader reader)
+        参数：
+            InputStream inStream:字节输入流，不能读取含有中文的键值对
+            Reader reader：字符输入流，读取含有中文的键值对
+        使用步骤：
+            1.创建Properties对象
+            2.使用Properties的load方法，保存键值对文件
+            3.遍历Properties集合
+
+
+    */
+    public static void show03() throws IOException {
+        //1.创建Properties对象
+        Properties p = new Properties();
+        //2.使用Properties的load方法，保存键值对文件
+        p.load(new FileReader(&quot;prop.txt&quot;));
+        //3.遍历Properties集合
+        Set&lt;String&gt; set = p.stringPropertyNames();
+        for (String key : set){
+            String value = p.getProperty(key);
+            System.out.println(key + &quot;=&quot; + value);
+        }
+    }
+}</code></pre><hr>
+<h1 id="缓冲流，转换流，序列化流"><a href="#缓冲流，转换流，序列化流" class="headerlink" title="缓冲流，转换流，序列化流"></a>缓冲流，转换流，序列化流</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>缓冲流：可以高效读写</li>
+<li>转换流：可以转换编码方式</li>
+<li>序列化流：可以持久存储对象</li>
+</ol>
+<h2 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h2><p>缓冲流是对四个基本的FileXXX流的增强，所以也是四个流：</p>
+<ul>
+<li><p>字符缓冲流<code>BufferedInputStream</code>,<code>BufferedOutputStream</code></p>
+</li>
+<li><p>字符缓冲流：<code>BufferedRead</code>,<code>BufferedWritter</code></p>
+</li>
+<li><p>缓冲流的基本原理，是在创建流对象时，会创建一个内置的默认大小的缓冲区数组，通过缓冲区读写，减少系统IO次数，从而提高读写的效率。<br>##字节缓冲流<br>###构造方法</p>
+<p>  //创建字节缓冲输入流<br>  BufferedInputStream bis = new BufferedInputStream(new FileInputStrem(“xxx.txt”));<br>  //创建字节缓冲输出流<br>  BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(“xxx.txt”));</p>
+</li>
+</ul>
+<p>比较一下复制文件的效率</br><br>此处是未使用</p>
+<pre><code>public class TestCopyFile {
+    public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+        //1.创建一个字节输入流对象，构造方法中绑定要读取的数据流
+        FileInputStream fis = new FileInputStream(&quot;e:\\我们的回忆.rar&quot;);
+        //2，创建一个字节输出流，构造方法中绑定要写入的目的地
+        FileOutputStream fos = new FileOutputStream(&quot;d:\\我们的回忆.rar&quot;);
+        //使用数组缓冲读取多个字节，写入多个字节
+        byte []bytes  = new  byte[1024];
+        int len = 0;
+        while ((len = fis.read(bytes))!=-1){
+            fos.write(bytes,0,len);
+        }
+        fos.close();
+        fis.close();
+        long end = System.currentTimeMillis();
+        System.out.println(&quot;未用缓冲流所用的时间：&quot;+(end - start)+&quot;ms&quot;);
+    }
+}</code></pre><p>耗时</p>
+<pre><code>未用缓冲流所用的时间：3810ms</code></pre><p>此处是使用了</p>
+<pre><code>public class TestCopyFile02 {
+    public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+        FileOutputStream fos = new  FileOutputStream(&quot;d:/1.jpg&quot;);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+        FileInputStream fis = new FileInputStream(&quot;c:/1.jpg&quot;);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+
+        int len = 0;
+        byte []bytes = new byte[1024];
+        while ((len = bis.read(bytes))!=-1){
+            bos.write(bytes,0,len);
+        }
+
+        bis.close();
+        bos.close();
+        long end = System.currentTimeMillis();
+        System.out.println(&quot;用缓冲流所用的时间：&quot;+(end - start)+&quot;ms&quot;);
+    }</code></pre><p>结果</p>
+<pre><code>用缓冲流所用的时间：47ms</code></pre><p>特有的方法</p>
+<ul>
+<li>BufferedReader:<code>public String readLine()</code>：读一行文字</li>
+<li>BufferedWriter:<code>public void newLine()</code>：写一行行分隔符，由系统属性定义符号。<blockquote>
+<p>(windows: \r\n Linux:\n Mac:\r)</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="练习文本排序"><a href="#练习文本排序" class="headerlink" title="练习文本排序"></a>练习文本排序</h3><pre><code>public class TestFileSort {
+    public static void main(String[] args) throws IOException {
+        //1.创建一个HashMap对象，可以key存储每行的序号(1,2,3,...);value:存储每行文本
+        HashMap&lt;String,String&gt; map = new HashMap&lt;&gt;();
+        //2.创建字符缓冲输入流对象，构造方法中绑定字符输入流
+        BufferedReader br = new BufferedReader(new FileReader(&quot;in.txt&quot;));
+        // 3.创建字符缓冲输出流对象，构造方法中绑定字符输出流
+        BufferedWriter bw = new BufferedWriter(new FileWriter(&quot;out.txt&quot;));
+        //4.使用字符缓冲输入流中的方法readline，逐行读取
+        String line;
+        while((line = br.readLine())!=null){
+            //5.对读取到的文本进行切割，获得行中序号和文本内容
+            String []arr = line.split(&quot;\\.&quot;);
+            //6.把切割好的序号和文本的内容存储到HashMap中(key序号是有序的，会自动排序)
+            map.put(arr[0],arr[1]);
+        }
+
+        //7.遍历HashMap
+        for (String key:map.keySet()){
+            String value = map.get(key);
+            //8.把每一个键值对，拼接成文本行
+            line = key + &quot;.&quot; + value;
+            //9.把拼接好的文本，使用字符缓冲输出流中的方法write，写到文件中
+            bw.write(line);
+            bw.newLine();//换行
+        }
+        bw.close();
+        br.close();
+    }
+}</code></pre><h2 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h2><h3 id="字符编码和字符集"><a href="#字符编码和字符集" class="headerlink" title="字符编码和字符集"></a>字符编码和字符集</h3><p><strong>字符编码</strong></br><br>计算机中存储的信息都是用二进制数表示的，而我们在屏幕上看到的数字、英文、标点符号、汉字等字符是二进制数转换之后的结果。按照某种规则。将字符存储到计算机中，成为编码。反之，将储存在计算机中的二进制数按某种规则解析显示出来，称为解码。</p>
+<p><strong>字符集</strong></br></p>
+<ul>
+<li>字符集：也叫编码表，是一个系统支持的所有字符的集合。包括各国文字、标点符号、图形符号、数字等。</li>
+</ul>
+<p>常见的字符集有ASCII字符集、GBK字符集、Unicode字符集等等……<br><img src="https://i.loli.net/2020/06/26/yIg8HsWpFKETXuj.png" alt="1593171632_1_.jpg"><br>三种字符集就不赘述了。</p>
+<h3 id="编码的问题"><a href="#编码的问题" class="headerlink" title="编码的问题"></a>编码的问题</h3><p>在IDEA里面，<code>FileReader</code>读取文本文件，因为IDEA是默认以 utf-8的格式编码，Windows默认以GBK编码，所以读取会有乱码，那么怎么读呢？看下一小节。</p>
+<p>###InputStreamReader类<br>转换流<code>Java.io.InputStreamReader</code>的超类是Reader，是字节流到字符流的桥梁，它读取字节，并使用指定的字符集将其解码为字符。它的字符集可以由名称指定，也可以接受平台默认的字符集。</p>
+<h4 id="构造方法-2"><a href="#构造方法-2" class="headerlink" title="构造方法"></a>构造方法</h4><ul>
+<li>InputStreamReader(InputStream in)：创建一个使用默认字符集的字符流。</li>
+<li>InputStreamReader(InputStream in，String charsetName)：创建一个指定字符集的字符流。</li>
+</ul>
+<h4 id="指定编码读取"><a href="#指定编码读取" class="headerlink" title="指定编码读取"></a>指定编码读取</h4><pre><code>public class TestInputStreamReader {
+    public static void main(String[] args) throws IOException{
+        read_utf_8();
+    }
+
+    private static void read_utf_8() throws IOException {
+        //1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表名称
+        //如果不按照编码格式解码会出现乱码
+        //InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;utf_8.txt&quot;),&quot;GBK&quot;);
+        InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;utf_8.txt&quot;),&quot;utf-8&quot;);
+        int len;
+        while ((len = isr.read())!=-1){
+            System.out.print((char)len);
+        }
+        isr.close();
+    }
+}</code></pre><p>同理写入的时候也这样的</p>
+<pre><code>public class TesrOutputStreamWriter {
+    public static void main(String[] args) throws IOException {
+        write_utf_8();
+    }
+
+    private static void write_utf_8() throws IOException {
+        //1.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表名称
+        //如果按照GBK格式写入文件，那么在IDEA中打开会是乱码
+        //OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;utf_8.txt&quot;),&quot;GBK&quot;);
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;utf_8.txt&quot;));
+        //2.使用OutputStreamWriter对象中的write方法，把字符转换为字节存储缓冲区中(编码)
+        osw.write(&quot;你好&quot;);
+        osw.flush();
+        osw.close();
+    }
+}</code></pre><p><img src="https://i.loli.net/2020/06/26/nwzoXIcQiOqSlKP.png" alt="1593174877_1_.jpg"></p>
+<h4 id="练习：转换文件编码"><a href="#练习：转换文件编码" class="headerlink" title="练习：转换文件编码"></a>练习：转换文件编码</h4><pre><code>public class TestChangeCode {
+    public static void main(String[] args) throws IOException {
+        //1.创建InputStreamReader对象，构造方法中传递字节输入流和指定的编码表GBK
+        InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;我是GBK格式的文本.txt&quot;), &quot;GBK&quot;);
+        //2.创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表UTF-8
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(&quot;我是utf-8格式的文件&quot;));
+        //3.使用InputStreamReader对象中的read方法读取文件
+        int len;
+        while ((len = isr.read())!=-1){
+            osw.write(len);
+        }
+        //释放资源
+        osw.close();
+        isr.close();
+    }
+}</code></pre><h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p>Java提供了一种对象<strong>序列化</strong>的机制。用一个字节序列可以表示一个对象，该字节序列包含该(对象的数据)、(对象的类型)、(对象中存储的属性)。字节序列写出到文件之后，相当于文件中持久保存了一个对象的信息。</p>
+<p><img src="https://i.loli.net/2020/06/26/BLc2FpPtQMCKY8f.png" alt="1593175730_1_.jpg"></p>
+<h3 id="ObjectOutputStream类"><a href="#ObjectOutputStream类" class="headerlink" title="ObjectOutputStream类"></a>ObjectOutputStream类</h3><p>java.io.ObjectOutputStream类，将Java对象的初始数据类型写到文件中，实现持久储存</p>
+<p><strong>序列化操作</strong></p>
+<ol>
+<li><p>想要序列化，必须满足两个条件：</p>
+<ul>
+<li><p>该类(必须必须必须！！！)实现<code>java.io.Serializable</code>接口，<code>Serializable</code>是一个标记接口，不实现此接口的类将不会使用任何状态的序列化或反序列化，会抛出<code>NotSerializableException</code>. </p>
+</li>
+<li><p>该类的所有属性必须是可序列化的。如果有一个属性不需要序列化。则必须用<code>transient</code>(瞬态)关键字修饰</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2020/06/26/fYXEjicyDTv1VOU.png" alt="1593177870_1_.png"></p>
+<h3 id="ObjectInputStream"><a href="#ObjectInputStream" class="headerlink" title="ObjectInputStream"></a>ObjectInputStream</h3><p>####反序列操作1<br>    /*<br>     使用步骤：<br>        1.创建ObjectInputStream对象<br>        2.使用ObjectInputStream对象的方法，readObject()读取保存对象的文件<br>        3.释放资源<br>        4.使用读取的对象(打印)</p>
+<pre><code>*/
+public class TestObjectInputStream {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        //1.创建ObjectInputStream对象
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;person.txt&quot;));
+        //2.使用ObjectInputStream对象的方法，readObject()读取保存对象的文件
+        Object o = ois.readObject();
+        //3.释放资源
+        ois.close();
+        //4.运用
+        System.out.println(o);
+    }
+}</code></pre><p>对于JVM可以反序列化的对象，他必须是能够找到class文件的类。如果找不到.class文件，会抛出一个<code>ClassNotFoundException</code>异常。</p>
+<p>####反序列操作2<br>当JVM反序列化对象时，能找到.class文件，但是.class文件在序列化对象之后发生了修改，那么反序列化操作也会失败。会抛出<code>InvalidClassException</code>异常。发生这个异常的原因如下：</p>
+<ul>
+<li>该类的序列版本号与从流中读取的类描述符的版本号不匹配</li>
+<li>该类包含位置数据类型</li>
+<li>该类没有可访问的无参数构造方法</li>
+</ul>
+<p><code>Serializable</code>接口给需要序列化的类，提供一个版本的序列化。<code>SerialVersionUID</code>该版本号的目的在于验证序列化的对象和对应的类是否版本匹配。</p>
+<h4 id="训练：序列化集合"><a href="#训练：序列化集合" class="headerlink" title="训练：序列化集合"></a>训练：序列化集合</h4><pre><code>/*
+    练习，序列化集合
+        当我们想在文件中保存多个对象的时候
+        可以把多个对象存储到一个集合中
+        对集合进行序列化于反序列化
+    分析：
+        1.定义一个Person对象的ArrayList集合
+        2.往ArrayList集合中存储Person对象
+        3.创建一个序列化流ObjectOutputStream对象
+        4.使用ObjectOutputStream对象中的方法writeObject，对集合进行序列化
+        5.创建一个反序列化ObjectInputStream对象
+        6.使用ObjectInputStream对象中的方法readObject读取文件中保存的集合
+        7.把Object类型转换为ArrayList类型
+        8.遍历ArrayList
+        9.释放资源
+*/
+public class TestSerializedCollection {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        //1.定义一个Person对象的ArrayList集合
+        ArrayList&lt;Person&gt; list = new ArrayList&lt;&gt;();
+        //2.往ArrayList集合中存储Person对象
+        list.add(new Person(&quot;曾炜圳&quot;,18));
+        list.add(new Person(&quot;黄雪蔓&quot;,18));
+        list.add(new Person(&quot;姚海霞&quot;,20));
+        //3.创建一个序列化流ObjectOutputStream对象
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;序列化对象.txt&quot;));
+        //4.使用ObjectOutputStream对象中的方法writeObject，对集合进行序列化
+        oos.writeObject(list);
+        //5.创建一个反序列化ObjectInputStream对象
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;序列化对象.txt&quot;));
+        //6.使用ObjectInputStream对象中的方法readObject读取文件中保存的集合
+        Object o = ois.readObject();
+        //7.把Object类型转换为ArrayList类型
+        ArrayList&lt;Person&gt; list2 = (ArrayList&lt;Person&gt;)(o);
+        //8.遍历ArrayList
+        for (Person person : list2) {
+            System.out.println(person);
+        }
+        //9.释放资源
+        ois.close();
+        oos.close();
+    }
+}</code></pre><blockquote>
+<p>Person类中有相应的name，age，get，set方法以及toString方法</p>
+</blockquote>
+<p>##打印流<br>###概述<br>平时我们控制台打印输出。调用<code>print</code>方法和<code>println</code>方法完成的这两个方法都来源于java.io.PrintStream类，该类能够方便打印各种数据类型的值。</p>
+<p>###PrintStream类<br>####构造方法</p>
+<ul>
+<li><p>public PrintStream(String fileName)：使用指定的文件名创建一个打印流。<br>举栗子：</p>
+<p>  PrintStream ps = new PrintStream(“ps.txt”);</p>
+</li>
+</ul>
+<h4 id="改变打印流向"><a href="#改变打印流向" class="headerlink" title="改变打印流向"></a>改变打印流向</h4><pre><code>public class TestPrintStream{
+    public static void main(String[] args)throws IOException{
+        //调用系统的打印流，在控制台直接输出97
+        System.out.println(97);
+
+        //创建打印流，指定文件的名称
+        PrintStream ps = new PrintStream(&quot;ps.txt&quot;);
+
+        //设置系统的打印流流向，输出到ps.txt中
+        System.setOut(ps);
+        //调用系统的打印流,ps.txt中输出97
+        System.out.println(97);
+    }
+}</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Html-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/Html-css/" class="post-title-link" itemprop="url">Html-css</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-07 17:54:28" itemprop="dateModified" datetime="2020-03-07T17:54:28+08:00">2020-03-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Html-CSS"><a href="#Html-CSS" class="headerlink" title="Html/CSS"></a>Html/CSS</h1><p>这个语法是真的简单，web开发都可以学一学喔！</p>
+<hr>
+<h3 id="先介绍一下Html吧"><a href="#先介绍一下Html吧" class="headerlink" title="先介绍一下Html吧"></a>先介绍一下Html吧</h3><p>主要框架可以不记得。VM或者Vscode都可以打一个英文字符的感叹号<code>!</code>然后回车实现框架。<br/></p>
+<ol>
+<li>title标签之间可以改网页的名字。</li>
+<li>head标签之内可以加入CSS样式或者js代码</li>
+<li>body标签是网页”身体”里面可以布局，写内容，可以写js</li>
+</ol>
+<h3 id="再介绍一下HTML的标签吧"><a href="#再介绍一下HTML的标签吧" class="headerlink" title="再介绍一下HTML的标签吧"></a>再介绍一下HTML的标签吧</h3><ul>
+<li>h1~h6 标题</li>
+<li>br 段内换行</li>
+<li>span 段内分组</li>
+<li>p 段落标签</li>
+<li>pre 预留格式</li>
+<li>hr 水平线</li>
+<li>a 超链接 (可以链接本地电脑的其他网站、其他站点、或者虚拟超链接#)</li>
+<li>img 图片标签</li>
+<li>div 区域</li>
+<li>ul 无序列表</li>
+<li>ol 有序列表</li>
+<li>li 列表，嵌套于ul ol中</li>
+<li>table 表格</li>
+<li>tr 行</li>
+<li>td 列 嵌套于tr中</li>
+<li>th 表头单元格 嵌套于tr中</li>
+<li>form 表单</li>
+<li>input type=”” value=”” (type里面的值有 text文本 password 密码 submit 确定 reset  重置 radio 单选框 checkbox 多选框)(value输入中文就可以显示文字了)</li>
+<li>select option 标签用于下弹的框</li>
+<li>textarea 文本域</li>
+<li>em\strong 斜体/强调 均无语意 嵌套于p中</li>
+<li>dl/dt/dd 自定义列表/列表项/描述 嵌套于dl中<blockquote>
+<p>光看是学不会的，主要要多敲！</p>
+</blockquote>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="CSS的样式添加方式"><a href="#CSS的样式添加方式" class="headerlink" title="CSS的样式添加方式"></a>CSS的样式添加方式</h3></li>
+</ul>
+<ol>
+<li>CSS可以行内添加(如<code>&lt;p width=&quot;300px&quot;&gt;</code>等)</li>
+<li>内嵌样式(在head标签之间加入style标签，写进style里面)</li>
+<li>外部引用(用 <strong>link标签引入</strong> 写比较大的页面的时候用这个可以方便维护)。</li>
+</ol>
+<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><ol>
+<li>标签选择器(<code>h1{font-size:20px</code>)</li>
+<li>类别选择器(<code>.one{font-size:10px} &lt;p class=&quot;one&quot;</code>&gt;)</li>
+<li>ID选择器(<code>#one{font-size:12px} &lt;p id=&quot;one&quot;&gt;</code>)</li>
+</ol>
+<h3 id="CSS文字样式"><a href="#CSS文字样式" class="headerlink" title="CSS文字样式"></a>CSS文字样式</h3><ol>
+<li>px (像素)</li>
+<li>em（字符，自适应用户所用字体）</li>
+<li>% (百分比）</li>
+</ol>
+<h3 id="CSS颜色"><a href="#CSS颜色" class="headerlink" title="CSS颜色"></a>CSS颜色</h3><ol>
+<li>red…（直接输入颜色名）</li>
+<li>rbg(x1,x2,x3,x4) (x4为透明度)</li>
+<li>rgb(x%,x%,x%) (百分比值)</li>
+</ol>
+<h3 id="CSS常用标签"><a href="#CSS常用标签" class="headerlink" title="CSS常用标签"></a>CSS常用标签</h3><blockquote>
+<p>由于太多了就列一点常用的吧</p>
+</blockquote>
+<ol>
+<li>color (颜色)</li>
+<li>text-align (对齐) (center\left\right\justify)</li>
+<li>line-height (行高) (居中一般与当前的框架高的相同)</li>
+<li>text-decoration (装饰线)（none\underline\overline\line-through）</li>
+<li>float（浮动)（left\right…）</li>
+<li>padding (内边距) (px)</li>
+<li>margin (外边距) (a,b,c,d)（上\右\下\左）</li>
+<li>vertical-align （属性设置元素的垂直对齐方式）</li>
+<li>transform（2D/3D 转换）</li>
+<li>overflow (超出边框时的操作) (hidden\auto…)</li>
+<li>transition (动画效果持续时长) (.s 多少s)</li>
+<li>border (边框) （solid #xxx）</li>
+<li>position (规定元素的定位类型) （absolute..）</li>
+<li>display (显示) (none/block…)<blockquote>
+<p>能力有限就这为止吧哈哈哈</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">HashMap底层实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-09 21:21:20" itemprop="dateModified" datetime="2020-06-09T21:21:20+08:00">2020-06-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="HashMap的底层实现"><a href="#HashMap的底层实现" class="headerlink" title="HashMap的底层实现"></a>HashMap的底层实现</h2><p>HashMap底层实现采用了哈希表，是非常重要的数据结构。(redis数据库的核心技术和HashMap一样),因此，很重要。</p>
+<p>数据结构由数组和链表来实现对数据的存储，各有特点</br></p>
+<ol>
+<li>数组：占用空间连续。寻址容易，查询速度快。但是，增删的效率低</br></li>
+<li>链表：占用空间不连续，寻址困难查询速度慢，但是增删的效率很高</li>
+</ol>
+<p>那么哈希表就是集合数组与链表于一身的存在(查询快，增删也快)；</p>
+<h3 id="HashMap基本结构"><a href="#HashMap基本结构" class="headerlink" title="HashMap基本结构"></a>HashMap基本结构</h3><p>哈希表的基本结构是”数组+链表”。<br>打开HashMap源码，发现有俩个核心的内容：<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495618960152437.png" alt=""><br>其中的Entry[] table 就是HashMap的核心数组结构，我们称之为”位桶数组”。Entry源码<br><img src="https://i.loli.net/2020/06/09/jZwnPI9vJB6oXkH.png" alt="HashMap底层源码之一.png"></p>
+<blockquote>
+<p>Node即是Entry(实现了Map.Entry接口)</p>
+</blockquote>
+<p>一个Entry对象储存了：</br></p>
+<ol>
+<li>key键对象value：值对象</br></li>
+<li>next：下一个节点</br></li>
+<li>hash：键对象的hash值</br><br>很显然每一个Entry对象是一个单向链表结构，就犹如：<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495619082593896.png" alt=""><br>然后，Node[]数组的结构，也是HashMap的结构</li>
+</ol>
+<p><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495619119905721.png" alt=""></p>
+<blockquote>
+<p>意思就是把链表嵌入数组中这样既有了数组的查询快的优点 亦有了链表增删快的优点。</p>
+</blockquote>
+<h4 id="储存数据过程put-key-value"><a href="#储存数据过程put-key-value" class="headerlink" title="储存数据过程put(key,value)"></a>储存数据过程put(key,value)</h4><p>明白了HashMap的基本结构后，了解HashMap如何储存数据的。此处的核心是如何产生Hash值，该值用了对应数组的储存位置。<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495619181777762.png" alt=""></p>
+<p>目的是要把”key - value两个对象”成对存放到HashMap的Node[]数组中</p>
+<ol>
+<li><p>获得key对象的hashcode，调用key对象的hashcode()方法获得hashcode。</p>
+</li>
+<li><p>根据hashcode计算出hash值(要求在[0，length-1]区间,减少”hash冲突”)</p>
+<ul>
+<li><p>一种极端简单且低下的算法是：hash值 = hashcode/hashcode;</p>
+<blockquote>
+<p>也就是说hash为1。键值对对象都会储存在数组索引为1的位置，这样跟一个链表没什么区别了。</p>
+</blockquote>
+</li>
+<li><p>一种简单常用的算法(相除取余算法)：hash值 = hashcode%数组长度</p>
+<blockquote>
+<p>这种算法可以让hash值均匀的分布在[0，数组长度-1]的区间。早期的HashTable就是采用这种算法。但是这种算法用了”除法”，效率低下。JDK后来改进了算法。首先约定数组的长度必须为2的整数幂，这样采用位运算可以实现取余的效果：hash值 = hashcode&amp;(数组长度-1)。 </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<p>事实上为了获得更好的散列效果，JDK对hashcode进行了两次散列处理(核心目标就是为了分布更散更均匀)(JDK牛逼)！<br><img src="https://www.sxt.cn/360shop/Public/admin/UEditor/20170524/1495619395858263.png" alt=""></p>
+<ol start="3">
+<li>生成Node对象</br><br>就跟上面一样，一个Node对象包含四部分：key对象，value对象，next对象，hash值。(next对象用于指向下一个Node对象的引用)。现在算出了hash值。下一个Entry对象的引用为null。</li>
+</ol>
+<p>4.将Node对象对应的数组索引位置还没有放Node对象，则直接将Node对象储存进数组；如果对应索引位置有Node对象，则将已有的Node对象的next指向本Node对象，形成链表。</p>
+<h3 id="总结如上"><a href="#总结如上" class="headerlink" title="总结如上"></a>总结如上</h3><p>当添加一个元素(key - value)时，首先计算key的hash值，以此确定插入数组中的位置，但是存在同一hash值的元素，已经被放进看同一数组位置了，这时就添加到同一hash值的元素的后面，他们在数组的同一个位置，就形成了链表，同一个链表上的Hash值是相同的，所以说数组的存放方式是链表。JDK8中，当链表长度大于8时，链表就转换成了红黑树，从而又提高了查找效率。</p>
+<h3 id="取数据的过程get-key"><a href="#取数据的过程get-key" class="headerlink" title="取数据的过程get(key)"></a>取数据的过程get(key)</h3><p>我门需要通过key对象来获取”键值对”对象，进而返回value对象。明白了储存数据过程，取数就比较简单了</p>
+<p>1）获得key的hashcode，通过hash()散列算法算得hash值，进而定位到数组的位置。</br><br>2)在链表上一个个去比较key对象，调用equals()方法，将key对象和链表上所有节点的key对象进行比较，直到碰到返回true的节点对象为止。</br><br>3）返回equals()为true的节点对象的value对象。</p>
+<p>明白存取数据的过程，我们再看一下hashcode()和equals方法的关系：</br><br>Java中规定，两个内容相同(equals()为true)的对象必须有相同的hashcode。因为如果equals()为true而两个对象的hashcode不同；那在整个储存过程中就产生了悖论。</p>
+<h3 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h3><p>HashMao的位桶数组，初始化大小16。实际使用时候，显然大小是可变的。如果位桶数组中的元素达到(0.75*数组 length)，重新调整数组大小变成了原来的二倍</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1305,7 +3599,7 @@ int powerzwz(int x,int n)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1331,7 +3625,7 @@ int powerzwz(int x,int n)
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
