@@ -196,7 +196,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-23 16:14:39" itemprop="dateModified" datetime="2022-02-23T16:14:39+08:00">2022-02-23</time>
+                <time title="Modified: 2022-02-24 21:45:44" itemprop="dateModified" datetime="2022-02-24T21:45:44+08:00">2022-02-24</time>
               </span>
 
           
@@ -377,7 +377,7 @@
 </ul>
 <h5 id="Parallel-Old-收集器"><a href="#Parallel-Old-收集器" class="headerlink" title="Parallel Old 收集器"></a><strong>Parallel Old 收集器</strong></h5><p>是Parallel Scavenge收集器的老年代版本</p>
 <p><strong>特点</strong>：多线程，采用<strong>标记-整理算法</strong>（老年代没有幸存区）</p>
-<h4 id="响应时间优先"><a href="#响应时间优先" class="headerlink" title="响应时间优先"></a>响应时间优先</h4><p><a href="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151052.png" target="_blank" rel="noopener">https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151052.png</a></p>
+<h4 id="响应时间优先"><a href="#响应时间优先" class="headerlink" title="响应时间优先"></a>响应时间优先</h4><p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151052.png" alt="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151052.png"></p>
 <h5 id="CMS-收集器"><a href="#CMS-收集器" class="headerlink" title="CMS 收集器"></a>CMS 收集器</h5><p>Concurrent Mark Sweep，一种以获取<strong>最短回收停顿时间</strong>为目标的<strong>老年代</strong>收集器</p>
 <p><strong>特点</strong>：基于<strong>标记-清除算法</strong>实现。并发收集、低停顿，但是会产生内存碎片</p>
 <p><strong>应用场景</strong>：适用于注重服务的响应速度，希望系统停顿时间最短，给用户带来更好的体验等场景下。如web程序、b/s服务</p>
@@ -397,6 +397,64 @@
 <p><strong>相关 JVM 参数：</strong></p>
 <p>​    -XX:+UseG1GC<br>​    -XX:G1HeapRegionSize=size</p>
 <p>​    -XX:MaxGCPauseMillis=time</p>
+<h5 id="G1垃圾回收阶段"><a href="#G1垃圾回收阶段" class="headerlink" title="G1垃圾回收阶段"></a>G1垃圾回收阶段</h5><p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151109.png" alt=""></p>
+<p>新生代伊甸园垃圾回收—–&gt;内存不足，新生代回收+并发标记—–&gt;回收新生代伊甸园、幸存区、老年代内存——&gt;新生代伊甸园垃圾回收(重新开始)</p>
+<h5 id="Young-Collection"><a href="#Young-Collection" class="headerlink" title="Young Collection"></a>Young Collection</h5><p><strong>分区算法region</strong></p>
+<p>分代是按对象的生命周期划分，分区则是将堆空间划分连续几个不同小区间，每一个小区间独立回收，可以控制一次回收多少个小区间，方便控制 GC 产生的停顿时间</p>
+<p>E：伊甸园    S：幸存区    O：老年代</p>
+<ul>
+<li>会STW</li>
+</ul>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151119.png" alt=""></p>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151129.png" alt=""></p>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151140.png" alt=""></p>
+<h5 id="Young-Collection-CM"><a href="#Young-Collection-CM" class="headerlink" title="Young Collection + CM"></a>Young Collection + CM</h5><p>CM：并发标记</p>
+<ul>
+<li>在 Young GC 时会<strong>对 GC Root 进行初始标记</strong></li>
+<li>在老年代<strong>占用堆内存的比例</strong>达到阈值时，对进行并发标记（不会STW），阈值可以根据用户来进行设定</li>
+</ul>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151150.png" alt=""></p>
+<h5 id="Mixed-Collection"><a href="#Mixed-Collection" class="headerlink" title="Mixed Collection"></a>Mixed Collection</h5><p> 会对E S O 进行<strong>全面的回收</strong></p>
+<ul>
+<li>最终标记</li>
+<li><strong>拷贝</strong>存活</li>
+</ul>
+<p>-XX:MaxGCPauseMills:xxx    用于指定最长的停顿时间</p>
+<p><strong>问</strong>：为什么有的老年代被拷贝了，有的没拷贝？</p>
+<p>因为指定了最大停顿时间，如果对所有老年代都进行回收，耗时可能过高。为了保证时间不超过设定的停顿时间，会<strong>回收最有价值的老年代</strong>（回收后，能够得到更多内存）</p>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151201.png" alt=""></p>
+<h5 id="Full-GC"><a href="#Full-GC" class="headerlink" title="Full GC"></a>Full GC</h5><p>G1在老年代内存不足时（老年代所占内存超过阈值）</p>
+<ul>
+<li>如果垃圾产生速度慢于垃圾回收速度，不会触发Full GC，还是并发地进行清理</li>
+<li>如果垃圾产生速度快于垃圾回收速度，便会触发Full GC</li>
+</ul>
+<h5 id="Young-Collection-跨代引用"><a href="#Young-Collection-跨代引用" class="headerlink" title="Young Collection 跨代引用"></a>Young Collection 跨代引用</h5><ul>
+<li>新生代回收的跨代引用（老年代引用新生代）问题</li>
+</ul>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151211.png" alt=""></p>
+<ul>
+<li>卡表与Remembered Set<ul>
+<li>Remembered Set 存在于E中，用于保存新生代对象对应的脏卡<ul>
+<li>脏卡：O被划分为多个区域（一个区域512K），如果该区域引用了新生代对象，则该区域被称为脏卡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在引用变更时通过post-write barried + dirty card queue</li>
+<li>concurrent refinement threads  更新 Remembered Set</li>
+</ul>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151222.png" alt=""></p>
+<h5 id="Remark"><a href="#Remark" class="headerlink" title="Remark"></a>Remark</h5><p>重新标记阶段</p>
+<p>在垃圾回收时，收集器处理对象的过程中</p>
+<p>黑色：已被处理，需要保留的  灰色：正在处理中的 白色：还未处理的</p>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151229.png" alt=""></p>
+<p>但是在<strong>并发标记过程中</strong>，有可能A被处理了以后未引用C，但该处理过程还未结束，在处理过程结束之前A引用了C，这时就会用到remark</p>
+<p>过程如下</p>
+<ul>
+<li>之前C未被引用，这时A引用了C，就会给C加一个写屏障，写屏障的指令会被执行，将C放入一个队列当中，并将C变为 处理中 状态</li>
+<li>在<strong>并发标记</strong>阶段结束以后，重新标记阶段会STW，然后将放在该队列中的对象重新处理，发现有强引用引用它，就会处理它</li>
+</ul>
+<p><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608151239.png" alt=""></p>
 
       
     </div>
