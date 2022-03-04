@@ -165,6 +165,114 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Junit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/Junit/" class="post-title-link" itemprop="url">Junit</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:14" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:14+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-25 17:14:04" itemprop="dateModified" datetime="2020-09-25T17:14:04+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Junit-单元测试："><a href="#Junit-单元测试：" class="headerlink" title="Junit 单元测试："></a>Junit 单元测试：</h1><ul>
+<li><p>测试分类：</p>
+<ul>
+<li>1.黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。</li>
+<li>2.白盒测试：需要写代码的。关注程序具体的执行流程。</li>
+</ul>
+</li>
+<li><p>Junit使用：白盒测试</p>
+<ul>
+<li>步骤：<ul>
+<li>1.定义一个测试类(测试用例)<ul>
+<li>建议：<ul>
+<li>测试类名：被测试的类名Test    CalculatorTest </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.定义测试方法：可以独立运行<ul>
+<li>建议：<ul>
+<li>方法名：test测试的方法名   testAdd()</li>
+<li>返回值：void</li>
+<li>参数列表：空参</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3.给方法加@Test</li>
+<li>4.导入junit依赖环境</li>
+</ul>
+</li>
+<li>判定结果：<ul>
+<li>红色：失败</li>
+<li>绿色：成功</li>
+<li>一般我们会使用断言操作来处理结果Assert.assertEquals(期望的结果,运行的结果);</li>
+</ul>
+</li>
+<li>补充：<ul>
+<li>@Before:修饰的方法会在测试方法之前被自动执行</li>
+<li>@After:修饰的方法会在测试方法执行之后被自动执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="反射：框架设计的灵魂"><a href="#反射：框架设计的灵魂" class="headerlink" title="反射：框架设计的灵魂"></a>反射：框架设计的灵魂</h2><pre><code>- 框架：半成品软件。可以在框架的基础上进行软件开发，简化编码</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3599,7 +3707,7 @@ int powerzwz(int x,int n)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
