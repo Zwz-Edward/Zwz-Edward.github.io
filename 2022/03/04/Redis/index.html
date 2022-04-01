@@ -46,17 +46,25 @@
   };
 </script>
 
-  <meta name="description" content="Redis">
+  <meta name="description" content="Redis什么是Redisredis是一种nosql,即非关系型数据库,也是缓存数据库,即将数据存储在缓存中,并且是以键值对的方式存储的,缓存的读取速度快,能够大大的提高运行效率,但是保存时间有限。  NoSQL 可以理解为Not only SQL 不只有结构化查询语言    SQL的特点： - 结构化(Structured) - 关联性(Relational) - SQL 查询 - ACID 原">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis">
 <meta property="og:url" content="http://yoursite.com/2022/03/04/Redis/index.html">
 <meta property="og:site_name" content="ZWZ的博客嘻嘻">
-<meta property="og:description" content="Redis">
+<meta property="og:description" content="Redis什么是Redisredis是一种nosql,即非关系型数据库,也是缓存数据库,即将数据存储在缓存中,并且是以键值对的方式存储的,缓存的读取速度快,能够大大的提高运行效率,但是保存时间有限。  NoSQL 可以理解为Not only SQL 不只有结构化查询语言    SQL的特点： - 结构化(Structured) - 关联性(Relational) - SQL 查询 - ACID 原">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bDDOMV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bDr1QP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bDywrV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bD6edU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bD6OfJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bDhiAP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/06/bDhuBn.png">
 <meta property="article:published_time" content="2022-03-04T12:08:32.845Z">
-<meta property="article:modified_time" content="2022-03-04T12:08:32.845Z">
+<meta property="article:modified_time" content="2022-03-06T12:24:39.096Z">
 <meta property="article:author" content="ZWZ">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/03/06/bDDOMV.png">
 
 <link rel="canonical" href="http://yoursite.com/2022/03/04/Redis/">
 
@@ -194,6 +202,13 @@
 
               <time title="Created: 2022-03-04 20:08:32" itemprop="dateCreated datePublished" datetime="2022-03-04T20:08:32+08:00">2022-03-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-03-06 20:24:39" itemprop="dateModified" datetime="2022-03-06T20:24:39+08:00">2022-03-06</time>
+              </span>
 
           
 
@@ -206,7 +221,243 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1>
+        <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="什么是Redis"><a href="#什么是Redis" class="headerlink" title="什么是Redis"></a>什么是Redis</h2><p><strong>redis是一种nosql,即非关系型数据库,也是缓存数据库</strong>,即将数据存储在缓存中,<strong>并且是以键值对的方式存储的</strong>,缓存的读取速度快,能够大大的提高运行效率,但是保存时间有限。</p>
+<blockquote>
+<p>NoSQL 可以理解为Not only SQL 不只有结构化查询语言</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2022/03/06/bDDOMV.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2022/03/06/bDr1QP.png" alt=""></p>
+<p>SQL的特点：</p>
+<pre><code>- 结构化(Structured)
+- 关联性(Relational)
+- SQL 查询
+- ACID 原子性（atomicity，或称不可分割性）、一致性（consistency）、隔离性（isolation，又称独立性）、持久性（durability）。
+- 存储在磁盘</code></pre><p>NoSQL的特点：</p>
+<ul>
+<li>非结构化</li>
+<li>无关联性</li>
+<li>非SQL</li>
+<li>BASE (基本一致 ， 无事务)</li>
+<li>存储在内存</li>
+</ul>
+<p>Redis的特征：</p>
+<pre><code>- 键值（key-value）型，value支持多种不同数据结构，功能丰富
+- 单线程，每个命令具备原子性
+- 延迟，速度快（基于内存、IO多路复用、良好的编码）。</code></pre><ul>
+<li>支持数据持久化</li>
+<li>支持主从集群、分片集群</li>
+<li>支持多语言客户端</li>
+</ul>
+<h2 id="Redis数据结构介绍"><a href="#Redis数据结构介绍" class="headerlink" title="Redis数据结构介绍"></a>Redis数据结构介绍</h2><p>Redis是一个key-value的数据库，key一般是String类型，不过value的类型多种多样：</p>
+<ul>
+<li>String ：hello</li>
+<li>Hash ：{ name:”zwz” , age:20 }</li>
+<li>List : [A-&gt;B-&gt;C]</li>
+<li>Set : {A,B,C}</li>
+<li>SortedSet : {A:1, B:2 , C:3}</li>
+<li>GEO : { A:(120.3,30.5) }</li>
+<li>BitMap : 0110110101110101011</li>
+<li>HyperLog : 0110110101110101011</li>
+</ul>
+<h2 id="Redis-通用命令"><a href="#Redis-通用命令" class="headerlink" title="Redis 通用命令"></a>Redis 通用命令</h2><p>通用指令是部分数据类型的，都可以使用的指令，常见的有：</p>
+<ul>
+<li><p>KEYS：查看符合模板的所有key</p>
+</li>
+<li><p>DEL：删除一个指定的key</p>
+</li>
+<li><p>EXISTS：判断key是否存在</p>
+</li>
+<li><p>EXPIRE：给一个key设置有效期，有效期到期时该key会被自动删除</p>
+</li>
+<li><p>TTL：查看一个KEY的剩余有效期</p>
+</li>
+</ul>
+<p>通过  help [command] </p>
+<p>可以查看一个命令的具体用法，例如：</p>
+<p><img src="https://s1.ax1x.com/2022/03/06/bDywrV.png" alt=""></p>
+<h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><p>String类型，也就是字符串类型，是Redis中最简单的存储类型。</p>
+<p>其value是字符串，不过根据字符串的格式不同，又可以分为3类：</p>
+<ul>
+<li><p>string：普通字符串</p>
+</li>
+<li><p>int：整数类型，可以做自增、自减操作</p>
+</li>
+<li><p>float：浮点类型，可以做自增、自减操作</p>
+</li>
+</ul>
+<p>不管是哪种格式，底层都是字节数组形式存储，只不过是编码方式不同。字符串类型的最大空间不能超过</p>
+<p>512m</p>
+<p><strong>String的常见命令有：</strong></p>
+<ul>
+<li><p>SET：添加或者修改已经存在的一个String类型的键值对</p>
+</li>
+<li><p>GET：根据key获取String类型的value</p>
+</li>
+<li><p>MSET：批量添加多个String类型的键值对</p>
+</li>
+<li><p>MGET：根据多个key获取多个String类型的value</p>
+</li>
+<li><p>INCR：让一个整型的key自增1</p>
+</li>
+<li><p>INCRBY:让一个整型的key自增并指定步长，例如：incrby num 2 让num值自增2</p>
+</li>
+<li><p>INCRBYFLOAT：让一个浮点类型的数字自增并指定步长</p>
+</li>
+<li><p>SETNX：添加一个String类型的键值对，前提是这个key不存在，否则不执行</p>
+</li>
+<li><p>SETEX：添加一个String类型的键值对，并且指定有效期</p>
+</li>
+</ul>
+<p><strong>Redis的key允许有多个单词形成层级结构，多个单词之间用’:’隔开，格式如下：</strong></p>
+<p>这个格式并非固定，也可以根据自己的需求来删除或添加词条。</p>
+<p>例如我们的项目名称叫 heima，有user和product两种不同类型的数据，我们可以这样定义key：</p>
+<ul>
+<li><p>user相关的 key：heima:user:1</p>
+</li>
+<li><p>product相关的 key：heima:product:1</p>
+</li>
+</ul>
+<p>在redis里显示就会变成这样</p>
+<p><img src="https://s1.ax1x.com/2022/03/06/bD6edU.png" alt=""></p>
+<h3 id="Hash类型"><a href="#Hash类型" class="headerlink" title="Hash类型"></a>Hash类型</h3><p>Hash类型，也叫散列，其value是一个无序字典，类似于Java中的HashMap结构。</p>
+<p>String结构是将对象序列化为JSON字符串后存储，当需要修改对象某个字段时很不方便：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Key</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">heima:user:1</td>
+<td align="center">{name:”Jack”,age:21}</td>
+</tr>
+<tr>
+<td align="center">heima:user:2</td>
+<td align="center">{name:”Rose”,age:18}</td>
+</tr>
+</tbody></table>
+<p>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：</p>
+<p><img src="https://s1.ax1x.com/2022/03/06/bD6OfJ.png" alt=""></p>
+<p><strong>Hash的常见命令有：</strong></p>
+<ul>
+<li><p>HSET key field value：添加或者修改hash类型key的field的值</p>
+</li>
+<li><p>HGET key field：获取一个hash类型key的field的值</p>
+</li>
+<li><p>HMSET：批量添加多个hash类型key的field的值</p>
+</li>
+<li><p>HMGET：批量获取多个hash类型key的field的值</p>
+</li>
+<li><p>HGETALL：获取一个hash类型的key中的所有的field和value</p>
+</li>
+<li><p>HKEYS：获取一个hash类型的key中的所有的field</p>
+</li>
+<li><p>HVALS：获取一个hash类型的key中的所有的value</p>
+</li>
+<li><p>HINCRBY:让一个hash类型key的字段值自增并指定步长</p>
+</li>
+<li><p>HSETNX：添加一个hash类型的key的field值，前提是这个field不存在，否则不执行</p>
+</li>
+</ul>
+<h3 id="List类型"><a href="#List类型" class="headerlink" title="List类型"></a>List类型</h3><p>Redis中的List类型与Java中的LinkedList类似，可以看做是一个双向链表结构。既可以支持正向检索和也可以支持反向检索。</p>
+<p>特征也与LinkedList类似：</p>
+<ul>
+<li><p>有序</p>
+</li>
+<li><p>元素可以重复</p>
+</li>
+<li><p>插入和删除快</p>
+</li>
+<li><p>查询速度一般</p>
+</li>
+</ul>
+<p>常用来存储一个有序数据，例如：朋友圈点赞列表，评论列表等。</p>
+<p><strong>List的常见命令有：</strong></p>
+<ul>
+<li><p>LPUSH key  element … ：向列表左侧插入一个或多个元素</p>
+</li>
+<li><p>LPOP key：移除并返回列表左侧的第一个元素，没有则返回nil</p>
+</li>
+<li><p>RPUSH key  element … ：向列表右侧插入一个或多个元素</p>
+</li>
+<li><p>RPOP key：移除并返回列表右侧的第一个元素</p>
+</li>
+<li><p>LRANGE key star end：返回一段角标范围内的所有元素</p>
+</li>
+<li><p>BLPOP和BRPOP：与LPOP和RPOP类似，只不过在没有元素时等待指定时间，而不是直接返回nil</p>
+</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2022/03/06/bDhiAP.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2022/03/06/bDhuBn.png" alt=""></p>
+<h3 id="Set类型"><a href="#Set类型" class="headerlink" title="Set类型"></a>Set类型</h3><p>Redis的Set结构与Java中的HashSet类似，可以看做是一个value为null的HashMap。因为也是一个hash表，因此具备与HashSet类似的特征：</p>
+<ul>
+<li><p>无序</p>
+</li>
+<li><p>元素不可重复</p>
+</li>
+<li><p>查找快</p>
+</li>
+</ul>
+<p>支持交集、并集、差集等功能</p>
+<p><strong>Set的常见命令有：</strong></p>
+<ul>
+<li><p>SADD key member … ：向set中添加一个或多个元素</p>
+</li>
+<li><p>SREM key member … : 移除set中的指定元素</p>
+</li>
+<li><p>SCARD key： 返回set中元素的个数</p>
+</li>
+<li><p>SISMEMBER key member：判断一个元素是否存在于set中</p>
+</li>
+<li><p>SMEMBERS：获取set中的所有元素</p>
+</li>
+<li><p>SINTER key1 key2 … ：求key1与key2的交集</p>
+</li>
+<li><p>SDIFF key1 key2 … ：求key1与key2的差集</p>
+</li>
+<li><p>SUNION key1 key2 ..：求key1和key2的并集</p>
+</li>
+</ul>
+<h3 id="SortedSet类型"><a href="#SortedSet类型" class="headerlink" title="SortedSet类型"></a>SortedSet类型</h3><p>Redis的SortedSet是一个可排序的set集合，与Java中的TreeSet有些类似，但底层数据结构却差别很大。SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层的实现是一个跳表（SkipList）加 hash表。</p>
+<p>SortedSet具备下列特性：</p>
+<ul>
+<li><p>可排序</p>
+</li>
+<li><p>元素不重复</p>
+</li>
+<li><p>查询速度快</p>
+</li>
+</ul>
+<p>因为SortedSet的可排序特性，经常被用来实现排行榜这样的功能。</p>
+<p><strong>SortedSet的常见命令有：</strong></p>
+<ul>
+<li><p>ZADD key score member：添加一个或多个元素到sorted set ，如果已经存在则更新其score值</p>
+</li>
+<li><p>ZREM key member：删除sorted set中的一个指定元素</p>
+</li>
+<li><p>ZSCORE key member : 获取sorted set中的指定元素的score值</p>
+</li>
+<li><p>ZRANK key member：获取sorted set 中的指定元素的排名</p>
+</li>
+<li><p>ZCARD key：获取sorted set中的元素个数</p>
+</li>
+<li><p>ZCOUNT key min max：统计score值在给定范围内的所有元素的个数</p>
+</li>
+<li><p>ZINCRBY key increment member：让sorted set中的指定元素自增，步长为指定的increment值</p>
+</li>
+<li><p>ZRANGE key min max：按照score排序后，获取指定排名范围内的元素</p>
+</li>
+<li><p>ZRANGEBYSCORE key min max：按照score排序后，获取指定score范围内的元素</p>
+</li>
+<li><p>ZDIFF、ZINTER、ZUNION：求差集、交集、并集</p>
+</li>
+</ul>
+<p>注意：所有的排名默认都是升序，如果要降序则在命令的Z后面添加REV即可</p>
+<blockquote>
+<p>例如  ZREVRANGE key min max：按照score倒序后，获取指定排名范围内的元素</p>
+</blockquote>
+
     </div>
 
     
@@ -224,7 +475,10 @@
     <a href="/2022/02/21/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="prev" title="垃圾回收">
       <i class="fa fa-chevron-left"></i> 垃圾回收
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/31/CRC%20%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C/" rel="next" title="CRC 循环冗余校验">
+      CRC 循环冗余校验 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -284,7 +538,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Redis"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis数据结构介绍"><span class="nav-number">1.2.</span> <span class="nav-text">Redis数据结构介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-通用命令"><span class="nav-number">1.3.</span> <span class="nav-text">Redis 通用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String-类型"><span class="nav-number">1.3.1.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash类型"><span class="nav-number">1.3.2.</span> <span class="nav-text">Hash类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List类型"><span class="nav-number">1.3.3.</span> <span class="nav-text">List类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set类型"><span class="nav-number">1.3.4.</span> <span class="nav-text">Set类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedSet类型"><span class="nav-number">1.3.5.</span> <span class="nav-text">SortedSet类型</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -298,7 +552,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
