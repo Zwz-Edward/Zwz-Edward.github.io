@@ -46,31 +46,27 @@
   };
 </script>
 
-  <meta name="description" content="cosx泰勒展开 写了我三天（草本植物）  123456789101112131415161718192021222324252627282930313233343536373839404142434445&#x2F;&#x2F;泰勒展开#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;&#x2F;&#x2F;#include &lt;string.h&gt;&#x2F;&#x2F;#include &lt;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="cosx的泰勒展开">
-<meta property="og:url" content="http://yoursite.com/2021/03/27/cosx%E7%9A%84%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="ZWZ的博客嘻嘻">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="ZWZ的博客嘻嘻">
-<meta property="og:description" content="cosx泰勒展开 写了我三天（草本植物）  123456789101112131415161718192021222324252627282930313233343536373839404142434445&#x2F;&#x2F;泰勒展开#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;&#x2F;&#x2F;#include &lt;string.h&gt;&#x2F;&#x2F;#include &lt;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-27T04:30:13.720Z">
-<meta property="article:modified_time" content="2023-01-05T12:39:30.765Z">
 <meta property="article:author" content="ZWZ">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2021/03/27/cosx%E7%9A%84%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/">
+<link rel="canonical" href="http://yoursite.com/page/5/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome: true,
+    isPost: false
   };
 </script>
 
-  <title>cosx的泰勒展开 | ZWZ的博客嘻嘻</title>
+  <title>ZWZ的博客嘻嘻</title>
   
 
 
@@ -165,10 +161,111 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZWZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZWZ的博客嘻嘻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/27/C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%B3%95/" class="post-title-link" itemprop="url">C语言冒泡法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-27 12:30:13" itemprop="dateCreated datePublished" datetime="2021-03-27T12:30:13+08:00">2021-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-05 20:59:56" itemprop="dateModified" datetime="2020-04-05T20:59:56+08:00">2020-04-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
+          <h1 id="C语言的冒泡法"><a href="#C语言的冒泡法" class="headerlink" title="C语言的冒泡法"></a>C语言的冒泡法</h1><pre><code>#define _CRT_SECURE_NO_WARNINGS
+#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+#include&lt;time.h&gt;
+void main(){
+    void sort(int arr[],int len);
+    //冒泡法排序！
+    int arr[4];
+    printf(&quot;请输入4个数字分别赋给数组arr\n&quot;);
+    scanf(&quot;%d%d%d%d&quot;,&amp;arr[0],&amp;arr[1],&amp;arr[2],&amp;arr[3]);
+    int len = (int) sizeof(arr)/sizeof(*arr); //这里定义了数组的长度，sizeof(arr)获取了数组一共有多少个字节，sizeof(*arr)获取的第一个字节大小 sizeof(arr)/sizeof(*arr) 可获取长度
+    sort(arr,len);                              //调用函数
+    int k;
+    for(k=0;k&lt;len;k++)
+        printf(&quot;%d&quot;,arr[k]);                  //遍历数组
+
+    system(&quot;pause&quot;);
+}
+void sort(int arr[],int len)                 //每次比较数组两个元素，并用临时变量temp来交换两个元素的顺序
+{    
+    int i,j,temp;                            
+    for(i=0;i&lt;len-1;i++)
+        for(j=0;j&lt;len-1-i;j++)
+            if(arr[j]&gt;arr[j+1])
+            {    
+                temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+
+}</code></pre><blockquote>
+<p>这里的len使用了sizeof与指针来实现的  <code>sizeof(arr)</code>表示数组一共的字节数，<code>sizeof(*arr)</code>表示的是列表第一个元素的字节<code>sizeof(*arr)</code>=<code>sizeof(arr[0])</code>当然用arr[1]…也是可以的</p>
+</blockquote>
+<blockquote>
+<p>还有宏定义于头文件之前<code>#define _CRT_SECURE_NO_WARNINGS</code>是因为1.我们在编译老的用C语言的开源项目如lua源包的时候，可能因为一些老的.c文件使用了strcpy,scanf等不安全的函数，而报警告和错误，而导致无法编译通过。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/27/cosx%E7%9A%84%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -182,7 +279,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          cosx的泰勒展开
+          
+            <a href="/2021/03/27/cosx%E7%9A%84%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80/" class="post-title-link" itemprop="url">cosx的泰勒展开</a>
         </h1>
 
         <div class="post-meta">
@@ -213,39 +311,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="cosx泰勒展开"><a href="#cosx泰勒展开" class="headerlink" title="cosx泰勒展开"></a>cosx泰勒展开</h2><blockquote>
+          <h2 id="cosx泰勒展开"><a href="#cosx泰勒展开" class="headerlink" title="cosx泰勒展开"></a>cosx泰勒展开</h2><blockquote>
 <p>写了我三天（草本植物）</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泰勒展开</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="comment">//#include &lt;string.h&gt;</span></span><br><span class="line"><span class="comment">//#include &lt;math.h&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factzwz</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">powerzwz</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> n1,x,i,flag,n,n2;</span><br><span class="line">	<span class="keyword">double</span> itself,sum=<span class="number">0</span>;</span><br><span class="line">	n = <span class="number">0</span>;</span><br><span class="line">	i = <span class="number">0</span>;</span><br><span class="line">	flag = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请问你要输出多少项：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n1);</span><br><span class="line">	n2 = <span class="number">2</span>*(n1<span class="number">-1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入cos(x)中的x(0-1.57之间)：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		itself=<span class="number">1.0</span>*flag*powerzwz(x,i)/factzwz(n);</span><br><span class="line">		sum=sum+itself;</span><br><span class="line">		flag=-flag;</span><br><span class="line">		i=i+<span class="number">2</span>;</span><br><span class="line">		n=n+<span class="number">2</span>;</span><br><span class="line">	&#125;<span class="keyword">while</span>(n&lt;=n2);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.4lf"</span>,sum);</span><br><span class="line">	system(<span class="string">"pause"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factzwz</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> n*factzwz(n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">powerzwz</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(n&lt;<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> x*powerzwz(x,n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> x*powerzwz(x,n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item"></div>
-      <div class="post-nav-item">
-    <a href="/2021/03/27/C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%B3%95/" rel="next" title="C语言冒泡法">
-      C语言冒泡法 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
-    
   </article>
   
   
   
 
   </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
@@ -296,7 +388,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cosx泰勒展开"><span class="nav-number">1.</span> <span class="nav-text">cosx泰勒展开</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
