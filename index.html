@@ -196,7 +196,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-03 14:54:35" itemprop="dateModified" datetime="2023-02-03T14:54:35+08:00">2023-02-03</time>
+                <time title="Modified: 2023-02-03 15:01:58" itemprop="dateModified" datetime="2023-02-03T15:01:58+08:00">2023-02-03</time>
               </span>
 
           
@@ -868,17 +868,14 @@
 </li>
 <li><p>JavaScript解析引擎</p>
 </li>
-<li><ul>
-<li>Chrome浏览器内置V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。</li>
-</ul>
+<li><p>Chrome浏览器内置V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。</p>
 </li>
 </ul>
 <h5 id="2、什么是Node-js"><a href="#2、什么是Node-js" class="headerlink" title="2、什么是Node.js"></a>2、什么是Node.js</h5><p>脱离浏览器环境也可以运行JavaScript，只要有JavaScript引擎就可以。</p>
 <p>Node.js是一个基于Chrome V8引擎的JavaScript运行环境：即Node.js内置了Chrome的V8 引擎，可以在Node.js环境中直接运行JavaScript程序。</p>
 <ul>
 <li><p>在Node.js中写JavaScript和在Chrome浏览器中写JavaScript<strong>基本</strong>没有什么不一样。哪里不一样呢？</p>
-</li>
-<li><ul>
+<ul>
 <li>Node.js没有浏览器API，即document，window的等。</li>
 <li>加了许多Node.js 专属API，例如文件系统，进程，http功能。</li>
 </ul>
@@ -997,8 +994,7 @@
 
 <h5 id="7、跨域"><a href="#7、跨域" class="headerlink" title="7、跨域"></a>7、跨域</h5><h6 id="为什么会出现跨域问题？"><a href="#为什么会出现跨域问题？" class="headerlink" title="为什么会出现跨域问题？"></a>为什么会出现跨域问题？</h6><ul>
 <li><p>出于浏览器的同源策略限制：</p>
-</li>
-<li><ul>
+<ul>
 <li>所谓同源（即指在同一个域）就是两个地址具有相同的协议（protocol），主机（host）和端口号（port）</li>
 <li>同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。</li>
 </ul>
@@ -1033,7 +1029,7 @@
 <h6 id="4、渲染讲师列表"><a href="#4、渲染讲师列表" class="headerlink" title="4、渲染讲师列表"></a>4、渲染讲师列表</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table :data&#x3D;&quot;teacherList&quot; style&#x3D;&quot;width: 100%&quot;&gt;</span><br><span class="line">    &lt;el-table-column prop&#x3D;&quot;id&quot; label&#x3D;&quot;id&quot; width&#x3D;&quot;180&quot;&gt; &lt;&#x2F;el-table-column&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;el-table-column prop&#x3D;&quot;name&quot; label&#x3D;&quot;姓名&quot; width&#x3D;&quot;180&quot;&gt;</span><br><span class="line">    &lt;&#x2F;el-table-column&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;el-table-column prop&#x3D;&quot;level&quot; label&#x3D;&quot;级别&quot;&gt;</span><br><span class="line">        &lt;template slot-scope&#x3D;&quot;scope&quot;&gt;</span><br><span class="line">        &lt;span v-if&#x3D;&quot;scope.row.level &#x3D;&#x3D;&#x3D; 1&quot;&gt;高級講師&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span v-if&#x3D;&quot;scope.row.level &#x3D;&#x3D;&#x3D; 2&quot;&gt;首席講師&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;!-- &#123;&#123;scope.row.level&#125;&#125; --&gt;</span><br><span class="line">        &lt;&#x2F;template&gt;</span><br><span class="line">    &lt;&#x2F;el-table-column&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;el-table-column fixed&#x3D;&quot;right&quot; label&#x3D;&quot;操作&quot; width&#x3D;&quot;100&quot;&gt;</span><br><span class="line">    &lt;&#x2F;el-table-column&gt;</span><br><span class="line">&lt;&#x2F;el-table&gt;</span><br></pre></td></tr></table></figure>
 
 <h6 id="5、浏览器中运行"><a href="#5、浏览器中运行" class="headerlink" title="5、浏览器中运行"></a><strong>5、浏览器中运行</strong></h6><p><a href="https://imgse.com/i/pSKz2cV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2023/01/13/pSKz2cV.png" alt="pSKz2cV.png"></a></p>
-<h2 id="day-4"><a href="#day-4" class="headerlink" title="day 4"></a>day 4</h2><h3 id="1、NPM"><a href="#1、NPM" class="headerlink" title="1、NPM"></a>1、NPM</h3><p>NPM全称Node Package Manager，是Node.js包管理工具，是全球最大的模块生态系统，里面所有的模块都是开源免费的；也是Node.js的包管理工具，相当于前端的Maven 。</p>
+<h2 id="day4"><a href="#day4" class="headerlink" title="day4"></a>day4</h2><h3 id="1、NPM"><a href="#1、NPM" class="headerlink" title="1、NPM"></a>1、NPM</h3><p>NPM全称Node Package Manager，是Node.js包管理工具，是全球最大的模块生态系统，里面所有的模块都是开源免费的；也是Node.js的包管理工具，相当于前端的Maven 。</p>
 <h4 id="使用npm管理项目"><a href="#使用npm管理项目" class="headerlink" title="使用npm管理项目"></a><strong>使用npm管理项目</strong></h4><blockquote>
 <p> <strong>创建npm_pro文件夹</strong></p>
 </blockquote>
